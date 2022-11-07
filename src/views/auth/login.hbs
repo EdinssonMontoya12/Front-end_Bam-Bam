@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style-login.css" />
+</head>
+
+<body>
+    <main>
+        <div class="box">
+            <div class="inner-box">
+                <!-- ========== Start formulario login========== -->
+                <div class="forms-wrap">
+                    <form id="sig_in_form" action="/dashboard" method="POST" class="sign-in-form">
+
+                        <div class="logo">
+                            <img src="/img/logo-carro.png" alt="loguito" class="src">
+                            <h3>BamBam</h3>
+                        </div>
+
+                        <div class="heading">
+                            <h2>BIENVENIDO</h2>
+                        </div>
+
+                        <div class="actual-form">
+
+                            <div class="input-wrap">
+                                <input type="text" name="user" minlength="4" class="input-field" required>
+                                <label>Nombre</label>
+                            </div>
+
+
+                            <div class="input-wrap">
+                                <input type="password" name="password" minlength="4" class="input-field" required>
+                                <label>Contraseña</label>
+                            </div>
+
+
+                            <input type="submit" value="Iniciar Sesion" class="sign-btn">
+                            <p class="text">
+                                ¿Haz olvidado tu Contraseña?
+                                <a href="#">Recupera tu cuenta</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                <!-- ========== End formulario login ========== -->
+                <div class="carousel">
+                    <div class="image-wrapper">
+                        <img src="/img/imagen-login1.png" class="image img-1 show alt=" imagen 1">
+                        <img src=" /img/imagen-login2.png" class="image img-2" alt="imagen 2">
+                        <img src="/img/imagen-login3.png" class="image img-3" alt="imagen 3">
+                    </div>
+
+                    <div class="text-slider">
+                        <div class="text-wrap">
+                            <div class="text-group">
+                                <h2>Visualiza el movimiento de tu negocio</h2>
+                                <h2>Facilita procesos </h2>
+                                <h2>Administra tu flujo de caja</h2>
+                            </div>
+                        </div>
+                        <div class="bullets">
+                            <span class="activate" data-value="1"></span>
+                            <span data-value="2"> </span>
+                            <span data-value="3"> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/js/login-animaciones.js"></script>
+
+</body>
