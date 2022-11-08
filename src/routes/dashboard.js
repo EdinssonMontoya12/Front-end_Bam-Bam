@@ -5,12 +5,11 @@ const express = require('express');
 
 //Llamando al modulo de Routers de Express
 
-const router= express.Router();
+const router = express.Router();
 
 //Ruta del dashboard
-router.get('/dashboard', (req,res) => {
+router.get('/dashboard', (req, res) => {
     res.render('dashboard/dashboard.hbs');
-    
 });
 
-module.exports= router;
+module.exports = router;
