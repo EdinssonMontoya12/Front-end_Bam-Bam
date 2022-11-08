@@ -13,7 +13,7 @@ const swal = require('sweetalert');
 //Configuracion del Servidor
 
 //Puerto del servidor
-app.set('port',  process.env.PORT ||4000); 
+app.set('port', process.env.PORT || 4000);
 app.set('views', path.join(__dirname, 'views'));
 //Motor de vistas Handlebars
 app.engine('.hbs', engine({
@@ -29,29 +29,30 @@ app.set('view engine', 'hbs'); //Asignacion del motor de vista de Handlebars
 
 //Middlewares (Envio, Recepcion de peticiones de servidor)
 app.use(morgan('dev')); //<-- Comando por consola
-app.use(express.urlencoded({extended: false})); //<-- algo de validacion de formularios :v
+app.use(express.urlencoded({ extended: false })); //<-- algo de validacion de formularios :v
 app.use(express.json()); //<-- Modulo de gestion de JSON de Express
 
 //Variables Globales
-app.use((req,res,next) =>{
+
+app.use(async (req, res, next) => {
+    app.locals.success = req.flash('success');
+    app.locals.message = req.flash('message');
+    app.locals.user = req.user;
+    const host_back = req.protocol + 'http://localhost:3000/' + req.get('host');
     next();
 });
 
 //Rutas del servidor
 
-app.use(require('./routes/inicio')); //<-- Login de usuario
-app.use(require('./routes/facturacion')); //<-- rutas de facturacion
-app.use(require('./routes/inventario'));   //<-- rutas de inventario
-app.use(require('./routes/reportes'));  //<-- rutas de reportes
-app.use(require('./routes/dashboard'));  //<-- rutas del dashboard
- 
+app.use(require('./routes/index'));  //<-- rutas del dashboard
+
 //Carpeta Public (Carpeta donde se almacena hoja de estilos, javascript y contenido multimedia del proyecto)
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 //Encender el servidor -- Inicia el servidor y muestra un mensaje en consola
-app.listen(app.get('port'), ()=>{
-    console.log('Servidor en el puerto', app.get('port')); 
+app.listen(app.get('port'), () => {
+    console.log('Servidor en el puerto', app.get('port'));
 })
 
 

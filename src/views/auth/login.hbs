@@ -15,7 +15,8 @@
             <div class="inner-box">
                 <!-- ========== Start formulario login========== -->
                 <div class="forms-wrap">
-                    <form action="/dashboard" class="sign-in-form">
+
+                    <form id="sig_in_form" action="/signin" method="POST" class="sign-in-form">
 
                         <div class="logo">
                             <img src="/img/logo-carro.png" alt="loguito" class="src">
@@ -29,13 +30,18 @@
                         <div class="actual-form">
 
                             <div class="input-wrap">
-                                <input type="text" minlength="4" class="input-field" required>
+
+                                <input type="text" name="user" id="user" minlength="4" class="input-field" required>
+
                                 <label>Nombre</label>
                             </div>
 
 
                             <div class="input-wrap">
-                                <input type="password" minlength="4" class="input-field" required>
+
+                                <input type="password" name="password" id="password" minlength="4" class="input-field"
+                                    required>
+
                                 <label>Contraseña</label>
                             </div>
 
@@ -50,8 +56,10 @@
                 <!-- ========== End formulario login ========== -->
                 <div class="carousel">
                     <div class="image-wrapper">
-                        <img src="/img/imagen-login1.png" class="image img-1 show alt="imagen 1">
-                    <img src=" /img/imagen-login2.png" class="image img-2" alt="imagen 2">
+
+                        <img src="/img/imagen-login1.png" class="image img-1" show alt=" imagen 1">
+                        <img src=" /img/imagen-login2.png" class="image img-2" alt="imagen 2">
+
                         <img src="/img/imagen-login3.png" class="image img-3" alt="imagen 3">
                     </div>
 
