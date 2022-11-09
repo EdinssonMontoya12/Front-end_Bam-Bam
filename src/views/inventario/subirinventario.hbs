@@ -1,54 +1,50 @@
-{{> navbar-sidebar }}
+ {{> navbar-sidebar }}
+ <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-8 grid-margin stretch-card">
+              <div class="card">
+              </div>
+            </div>
 
 
 
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                    
+                     <!-- Texto guia para la imagen de muestra -->
 
-<div class="main-panel">
-  <div class="content-wrapper">
-    <div class="row">
-      <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-
-          <!-- Texto guia para la imagen de muestra -->
-
-          <div class="bg-white py-8">
+        <div class="bg-white py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div class="lg:text-center">
                 <h2 class="text-lg font-semibold text-white-600">Bienvenido</h2>
-                <p class="mt-4 max-w-2xl  text-gray-500 lg:mx-auto"> En esta seccion podras subir tu inventario desde un
-                  archivo excel para generarlo
-                  de manera masiva dados los siguientes parametros.</p>
+                <p class="mt-4 max-w-2xl  text-gray-500 lg:mx-auto"> En esta seccion podras subir tu inventario desde un archivo excel para generarlo
+                     de manera masiva dados los siguientes parametros.</p>
               </div>
-              <br><br> <br> <br>
+    <br><br> <br>
 
-              <!-- Contenedor de la imagen de muestra -->
-
-              
-              <div class="text-center">
-                <img src="/img/Captura2.png" class="rounded img-fluid " alt="...">
-              </div>
-
-              <br><br>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-                <p>
-
-                  Sube un archivo:
-
-                  <input type="file" name="archivosubido">
-
-                  <input type="submit" class="btn btn-primary" value="Enviar datos">
-
-                </p>
-
-              </div>
-              <br><br><br><br>
-            </div>
-          </div>
+        <!-- Contenedor de la imagen de muestra -->
+        <div class="flex flex-wrap justify-center overflow-hidden drop-shadow-2xl sm:rounded-md">
+            <img src="/img/Captura2.png" class="object-cover h-80 w-140  " alt="..." />
         </div>
+<br><br>
+        <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+          <button type="submit"
+              class="drop-shadow-2xl inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              Subir Archivo  </button>
       </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
-  </div>
+          </div>
 
-</div>
-{{> footer }}
+
+          {{> footer }}       
+                
+
+           <!-- Libreria de TailWinds CSS-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
