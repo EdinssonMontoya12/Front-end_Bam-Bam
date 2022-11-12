@@ -85,24 +85,25 @@ $(document).ready(function(){
                   
             
               
-                  <h2 class="card-title center" style="display: flex; justify-content: center; align-items: center"> LISTA DE PRODUCTOS DEL INVENTARIO</h2>
+                  <h2 class="card-title center" style="display: flex; justify-content: center; align-items: center"> LISTA DE TERCEROS</h2>
                   <p class="card-description">
-                    Hola sea bienvenido, aqui podras consultar la lista de productos, el conjunto de productos se ve a continuacion:</p>
+                   Aqui podras consultar la lista de todos los terceros de la Sucursal Principal, si deseas <a href="www.google.com">Agregar un cliente</a>, <a href="www.google.com">Un proveedor</a> o <a href="www.google.com">un nuevo gerente</a> toca en alguno de los enlaces anteriores:</p>
                   
 
                    
 
                   <div class="table-responsive">
                     <table class="table table-hover">
-                        <span>¿Buscas algo en especifico? Filtra aqui: </span><button class="btn-success btn-default  btn-filter btn-border"><span ><i class="bi bi-search"></i></span> Filtrar Productos</button>
+                        <span>¿Buscas algo en especifico? Filtra aqui: </span><button class="btn-success btn-default  btn-filter btn-border"><span ><i class="bi bi-search"></i></span> Filtrar Tercero</button>
                       <thead>
                           <tr class="filters">
-                        <th><input type="text" class="form-control" placeholder="#" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="ID" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Cantidad" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Precio de Compra" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Precio de Venta" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Activo" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Codigo" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Tipo Cliente" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="EmpresaProd" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Creacion" disabled></th>
+                        <th>Accion</th>
                     
                     </tr>
                         
@@ -111,13 +112,20 @@ $(document).ready(function(){
                         {{#each datos.DATA }}
                         <tr>
                          
-                          <td><b>{{articuloid }}</b></td>
-                          <td>{{nombre }}</td>
-                         <td>{{cantidad }}</td>
-                         <td class="text-success">{{precioc }}<i class="typcn typcn-arrow-down-thick"></i></td>
-                          <td class="text-danger">{{ preciov }}<i class="typcn typcn-arrow-up-thick"></i></td>
-                          <td ><label class="{{disponibleBox activo}}">{{disponible activo}} </label></td>
-                          
+                          <td><b>{{terceroid}}</b></td>
+                          <td>{{nombre}}</td>
+                         <td>{{codigo}}</td>
+                         <td ><label class="{{clasifBox tipoterid}}">{{clasif tipoterid}} </label></td>
+                          <td >{{empresaproid}}</td>
+                          <td><input type="date"  class="form-control" placeholder="{{format fecha}}" value="{{format fecha}}" disabled></td>
+                           <td><button type="button" class="btn btn-success btn-sm btn-icon-text " data-toggle="modal"
+                                data-target="#exampleModal2">
+                                Editar Tercero
+                              </button> </td>
+                               <td><button type="button" class="btn btn-danger btn-sm btn-icon-text" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Eliminar Tercero
+                              </button> </td>
                          
                           
                         </tr>
