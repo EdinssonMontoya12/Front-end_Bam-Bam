@@ -26,12 +26,12 @@
     href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
 
 </head>
-<main style="background-color: rgb(0, 255, 34);">
+<main style="background-color: rgb(187, 41, 48);">
   <div class="col-12 grid-margin">
-    <div class="card"> 
+    <div class="card">
       <div class="card-body">
         <h4 class="card-title">Agregar Productos a la Factura</h4>
-        <form class="form-sample needs-validation" novalidate>
+        <form class="form-sample needs-validation" action="/formagregarprodfacturafc" method="post" id="formulariofactura" novalidate>
           <p class="card-description">
             A continuacion, llena el siguiente formulario con informacion de la Factura
           </p>
@@ -46,7 +46,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Codigo</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="10001" disabled />
+                  <input type="text" class="form-control" placeholder="10001" value="001" name="codigof" id="codigof"  readonly />
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Fecha Creado</label>
                 <div class="col-sm-9">
-                  <input class="form-control" placeholder="23/12/2021" disabled />
+                  <input class="form-control" placeholder="2013-01-01T12:00" disabled value="2013-01-01T12:00" name="fechac" id="fechac" readonly />
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Cliente</label>
                 <div id="the-basics2" class="col-sm-9">
-                  <input class="typeahead" type="text" placeholder="Digita" id="idp" required>
+                  <input class="typeahead" type="text" placeholder="Digita" id="idc" name="idc"  required>
                   <div class="valid-feedback">
                     Producto existente
                   </div>
@@ -77,7 +77,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Cedula</label>
                 <div class="col-sm-9">
-                  <input type="number" class="form-control" placeholder="1193551182" id="idv" disabled />
+                  <input type="number" class="form-control" placeholder="1193551182" id="cc" name="cc" value="1193551182" readonly />
                   <div class="valid-feedback">
                     ¡ Nombre valido !
                   </div>
@@ -92,190 +92,185 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Tipo de Factura</label>
+                <label class="col-sm-3 col-form-label">Tipo de Factura </label>
                 <div class="col-sm-9">
-                  <select class="form-control" disabled>
-                    <option>FV</option>
-                    <option>FC</option> 
-                    <option>DC Compra</option>
-                    <option>DV</option>
+                  <select class="form-control"   id="tf" readonly>
+                    <option name="tf" value="FC">FC</option>
+                    <option name="tf" value="FV">FV</option>
+                    <option name="tf" value="DC">DC</option>
+                    <option name="tf" value="DV">DV</option>
                   </select>
                 </div>
               </div>
             </div>
 
             <div class="col-md-6">
-                  <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Vendedor</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" placeholder="Auxiliar X" id="idv" disabled />
-                      <div class="valid-feedback">
-                        ¡ Nombre valido !
-                      </div>
-                      <div class="invalid-feedback">
-                        Parece que tienes caracteres o alfanumericos en el vendedor
-                      </div>
-                    </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Vendedor</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" value="Auxiliar X" id="nombrev" name="nombrev" readonly />
+                  <div class="valid-feedback">
+                    ¡ Nombre valido !
+                  </div>
+                  <div class="invalid-feedback">
+                    Parece que tienes caracteres o alfanumericos en el vendedor
                   </div>
                 </div>
+              </div>
+            </div>
           </div>
 
           <div class="row">
-            <div class="col">
-              <p class="card-description col-md-3 offset-md-3 pd-12" bold>
-                <b> Gestion Del pedido del Cliente </b>
-              </p>
-              <div class="radio-buttons">
-                <label class="custom-radio">
-                  <input type="radio" name="radio" checked />
-                  <span class="radio-btn"><i class="las la-check"></i>
-                    <div class="hobbies-icon">
-                      <img src="/img/1.svg" width="75px" height="100px">
-
-                      <h3>Lote 1</h3>
-                      <h3>Frutas</h3>
-                    </div>
-                  </span>
-                </label>
-                <label class="custom-radio">
-                  <input type="radio" name="radio" />
-                  <span class="radio-btn"><i class="las la-check"></i>
-                    <div class="hobbies-icon">
-                      <img src="/img/2.svg" width="75px" height="100px">
-                      <h3>Lote 2</h3>
-                      <h3>Cuidado</h3>
-                    </div>
-                  </span>
-                </label>
-                <label class="custom-radio">
-                  <input type="radio" name="radio" />
-                  <span class="radio-btn"><i class="las la-check"></i>
-                    <div class="hobbies-icon">
-                      <img src="/img/3.svg" width="75px" height="100px">
-                      <h3>Lote 3</h3>
-                      <h3>Carnes</h3>
-                    </div>
-                  </span>
-                </label>
-                
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">lote</label>
+                <div class="col-sm-9">
+                  <select class="form-control" name="lote" id="lote"> </select>
+                </div>
               </div>
+            </div>
 
-              <div class="row">
-                
+            
 
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleTextarea1">Descripcion del Pedido</label>
+                <textarea class="form-control" id="exampleTextarea1" id="descp" rows="4" name="descp"
+                  placeholder="Ingresa una breve descripcion (Compra al por mayor, Devolucion, Venta unitaria..)"></textarea>
+                <div class="valid-feedback">
+                  Una breve descripcion, es opcional esta descripcion
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Fecha Asentado</label>
+                <div class="col-sm-9">
+                  <input class="form-control" type="date" value="2001-12-23" id="fasentado" name="fasentado" readonly/>
+                </div>
 
               </div>
-             
-
-
-             
-             
-
-
-
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="exampleTextarea1">Descripcion del Pedido</label>
-                    <textarea class="form-control" id="exampleTextarea1" rows="4"
-                      placeholder="Ingresa una breve descripcion (Compra al por mayor, Devolucion, Venta unitaria..)"></textarea>
+            </div>
+          </div>
+          <p class="card-description col-md-3 offset-md-3 pd-12" bold>
+            <b> Agregar Productos A la Factura </b>
+          </p>
+          <div class="row">
+            <div class="col-md-6 col-md-3 offset-md-3 col-pd-12">
+              <div class="form-group row">
+                <div class="col">
+                  <label>Producto</label>
+                  <div id="the-basics" class="col-sm-18">
+                    <input class="typeahead" type="text" placeholder="Digita" id="nombrep"  name="nombrep" required>
                     <div class="valid-feedback">
-                      Una breve descripcion, es opcional esta descripcion
+                      Producto existente
+                    </div>
+                    <div class="invalid-feedback">
+                      digita un producto
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Fecha Asentado</label>
-                    <div class="col-sm-9">
-                      <input class="form-control" type="date" value="2001-12-23" />
+                <div class="col">
+                  <label>Cantidad</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control" placeholder="Cuanto" id="idctd"  name="idctd"required>
+                    <div class="valid-feedback">
+                      Cantidad ingresada
                     </div>
-
-                  </div>
-                </div>
-              </div>
-              <p class="card-description col-md-3 offset-md-3 pd-12" bold>
-                <b> Gestion Del pedido del Cliente </b>
-              </p>
-              <div class="row">
-                <div class="col-md-6 col-md-3 offset-md-3 col-pd-12">
-                  <div class="form-group row">
-                    <div class="col">
-                      <label>Producto</label>
-                      <div id="the-basics" class="col-sm-18">
-                        <input class="typeahead" type="text" placeholder="Digita" id="idp" required>
-                        <div class="valid-feedback">
-                          Producto existente
-                        </div>
-                        <div class="invalid-feedback">
-                          digita un producto
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <label>Cantidad</label>
-                      <div class="col-sm-18">
-                        <input type="number" class="form-control" placeholder="Cuanto" id="idctd" required>
-                        <div class="valid-feedback">
-                          Cantidad ingresada
-                        </div>
-                        <div class="invalid-feedback">
-                          Digita un numero
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col">
-                      <label>Valor</label>
-                      <div class="col-sm-18">
-                        <input type="number" class="form-control" placeholder="Como" id="idpre" required />
-                        <div class="valid-feedback">
-                          Valor ingresada
-                        </div>
-                        <div class="invalid-feedback">
-                          Digita un numero
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                  <button class="btn btn-success btn-rounded btn-fw" onclick="verif()">Agregar Producto</button>
-                  <button class="btn btn-danger btn-rounded btn-fw">Limpiar Campos</button>
-                </div>
-              </div>
-
-
-
-              </br>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Cantidad</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" placeholder="28" disabled />
+                    <div class="invalid-feedback">
+                      Digita un numero
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Costo Total</label>
-                    <div class="col-sm-9">
-                      <input class="form-control" placeholder="$128.000" disabled />
+
+                <div class="col">
+                  <label>Valor</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control" placeholder="Como" id="idpre" name="idpre" required />
+                    <div class="valid-feedback">
+                      Valor ingresada
+                    </div>
+                    <div class="invalid-feedback">
+                      Digita un numero
+                    </div>
+                  </div>
+                </div>
+                 <div class="col">
+                  <label>Valor</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control" placeholder="Como" id="idpre" name="idpre" required />
+                    <div class="valid-feedback">
+                      Valor ingresada
+                    </div>
+                    <div class="invalid-feedback">
+                      Digita un numero
+                    </div>
+                  </div>
+                </div>
+                 <div class="col">
+                  <label>Valor</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control" placeholder="Como" id="idpre" name="idpre" required />
+                    <div class="valid-feedback">
+                      Valor ingresada
+                    </div>
+                    <div class="invalid-feedback">
+                      Digita un numero
                     </div>
                   </div>
                 </div>
 
               </div>
+              <button class="btn btn-success btn-rounded btn-fw" onclick="verif()">Agregar Producto</button>
+              <button class="btn btn-danger btn-rounded btn-fw">Limpiar Campos</button>
+            </div>
+          </div>
 
         </form>
+
+          </br>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Cantidad</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" placeholder="28" disabled />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Costo Total</label>
+                <div class="col-sm-9">
+                  <input class="form-control" placeholder="$128.000" disabled />
+                </div>
+              </div>
+            </div>
+           
+
+          </div>
+
+        
       </div>
     </div>
-
-
-
-
-
+    </br>
     <div class="main-panel">
       <div class="col-12 grid-margin">
         <div class="card">
@@ -307,7 +302,7 @@
                                 data-target="#exampleModal">
                                 Eliminar Producto
                               </button> </td>
-                              <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                 data-target="#exampleModal2">
                                 Editar Producto
                               </button> </td>
@@ -333,7 +328,7 @@
                                 data-target="#exampleModal">
                                 Eliminar Producto
                               </button> </td>
-                              <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                 data-target="#exampleModal2">
                                 Editar Producto
                               </button> </td>
@@ -346,7 +341,7 @@
                                 data-target="#exampleModal">
                                 Eliminar Producto
                               </button> </td>
-                              <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                 data-target="#exampleModal2">
                                 Editar Producto
                               </button> </td>
@@ -359,7 +354,7 @@
                                 data-target="#exampleModal">
                                 Eliminar Producto
                               </button> </td>
-                              <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                 data-target="#exampleModal2">
                                 Editar Producto
                               </button> </td>
@@ -372,8 +367,8 @@
                                 data-target="#exampleModal">
                                 Eliminar Producto
                               </button> </td>
-                              <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#exampleModal2">
+                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#exampleModal3">
                                 Editar Producto
                               </button> </td>
                           </tr>
@@ -384,7 +379,7 @@
                 </div>
               </div>
 
-              <!-- Button trigger modal -->
+
 
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -408,6 +403,9 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Modal -->
+
 
 
               <!-- Modal de Edicion de prod factura-->
@@ -481,57 +479,45 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:../../partials/_footer.html -->
-    <div>
-      </br>
-      </br>
+
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <!-- Modal de Edicion de prod factura-->
 
 
 
-      <!-- partial -->
-    </div>
-    <!-- main-panel ends -->
-  </div>
-  <!-- page-body-wrapper ends -->
-  </div>
-
-  </div>
-
-</main>
 
 
+    <script src="js/script.js"></script>
+    <script src="/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
 
-</br>
-</br>
-
-
-<script src="js/script.js"></script>
-<script src="/js/vendor.bundle.base.js"></script>
-<!-- endinject -->
-<!-- inject:js -->
-
-<!-- endinject -->
-<!-- plugin js for this page -->
-<script src="js/typeahead.bundle.min.js"></script>
-<script src="js/select2.min.js"></script>
-<!-- End plugin js for this page -->
-<!-- Custom js for this page-->
-<script src="/js/file-upload.js"></script>
-<script src="/js/typeahead.js"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <script src="js/typeahead.bundle.min.js"></script>
+    <script src="js/select2.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script src="/js/file-upload.js"></script>
+    <script src="/js/typeahead.js"></script>
 
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="/js/notificacion.js"></script>
-<script src="/js/ventana.js"></script>
-<script src="/js/smsvalidacion.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/js/notificacion.js"></script>
+    <script src="/js/ventana.js"></script>
+    <script src="/js/smsvalidacion.js"></script>
+    <script src="/js/inputLote.js"></script>
 
-<!-- Llamada de Scripts del Proyecto-->
-</body>
+    <!-- Llamada de Scripts del Proyecto-->
+    </body>
 
-</html>
+
+    {{> footer }}
+
+    </html>

@@ -26,12 +26,16 @@
     href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
 
 </head>
-<main style="background-color: rgb(187, 41, 48);">
+<main>
+  
+ {{#each  datos.DATA }}
+ <p> Dinni Dinni</p></br>
+  {{/each }}
   <div class="col-12 grid-margin">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Agregar Productos a la Factura</h4>
-        <form class="form-sample needs-validation" novalidate>
+        <h4 class="card-title">Agregar Productos a la Factura de Compra</h4>
+        <form class="form-sample needs-validation" action="/formagregarprodfacturafc" method="post" id="formulariofactura" novalidate>
           <p class="card-description">
             A continuacion, llena el siguiente formulario con informacion de la Factura
           </p>
@@ -46,7 +50,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Codigo</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="10001" disabled />
+                  <input type="text" class="form-control" placeholder="10001" value="001" name="codigof" id="codigof"  readonly />
                 </div>
               </div>
             </div>
@@ -54,7 +58,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Fecha Creado</label>
                 <div class="col-sm-9">
-                  <input class="form-control" placeholder="23/12/2021" disabled />
+                  <input class="form-control" placeholder="2013-01-01T12:00" disabled value="2013-01-01T12:00" name="fechac" id="fechac" readonly />
                 </div>
               </div>
             </div>
@@ -62,12 +66,12 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Cliente</label>
                 <div id="the-basics2" class="col-sm-9">
-                  <input class="typeahead" type="text" placeholder="Digita" id="idp" required>
+                  <input class="typeahead" type="text" placeholder="Digita" id="idc" name="idc"   >
                   <div class="valid-feedback">
-                    Producto existente
+                    Cliente existente
                   </div>
                   <div class="invalid-feedback">
-                    digita un producto
+                    digita un Cliente
                   </div>
                 </div>
               </div>
@@ -77,7 +81,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Cedula</label>
                 <div class="col-sm-9">
-                  <input type="number" class="form-control" placeholder="1193551182" id="idv" disabled />
+                  <input type="number" class="form-control" placeholder="1193551182" id="cc" name="cc" value="1193551182" readonly />
                   <div class="valid-feedback">
                     ¡ Nombre valido !
                   </div>
@@ -92,13 +96,13 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Tipo de Factura</label>
+                <label class="col-sm-3 col-form-label">Tipo de Factura </label>
                 <div class="col-sm-9">
-                  <select class="form-control" disabled>
-                    <option>FC</option>
-                    <option>FV</option>
-                    <option>DC Compra</option>
-                    <option>DV</option>
+                  <select class="form-control"   id="tf" readonly>
+                    <option name="tf" value="FC">FC</option>
+                    <option name="tf" value="FV">FV</option>
+                    <option name="tf" value="DC">DC</option>
+                    <option name="tf" value="DV">DV</option>
                   </select>
                 </div>
               </div>
@@ -108,7 +112,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Vendedor</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Auxiliar X" id="idv" disabled />
+                  <input type="text" class="form-control" value="Auxiliar X" id="nombrev" name="nombrev" readonly />
                   <div class="valid-feedback">
                     ¡ Nombre valido !
                   </div>
@@ -123,34 +127,17 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Tipo de Factura</label>
+                <label class="col-sm-3 col-form-label">lote</label>
                 <div class="col-sm-9">
                   <select class="form-control" name="lote" id="lote"> </select>
                 </div>
               </div>
             </div>
 
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Vendedor</label>
-                <div class="col-sm-9">
-                  <div class="modal-body">
-                    <h5>Popover in a modal</h5>
-                    <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title"
-                        data-bs-content="Popover body content is set in this attribute.">button</a> triggers a popover
-                      on click.</p>
-                    <hr>
-                    <h5>Tooltips in a modal</h5>
-                    <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#"
-                        class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
+
+
           </div>
-
-
-
 
 
 
@@ -168,7 +155,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleTextarea1">Descripcion del Pedido</label>
-                <textarea class="form-control" id="exampleTextarea1" rows="4"
+                <textarea class="form-control" id="exampleTextarea1" id="descp" rows="4" name="descp"
                   placeholder="Ingresa una breve descripcion (Compra al por mayor, Devolucion, Venta unitaria..)"></textarea>
                 <div class="valid-feedback">
                   Una breve descripcion, es opcional esta descripcion
@@ -179,7 +166,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Fecha Asentado</label>
                 <div class="col-sm-9">
-                  <input class="form-control" type="date" value="2001-12-23" />
+                  <input class="form-control" type="date" value="2001-12-23" id="fasentado" name="fasentado" readonly/>
                 </div>
 
               </div>
@@ -189,12 +176,15 @@
             <b> Agregar Productos A la Factura </b>
           </p>
           <div class="row">
-            <div class="col-md-6 col-md-3 offset-md-3 col-pd-12">
+            <div class="offset-md-3 col-pd-12" style="
+    margin-left: 36px;
+    margin-right: 36px;
+">
               <div class="form-group row">
                 <div class="col">
-                  <label>Producto</label>
+                  <label>Nombre</label>
                   <div id="the-basics" class="col-sm-18">
-                    <input class="typeahead" type="text" placeholder="Digita" id="idp" required>
+                    <input input type="text" class="form-control"  placeholder="Digita" id="nombrep"  name="nombrep" maxlength="255" required >
                     <div class="valid-feedback">
                       Producto existente
                     </div>
@@ -203,40 +193,158 @@
                     </div>
                   </div>
                 </div>
+                
                 <div class="col">
-                  <label>Cantidad</label>
+                  <label>ID-Producto</label>
                   <div class="col-sm-18">
-                    <input type="number" class="form-control" placeholder="Cuanto" id="idctd" required>
+                    <input type="number" class="form-control"  id="articuloid" aria-placeholder="123456" value="123"  name="articuloid" readonly >
                     <div class="valid-feedback">
-                      Cantidad ingresada
+                     Articulo Id Generado
                     </div>
                     <div class="invalid-feedback">
-                      Digita un numero
+                      Error!
                     </div>
                   </div>
                 </div>
 
                 <div class="col">
-                  <label>Valor</label>
+                  <label>Precio de Compra</label>
                   <div class="col-sm-18">
-                    <input type="number" class="form-control" placeholder="Como" id="idpre" required />
+                    <input type="number" class="form-control"  id="precioc" placeholder="Compra" name="precioc" min="0"  required >
                     <div class="valid-feedback">
-                      Valor ingresada
+                     Precio de Compra Ingresado correctamente
                     </div>
                     <div class="invalid-feedback">
-                      Digita un numero
+                      ¡Error!, dato vacio o incorrecto, verifica los campos  
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <label>Precio de Venta</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="preciov" placeholder="Venta" name="preciov" min="0"   required >
+                    <div class="valid-feedback">
+                     Precio de Venta Ingresado correctamente
+                    </div>
+                    <div class="invalid-feedback">
+                      ¡Error!, dato vacio o precio de compra/venta erroneos, verifica
+                    </div>
+                  </div>
+                </div>
+                
+
+
+
+              
+                 <div class="col">
+                  <label>Compra de Paquete</label>
+                    <div class="form-check form-check-primary">
+                  
+                            <label class="form-check-label">
+                              
+                             
+                              <input type="hidden" value="0"  id="comprapack2" name="comprapack2">
+                               <input type="checkbox" class="form-check-input"  id="comprapack" name="comprapack" >
+                              Es un paquete de Compra
+                            </label>
+                         
+                          
+                          </div>
+                 </div>
+                          </div>
+                 
+
+             
+
+              <div class="form-group row">
+                <div class="col">
+                  <label>Paquete</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="cantpack"    name="cantpack" min="0" required  >
+                    <div class="valid-feedback">
+                    Luce bien
+                    </div>
+                    <div class="invalid-feedback">
+                      Error! datos vacios o olvidaste verificar la apertura de paquetes
                     </div>
                   </div>
                 </div>
 
+                 <div class="col">
+                  <label>Sucursal</label>
+                  <div class="col-sm-18">
+                    <input type="text" class="form-control"  id="sucid"  value="Principal" placeholder="Principal" name="sucid" minlength="0" readonly >
+                    <div class="valid-feedback">
+                    Luce bien
+                    </div>
+                    <div class="invalid-feedback">
+                      Error! Sucursal Invalida
+                    </div>
+                  </div>
+                </div>
+
+                
+                
+              
+
+                <div class="col">
+                  <label>Cantidad Minima</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="cantmax"  name="cantmax" minlength="0" required >
+                    <div class="valid-feedback">
+                    Esta bien
+                    </div>
+                    <div class="invalid-feedback">
+                      ¡Error!,campos vacios
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <label>Cantidad Maxima</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="cantmin"  name="cantmin" minlength="0"  required >
+                    <div class="valid-feedback">
+                     Precio de Venta Ingresado correctamente
+                    </div>
+                    <div class="invalid-feedback">
+                      ¡Error!,campos vacios
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <label>Disponibilidad</label>
+                    <div class="col-sm-18">
+                      <div class="form-check form-check-success">
+                  
+                            <label class="form-check-label">
+                              
+                             
+                              <input type="hidden" value="0" name="activo2">
+                               <input type="checkbox" class="form-check-input"  id="activo" name="activo" checked >
+                              Producto Activo
+                            </label>
+                         
+                          
+                          </div>
+                       
+                          </div>
+                 </div>
+                
+
+
+
+              
               </div>
-              <button class="btn btn-success btn-rounded btn-fw" onclick="verif()">Agregar Producto</button>
+                
+          
+
+              <button class="btn btn-success btn-rounded btn-fw" >Agregar Producto</button>
               <button class="btn btn-danger btn-rounded btn-fw">Limpiar Campos</button>
-            </div>
-          </div>
+            
 
-
-
+        </form>
+      </div></div>
           </br>
 
           <div class="row">
@@ -256,14 +364,15 @@
                 </div>
               </div>
             </div>
+           
 
           </div>
 
-        </form>
+        
       </div>
     </div>
     </br>
-    <div class="main-panel">
+    <div class="main-panel" style="width: calc(100% - 23px);" >
       <div class="col-12 grid-margin">
         <div class="card">
           <div class="card-body">
@@ -279,89 +388,111 @@
                       <table class="table">
                         <thead>
                           <tr>
+                            <th>Articulo ID</th>
                             <th>Nombre del Producto</th>
                             <th>Cantidad</th>
-                            <th>Valor</th>
+                            
+                            <th>Precio de Compra</th>
+                            <th>Precio de Venta</th>
+                            <th>Lote</th>
                             <th>Accion</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td>Gaseosa Pepsi</td>
-                            <td>12</td>
-                            <td>$1.400</td>
-                            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Eliminar Producto
-                              </button> </td>
-                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#exampleModal2">
-                                Editar Producto
-                              </button> </td>
-                          </tr>
-                          <tr>
+                            <td>00001</td>
                             <td>Arroz Diana</td>
-                            <td>1</td>
-                            <td>$3.500</td>
-                            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Eliminar Producto
-                              </button> </td>
-                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                            <td>28</td>
+                            <td>$2.500</td>
+                            <td>$3.700</td>
+                            <td>SUCID</td>
+                            <td><button type="button" class="btn btn-success btn-sm btn-icon-text " data-toggle="modal"
                                 data-target="#exampleModal2">
                                 Editar Producto
                               </button> </td>
-                          </tr>
-                          <tr>
-                            <td>Atun Economox</td>
-                            <td>2</td>
-                            <td>$3.500</td>
-                            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                               <td><button type="button" class="btn btn-danger btn-sm btn-icon-text" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Eliminar Producto
                               </button> </td>
-                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                          </tr>
+                          <tr>
+                            <td>00001</td>
+                            <td>Arroz Diana</td>
+                            <td>28</td>
+                            <td>$2.500</td>
+                            <td>$3.700</td>
+                            <td>SUCID</td>
+                            <td><button type="button" class="btn btn-success btn-sm btn-icon-text " data-toggle="modal"
                                 data-target="#exampleModal2">
                                 Editar Producto
                               </button> </td>
-                          </tr>
-                          <tr>
-                            <td>Aceite Cocina 1L</td>
-                            <td>3</td>
-                            <td>$4.500</td>
-                            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                               <td><button type="button" class="btn btn-danger btn-sm btn-icon-text" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Eliminar Producto
                               </button> </td>
-                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                          </tr>
+                          <tr>
+                            <td>00001</td>
+                            <td>Arroz Diana</td>
+                            <td>28</td>
+                            <td>$2.500</td>
+                            <td>$3.700</td>
+                            <td>SUCID</td>
+                            <td><button type="button" class="btn btn-success btn-sm btn-icon-text " data-toggle="modal"
                                 data-target="#exampleModal2">
                                 Editar Producto
                               </button> </td>
-                          </tr>
-                          <tr>
-                            <td>Jabon Dove</td>
-                            <td>1</td>
-                            <td>$7.900</td>
-                            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                               <td><button type="button" class="btn btn-danger btn-sm btn-icon-text" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Eliminar Producto
                               </button> </td>
-                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                          </tr>
+                          <tr>
+                            <td>00001</td>
+                            <td>Arroz Diana</td>
+                            <td>28</td>
+                            <td>$2.500</td>
+                            <td>$3.700</td>
+                            <td>SUCID</td>
+                            <td><button type="button" class="btn btn-success btn-sm btn-icon-text " data-toggle="modal"
                                 data-target="#exampleModal2">
                                 Editar Producto
                               </button> </td>
-                          </tr>
-                          <tr>
-                            <td>Salmon Fresco</td>
-                            <td>3</td>
-                            <td>$1.500</td>
-                            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                               <td><button type="button" class="btn btn-danger btn-sm btn-icon-text" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Eliminar Producto
                               </button> </td>
-                            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#exampleModal3">
+                          </tr>
+                          <tr>
+                            <td>00001</td>
+                            <td>Arroz Diana</td>
+                            <td>28</td>
+                            <td>$2.500</td>
+                            <td>$3.700</td>
+                            <td>SUCID</td>
+                            <td><button type="button" class="btn btn-success btn-sm btn-icon-text " data-toggle="modal"
+                                data-target="#exampleModal2">
                                 Editar Producto
+                              </button> </td>
+                               <td><button type="button" class="btn btn-danger btn-sm btn-icon-text" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Eliminar Producto
+                              </button> </td>
+                          </tr>
+                          <tr>
+                            <td>00001</td>
+                            <td>Arroz Diana</td>
+                            <td>28</td>
+                            <td>$2.500</td>
+                            <td>$3.700</td>
+                            <td>SUCID</td>
+                            <td><button type="button" class="btn btn-success btn-sm btn-icon-text " data-toggle="modal"
+                                data-target="#exampleModal2">
+                                Editar Producto
+                              </button> </td>
+                               <td><button type="button" class="btn btn-danger btn-sm btn-icon-text" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Eliminar Producto
                               </button> </td>
                           </tr>
                         </tbody>
@@ -416,51 +547,163 @@
                       inventario, <b>ok!</b>
                     </div>
                     <form>
-                      <div class="row">
-                        <div class="col-md-6 col-md-3 offset-md-3 col-pd-12">
-                          <div class="form-group row">
-                            <div class="col-md-6">
-                              <label>Producto</label>
-                              <div id="the-basics" class="col-sm-18">
-                                <input class="typeahead" type="text" placeholder="Digita" id="idp2" required>
-                                <div class="valid-feedback">
-                                  Producto existente
-                                </div>
-                                <div class="invalid-feedback">
-                                  digita un producto
-                                </div>
-                              </div>
-                            </div>
+                      <div class="form-group row">
+                <div class="col">
+                  <label>Nombre</label>
+                  <div id="the-basics" class="col-sm-18">
+                    <input input type="text" class="form-control"  placeholder="Digita" id="nombrep"  name="nombrep" maxlength="255" required >
+                    <div class="valid-feedback">
+                      Producto existente
+                    </div>
+                    <div class="invalid-feedback">
+                      digita un producto
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col">
+                  <label>ID-Producto</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="articuloid" aria-placeholder="123456" value="123"  name="articuloid" readonly >
+                    <div class="valid-feedback">
+                     Articulo Id Generado
+                    </div>
+                    <div class="invalid-feedback">
+                      Error!
+                    </div>
+                  </div>
+                </div>
 
-                            <div class="col">
-                              <label>Cantidad</label>
-                              <div class="col-sm-18">
-                                <input type="number" class="form-control" placeholder="Cuanto" id="idctd2" required>
-                                <div class="valid-feedback">
-                                  Cantidad ingresada
-                                </div>
-                                <div class="invalid-feedback">
-                                  Digita un numero
-                                </div>
-                              </div>
-                            </div>
+                <div class="col">
+                  <label>Precio de Compra</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="precioc" placeholder="Compra" name="precioc" min="0"  required >
+                    <div class="valid-feedback">
+                     Precio de Compra Ingresado correctamente
+                    </div>
+                    <div class="invalid-feedback">
+                      ¡Error!, dato vacio o incorrecto, verifica los campos  
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <label>Precio de Venta</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="preciov" placeholder="Venta" name="preciov" min="0"   required >
+                    <div class="valid-feedback">
+                     Precio de Venta Ingresado correctamente
+                    </div>
+                    <div class="invalid-feedback">
+                      ¡Error!, dato vacio o precio de compra/venta erroneos, verifica
+                    </div>
+                  </div>
+                </div>
+                
 
-                            <div class="col">
-                              <label>Valor</label>
-                              <div class="col-sm-18">
-                                <input type="number" class="form-control" placeholder="Como" id="idpre2" required />
-                                <div class="valid-feedback">
-                                  Valor ingresada
-                                </div>
-                                <div class="invalid-feedback">
-                                  Digita un numero
-                                </div>
-                              </div>
-                            </div>
 
 
-
+              
+                 <div class="col">
+                  <label>Compra de Paquete</label>
+                    <div class="form-check form-check-primary">
+                  
+                            <label class="form-check-label">
+                              
+                             
+                              <input type="hidden" value="0"  id="comprapack2" name="comprapack2">
+                               <input type="checkbox" class="form-check-input"  id="comprapack" name="comprapack" >
+                              Es un paquete de Compra
+                            </label>
+                         
+                          
                           </div>
+                 </div>
+                          </div>
+                 
+
+             
+
+              <div class="form-group row">
+                <div class="col">
+                  <label>Paquete</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="cantpack"    name="cantpack" min="0" required  >
+                    <div class="valid-feedback">
+                    Luce bien
+                    </div>
+                    <div class="invalid-feedback">
+                      Error! datos vacios o olvidaste verificar la apertura de paquetes
+                    </div>
+                  </div>
+                </div>
+
+                 <div class="col">
+                  <label>Sucursal</label>
+                  <div class="col-sm-18">
+                    <input type="text" class="form-control"  id="sucid"  value="Principal" placeholder="Principal" name="sucid" minlength="0" readonly >
+                    <div class="valid-feedback">
+                    Luce bien
+                    </div>
+                    <div class="invalid-feedback">
+                      Error! Sucursal Invalida
+                    </div>
+                  </div>
+                </div>
+
+                
+                
+              
+
+                <div class="col">
+                  <label>Cantidad Minima</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="cantmax"  name="cantmax" minlength="0" required >
+                    <div class="valid-feedback">
+                    Esta bien
+                    </div>
+                    <div class="invalid-feedback">
+                      ¡Error!,campos vacios
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <label>Cantidad Maxima</label>
+                  <div class="col-sm-18">
+                    <input type="number" class="form-control"  id="cantmin"  name="cantmin" minlength="0"  required >
+                    <div class="valid-feedback">
+                     Precio de Venta Ingresado correctamente
+                    </div>
+                    <div class="invalid-feedback">
+                      ¡Error!,campos vacios
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <label>Disponibilidad</label>
+                    <div class="col-sm-18">
+                      <div class="form-check form-check-success">
+                  
+                            <label class="form-check-label">
+                              
+                             
+                              <input type="hidden" value="0" name="activo2">
+                               <input type="checkbox" class="form-check-input"  id="activo" name="activo" checked >
+                              Producto Activo
+                            </label>
+                         
+                          
+                          </div>
+                       
+                          </div>
+                 </div>
+                
+
+
+
+              
+              </div>
+                
 
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -501,9 +744,10 @@
 
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="/js/notificacion.js"></script>
+
     <script src="/js/ventana.js"></script>
-    <script src="/js/smsvalidacion.js"></script>
+<script src="/js/smsvalidacion.js"></script>
+<script src="/js/notificacion.js"></script>
     <script src="/js/inputLote.js"></script>
 
     <!-- Llamada de Scripts del Proyecto-->
