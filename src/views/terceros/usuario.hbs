@@ -123,12 +123,38 @@ $(document).ready(function(){
                                 Editar Tercero
                               </button> </td>
                                <td><button type="button" class="btn btn-danger btn-sm btn-icon-text" data-toggle="modal"
-                                data-target="#exampleModal">
+                                data-target="#exampleModal-{{terceroid}}">
                                 Eliminar Tercero
                               </button> </td>
                          
                           
                         </tr>
+
+                        <!-- Modal -->
+                         <div class="modal fade" id="exampleModal-{{terceroid}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Confirmacion de Eliminacion del Producto</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      ¿Estas seguro de eliminar el tercero <b>{{nombre}}</b> con identificacion <b>{{codigo}}</b> con rol de  {{clasif tipoterid}}?
+                      Esta accion es <b>Irreversible</b>, ¡confirma la accion!
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <form action="/formeliminarcliente" method="post" >
+                        <input type="text" value="{{terceroid}}" id="id" name="id" readonly hidden >
+                      <button type="submit" class="btn btn-primary" >Eliminar Producto</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
                          {{/each }}
                         
                       </tbody>
@@ -146,7 +172,7 @@ $(document).ready(function(){
         
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
-       
+         <script src="/js/ventana.js"></script>
 
     
        {{> footer }}   

@@ -1,5 +1,5 @@
 //Rutas de la zona de inventario
-
+const fetch = require('node-fetch');
 //Llamando a Express JS
 const express = require('express');
 

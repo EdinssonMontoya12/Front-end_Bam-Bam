@@ -1,5 +1,5 @@
 //Rutas de la zona de F A C T U R A C I O N
-
+const fetch = require('node-fetch');
 //Llamando a Express JS
 const express = require('express');
 
@@ -47,8 +47,7 @@ else{
 router.post('/formagregarprodfacturafc', (req, res) => {
 
     console.log(req.body);
-    let { codigof, idc, cc, nombrev, lote, descp, fasentado, nombrep, articuloid, precioc, preciov, comprapack, cantpack, sucid, cantmin, cantmax, activo, activo2 } = req.body;
-
+   
     if (activo == undefined) {
         activo = 0
     } else {
@@ -130,4 +129,69 @@ else{
 });
 
 
-module.exports= router;
+router.get('/agregarcliente', (req,res) => {
+    res.render('terceros/aggCliente');
+});
+
+
+
+
+router.post('/formagregarcliente', async (req,res) => {
+    console.log(req.body);
+    let { identificacion, nombre , codigo ,  codtipo , sucid, codempresaprod} = req.body;
+
+    const data = {
+        identificacion: identificacion,
+        nombre: nombre,
+        codigo: codigo,
+        codtipo: codtipo, 
+        sucid: sucid,
+        codempresaprod : codempresaprod
+    }
+    console.log(data) 
+    console.log(JSON.stringify(data))
+
+    var result = await fetch('http://localhost:3000/tercero/', {
+        headers: {'Content-Type': 'application/json'},
+        method: 'POST',
+        body: JSON.stringify(data)
+
+    }) 
+
+    result = await result.json();
+    console.log(result)
+
+
+});
+ 
+router.get('/agregarproveedor', (req,res) => {
+    res.render('terceros/aggProveedor');
+});
+router.get('/agregargerente', (req,res) => {
+    res.render('terceros/aggGerente');
+});
+
+
+
+router.post('/formeliminarcliente', async (req,res) => {
+    console.log(req.body);
+    let id = req.body.id;
+    
+  
+    
+    console.log(id);
+    var result = await fetch('http://localhost:3000/tercero/' + id, {
+        
+        method: 'DELETE'
+
+    }) 
+
+    result = await result.json();
+    console.log(result)
+
+
+});
+
+
+
+module.exports= router;   
