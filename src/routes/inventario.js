@@ -18,22 +18,22 @@ router.get('/agregarproducto', (req,res) => {
 
 //Visualiza el inventario
 router.get('/tabla',async  (req,res) => {
-  var  resultado = await fetch('http://localhost:3000/articulo/1/**')
+  var  resultado = await fetch('http://tiendasbambam.com:3000/articulo/1/**')
 
   resultado = await resultado.json();
 
-   if(resultado.OSUCCESS==1){
+  
        const datos = resultado
        console.log(datos );
        res.render('inventario/tabla', {datos});
        //for(let i=0; i < resultado.DATA.length ; i++ ){
    //console.log(resultado.DATA[i]);
-}
 
-else{
+
+
    console.log("Fallo, algo fallo")
    res.render('inventario/tabla');
-}
+
 
    // Exito
    // .then(response => response.json())  // convertir a json
