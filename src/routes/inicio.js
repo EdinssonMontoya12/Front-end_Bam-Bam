@@ -4,13 +4,16 @@ const { body } = require("express-validator");
 const router = express.Router();
 const passport = require("passport");
 const { isLoggedIn, isNotLoggedIn } = require("../lib/authentication");
-const authController = require('../controller/auth/loginController')
 
 //Ruta de la pagina inicial(Login del usuario)
 router.get('/', (req, res) => {
     res.render('auth/login')
 });
 
-router.post('/signin', authController.validaUsuario);
+router.post('/signin', passport.authenticate('local', {
+    failureRedirect: '/',
+    successRedirect: '/dashboard',
+    failureFlash: true
+}));
 
 module.exports = router;

@@ -1,6 +1,3 @@
-// ! Importando librerias & Frameworks
-
-//LLamando a ExpressJS, 
 const express = require('express');
 const morgan = require('morgan');
 const { engine } = require('express-handlebars');
@@ -12,7 +9,7 @@ const passport = require('passport');
 //Inicializacion de Express
 const app = express();
 const swal = require('sweetalert');
-
+require('./controller/auth/loginController.js')
 //Configuracion del Servidor
 
 //Puerto del servidor
@@ -36,22 +33,18 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(flash());
 app.use(morgan('dev')); //<-- Comando por consola
 app.use(express.urlencoded({ extended: false })); //<-- algo de validacion de formularios :v
 app.use(express.json()); //<-- Modulo de gestion de JSON de Express
 app.use(passport.initialize()); //<-- Inicializacion de Passport
 app.use(passport.session()); //<-- Inicializacion de Passport
+app.use(flash());
 
-
-// inicializa
-require('./lib/passport');
 //Variables Globales
-app.use(async (req, res, next) => {
-    app.locals.success = req.flash('success');
-    app.locals.message = req.flash('message');
-    app.locals.user = req.user;
-    const host_back = req.protocol + 'http://localhost:3000/' + req.get('host');
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.message = req.flash('message');
+    res.locals.user = req.user || null;
     next();
 });
 
@@ -61,7 +54,6 @@ app.use(require('./routes/index'));  //<-- rutas del dashboard
 
 //Carpeta Public (Carpeta donde se almacena hoja de estilos, javascript y contenido multimedia del proyecto)
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 //Encender el servidor -- Inicia el servidor y muestra un mensaje en consola
 app.listen(app.get('port'), () => {

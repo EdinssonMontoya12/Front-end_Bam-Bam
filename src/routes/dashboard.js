@@ -8,6 +8,7 @@ const express = require('express');
 const router= express.Router();
 
 //Ruta del dashboard
+<<<<<<< Updated upstream
 router.get('/dashboard', async (req,res) => {
 
       var  resultado = await fetch('http://localhost:3000/articulo/1/**')
@@ -35,6 +36,25 @@ console.log(cantproductos)
 
    
     
+=======
+router.get('/dashboard', async (req, res) => {
+
+    var resultado = await fetch('http://localhost:3000/articulo/1/**')
+    var resultado2 = await fetch('http://localhost:3000/tercero/1/**')
+    resultado = await resultado.json();
+    resultado2 = await resultado2.json();
+    if (resultado.OSUCCESS == 1) {
+        const datos = resultado
+        const datos2 = resultado2
+        var cantproductos = 0;
+        for (let i = 0; i < resultado.DATA.length; i++) {
+            cantproductos = cantproductos + resultado.DATA[i].cantidad
+
+        }
+        var canterceros = resultado.DATA.length;
+        res.render('dashboard/dashboard', { datos, datos2, cantproductos, canterceros });
+    }
+>>>>>>> Stashed changes
 });
 
 module.exports= router;

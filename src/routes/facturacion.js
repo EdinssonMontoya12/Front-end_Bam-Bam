@@ -5,16 +5,20 @@ const express = require('express');
 
 //Llamando al modulo de Routers de Express
 
-const router= express.Router();
+const router = express.Router();
 
 //Ruta de la pagina vista de facturas en general
-router.get('/factura', (req,res) => {
+router.get('/factura', (req, res) => {
     res.send('bienvenido a zona de facturacion');
-    
+
 });
 
 //Ruta de Agregar productos a una factura especifica
+<<<<<<< Updated upstream
 router.get('/agregarprodfacturafc', (req,res) => {
+=======
+router.get('/agregarprodfacturafc', (req, res) => {
+>>>>>>> Stashed changes
     /** var  resultado = await fetch('http://localhost:3000/articulo/1/**')
 
    resultado = await resultado.json();
@@ -47,7 +51,11 @@ else{
 router.post('/formagregarprodfacturafc', (req, res) => {
 
     console.log(req.body);
+<<<<<<< Updated upstream
    
+=======
+
+>>>>>>> Stashed changes
     if (activo == undefined) {
         activo = 0
     } else {
@@ -85,18 +93,22 @@ router.post('/formagregarprodfacturafc', (req, res) => {
 
 
 //Ruta de Agregar productos a una factura especifica
-router.get('/agregarprodfacturadevfv', (req,res) => {
+router.get('/agregarprodfacturadevfv', (req, res) => {
     res.render('facturacion/agregarprodfacturadevfv');
-   
+
 });
 
 //Ruta de Agregar productos a una factura especifica
-router.get('/agregarprodfacturafv', (req,res) => {
+router.get('/agregarprodfacturafv', (req, res) => {
     res.render('facturacion/agregarprodfacturafv');
-   
+
 });
 
+router.get('/agregarcliente', (req, res) => {
+    res.render('terceros/aggCliente');
+});
 
+<<<<<<< Updated upstream
 // Ola mi pc no permite mas de 3 ficheros con rutas me toco poner rutas aca
 router.get('/usuario', async(req, res) => {
     resultado = await fetch('http://localhost:3000/tercero/1/**')
@@ -195,3 +207,12 @@ router.post('/formeliminarcliente', async (req,res) => {
 
 
 module.exports= router;   
+=======
+router.get('/agregarproveedor', (req, res) => {
+    res.render('terceros/aggProveedor');
+});
+router.get('/agregargerente', (req, res) => {
+    res.render('terceros/aggGerente');
+});
+module.exports = router;   
+>>>>>>> Stashed changes
