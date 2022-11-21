@@ -6,15 +6,19 @@ const inventario = require('./inventario')
 const reportes = require('./reportes')
 const terceros = require('./terceros')
 
+const log = require('../controller/auth/auth.js')
+
 const router = express.Router();
 
 router.use('', [
     dashboard,
     facturacion,
-    inicio,
     inventario,
     reportes,
     terceros
 ])
+
+router.use('', [
+    inicio])
 
 module.exports = router

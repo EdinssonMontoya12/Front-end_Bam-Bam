@@ -6,11 +6,7 @@ const fetch = require('node-fetch');
 //Llamando al modulo de Routers de Express
 
 const express = require('express');
-<<<<<<< Updated upstream
-const router= express.Router();
-=======
 const router = express.Router();
->>>>>>> Stashed changes
 
 //Ruta de la pagina de agregar cliente tercero
 

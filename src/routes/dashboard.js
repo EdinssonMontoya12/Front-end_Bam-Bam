@@ -2,42 +2,13 @@
 const fetch = require('node-fetch');
 //Llamando a Express JS
 const express = require('express');
-
+const { isLogged } = require('../controller/auth/auth.js')
 //Llamando al modulo de Routers de Express
 
-const router= express.Router();
+const router = express.Router();
 
 //Ruta del dashboard
-<<<<<<< Updated upstream
-router.get('/dashboard', async (req,res) => {
-
-      var  resultado = await fetch('http://localhost:3000/articulo/1/**')
-      var  resultado2 = await fetch('http://localhost:3000/tercero/1/**')
-   resultado = await resultado.json();
-   resultado2 = await resultado2.json();
-    if(resultado.OSUCCESS==1){
-        const datos = resultado
-        const datos2 = resultado2
-        console.log(datos)
-        console.log(datos2)
-        console.log(resultado.DATA.length)
-    var cantproductos=0;
-        for(let i=0; i < resultado.DATA.length ; i++ ){
-            cantproductos = cantproductos + resultado.DATA[i].cantidad
-    
-}  
-var canterceros=resultado.DATA.length;
-console.log(canterceros)     
-console.log(cantproductos)
-        res.render('dashboard/dashboard', {datos,datos2,  cantproductos, canterceros} );
-}  
-
-
-
-   
-    
-=======
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', isLogged, async (req, res) => {
 
     var resultado = await fetch('http://localhost:3000/articulo/1/**')
     var resultado2 = await fetch('http://localhost:3000/tercero/1/**')
@@ -54,7 +25,6 @@ router.get('/dashboard', async (req, res) => {
         var canterceros = resultado.DATA.length;
         res.render('dashboard/dashboard', { datos, datos2, cantproductos, canterceros });
     }
->>>>>>> Stashed changes
 });
 
-module.exports= router;
+module.exports = router;
