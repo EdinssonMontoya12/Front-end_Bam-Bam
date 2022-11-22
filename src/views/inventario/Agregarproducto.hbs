@@ -1,163 +1,200 @@
 {{> sidebar-navbar }}
 
-   <div class="main-content">
-  <section class="section">
+<div class="main-content">
+    <section class="section">
 
 
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title ">Agregar Productos al Inventario</h4>
-                    <form class="form-sample needs-validation" novalidate>
-                        <p class="card-description  ">
-                            A continuacion, llena el siguiente formulario con informacion de los productos
-                        </p>
-                        </br>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title ">Agregar Productos al Inventario</h4>
+                        <form method="get" action="" class="form-sample needs-validation" novalidate>
+                            <p class="card-description  ">
+                                A continuacion, llena el siguiente formulario con informacion de los productos
+                            </p>
+                            </br>
 
 
-                        <p class="card-description" bold>
-                            <b> Informacion De Productos </b>
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Codigo</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" id="codigo" class="form-control" placeholder="01" />
+                            <p class="card-description" bold>
+                                <b> Informacion De Productos </b>
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Codigo</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="codigo" class="form-control" name="codigo" placeholder="01" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Falta tres -->
+                                <!-- Falta tres -->
 
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Fecha Creado</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" class="form-control" placeholder="23/12/2021" />
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Fecha Creado</label>
+                                        <div class="col-sm-9">
+                                            <input type="date" class="form-control"  name="fecha" placeholder="23/12/2021" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label"> Producto </label>
-                                    <div class="col-sm-9">
-                                        <input type="text" id="nombre" class="form-control" placeholder=" Nombre "
-                                            required />
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"> Producto </label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="nombre"class="form-control"  name="nombre" placeholder=" Nombre "
+                                                required />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-
-
-
-                            <!-- Falta uno -->
-
-
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Cantidad</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" id="cantidad" class="form-control" placeholder="00" required />
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Cantidad</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" id="cantidad" class="form-control" placeholder="00"
+                                                required />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Precio De Compra</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" id="precioc" class="form-control" placeholder="$ 10000 "  required />
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Precio De Compra</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" id="precioc" class="form-control"  name="precioc"
+                                                placeholder="$ 10000 " required />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Precio De Venta </label>
-                                    <div class="col-sm-9">
-                                        <input type="number" id="preciov" class="form-control" placeholder="$ 12000 "  required/>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Precio De Venta </label>
+                                        <div class="col-sm-9">
+                                            <input type="number" id="preciov" class="form-control"  name="preciov"
+                                                placeholder="$ 12000 " required />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Activo</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" id="activo" class="form-control" placeholder="0"  required />
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Activo</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" id="activo" class="form-control"  name="activo" placeholder="0"
+                                                required />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label"> Compra Paquete</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" id="comprapack" class="form-control" placeholder=" 00 " required />
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"> Compra Paquete</label>
+                                        <div class="col-sm-9">
+                                            <input type="radio" id="no" name="subject" value="no" checked
+                                                onclick="EnableDisableTB()">
+                                            No <br>
+                                            <input type="radio" id="si" name="subject" value="si" 
+                                                onclick="EnableDisableTB()">
+                                            Si
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Cantidad De Paquetes </label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="cantpack" placeholder="00"  required/>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Cantidad De Paquetes </label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" id="otherlan" name="cantidadpack"
+                                                disabled="disabled" placeholder="0">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label  class="col-sm-3 col-form-label"> Cantidad Minima </label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder=" Nombre " required />
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"> Cantidad Minima </label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" id="otherlan1" name="cantmin"
+                                                disabled="disabled" placeholder="0">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label  class="col-sm-3 col-form-label"> Cantidad Maxima</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" id="cantmax" class="form-control" placeholder=" 00 " required />
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"> Cantidad Maxima</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" id="otherlan2" name="cantmax"
+                                                disabled="disabled" placeholder="0">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label  class="col-sm-3 col-form-label"> Sucursal </label>
-                                    <div class="col-sm-9">
-                                        <input type="number" id="sucid" class="form-control" placeholder=" 01 " required />
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"> Sucursal </label>
+                                        <div class="col-sm-9">
+                                            <input type="number" id="sucid" class="form-control" placeholder=" 01 " name="sucid"
+                                                required />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="card-body ">
-                                <button type="submit" class="btn btn-primary  float-right" >Agregar Producto</button>
+                                <div class="card-body ">
+                                    <button type="submit" class="btn btn-primary  float-right">Agregar Producto</button>
+                                </div>
                             </div>
-
-                        </div>
-                    </form>
-          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </div>
- 
+
+<script type="text/javascript">
+
+    function EnableDisableTB() {
+        var si = document.getElementById("si");
+        var otherlan = document.getElementById("otherlan");
+        var otherlan1 = document.getElementById("otherlan1");
+        var otherlan2 = document.getElementById("otherlan2");
 
 
-{{> footer }}       
-                
+        otherlan.disabled = si.checked ? false : true;
+        otherlan1.disabled = si.checked ? false : true;
+        otherlan2.disabled = si.checked ? false : true;
+
+
+        otherlan1.value = "";
+        if (!otherlan1.disabled) {
+            otherlan1.focus();
+        }
+
+        otherlan2.value = "";
+        if (!otherlan2.disabled) {
+            otherlan2.focus();
+        }
+
+        otherlan.value = "";
+        if (!otherlan.disabled) {
+            otherlan.focus();
+        }
+
+    }
+</script>
+
+
+
+{{> footer }}
