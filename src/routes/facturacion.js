@@ -98,21 +98,16 @@ router.get('/agregarprodfacturafv', (req,res) => {
 
 
 // Ola mi pc no permite mas de 3 ficheros con rutas me toco poner rutas aca
-router.get('/usuario', async(req, res) => {
-    resultado = await fetch('http://localhost:3000/tercero/1/**')
-
+router.get('/tercero', async(req, res) => {
+    resultado = await fetch('http://tiendasbambam.com:3000/tercero/1/**')
   resultado = await resultado.json();
-
    if(resultado.OSUCCESS==1){
        const datos = resultado
-       console.log(datos );
-       res.render('terceros/usuario', {datos});
-       //for(let i=0; i < resultado.DATA.length ; i++ ){
-   //console.log(resultado.DATA[i]);
+       res.render('terceros/tercerolist', {datos});
 }
 
 else{
-   console.log("Fallo, algo fallo")
+   console.error("Fallo, algo fallo");
    res.render('terceros/usuario');
    }
 
@@ -191,7 +186,30 @@ router.post('/formeliminarcliente', async (req,res) => {
 
 
 });
+//http://tiendasbambam.com:3000/tercero/1/**
 
+router.get('/dashboard2', async (req,res) => {
+    
+    resultado = await fetch('http://tiendasbambam.com:3000/tercero/1/**')
+  resultado = await resultado.json();
+   
+       const datos = resultado
+       res.render('terceros/tercerolist', {datos});
+
+
+
+
+   // Exito
+   // .then(response => response.json())  // convertir a json
+   //  .then(json => console.log(json))    //imprimir los datos en la consola
+   //   .catch(err => console.log('Solicitud fallida', err)); // Capturar errores
+
+
+
+
+
+
+});
 
 
 module.exports= router;   

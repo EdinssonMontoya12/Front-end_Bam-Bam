@@ -43,7 +43,7 @@ else{
     return tipoterid == 2 ? 'Proveedor':'2' 
 }
 else{
-    return tipoterid == 3? 'Gerente':'3' 
+    return tipoterid == 3? 'General':'3' 
 }
 }
 }
