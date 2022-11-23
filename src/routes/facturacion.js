@@ -15,7 +15,7 @@ router.get('/factura', (req,res) => {
 
 //Ruta de Agregar productos a una factura especifica
 router.get('/agregarprodfacturafc', (req,res) => {
-    /** var  resultado = await fetch('http://localhost:3000/articulo/1/**')
+    /** var  resultado = await fetch('`${process.env.HOST_BACKEND/articulo/1/**')
 
    resultado = await resultado.json();
 
@@ -99,7 +99,7 @@ router.get('/agregarprodfacturafv', (req,res) => {
 
 // Ola mi pc no permite mas de 3 ficheros con rutas me toco poner rutas aca
 router.get('/tercero', async(req, res) => {
-    resultado = await fetch('http://tiendasbambam.com:3000/tercero/1/**')
+    resultado = await fetch('`${process.env.HOST_BACKEND/tercero/1/**')
   resultado = await resultado.json();
    if(resultado.OSUCCESS==1){
        const datos = resultado
@@ -124,10 +124,6 @@ else{
 });
 
 
-router.get('/agregarcliente', (req,res) => {
-    res.render('terceros/aggCliente');
-});
-
 
 
 
@@ -146,7 +142,7 @@ router.post('/formagregarcliente', async (req,res) => {
     console.log(data) 
     console.log(JSON.stringify(data))
 
-    var result = await fetch('http://localhost:3000/tercero/', {
+    var result = await fetch(`${process.env.HOST_BACKEND}` + 'tercero/', {
         headers: {'Content-Type': 'application/json'},
         method: 'POST',
         body: JSON.stringify(data)
@@ -158,7 +154,9 @@ router.post('/formagregarcliente', async (req,res) => {
 
 
 });
- 
+router.get('/agregarcliente', (req,res) => {
+    res.render('terceros/aggCliente');
+});
 router.get('/agregarproveedor', (req,res) => {
     res.render('terceros/aggProveedor');
 });
@@ -175,7 +173,7 @@ router.post('/formeliminarcliente', async (req,res) => {
   
     
     console.log(id);
-    var result = await fetch('http://localhost:3000/tercero/' + id, {
+    var result = await fetch(`${process.env.HOST_BACKEND}` + "/tercero/" + id, {
         
         method: 'DELETE'
 
@@ -186,11 +184,11 @@ router.post('/formeliminarcliente', async (req,res) => {
 
 
 });
-//http://tiendasbambam.com:3000/tercero/1/**
+//`${process.env.HOST_BACKEND/tercero/1/**
 
 router.get('/dashboard2', async (req,res) => {
     
-    resultado = await fetch('http://tiendasbambam.com:3000/tercero/1/**')
+    resultado = await fetch('`${process.env.HOST_BACKEND/tercero/1/**')
   resultado = await resultado.json();
    
        const datos = resultado
