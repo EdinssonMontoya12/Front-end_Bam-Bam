@@ -3,14 +3,12 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 
 passport.use(new LocalStrategy({
-    usernameField: 'user',
+    usernameField: 'username',
     passwordField: 'password',
 }, async (name, password, done) => {
 
-    var valida = await fetch(`http://localhost:3000/usuario/signin/${name}/${password}`)
+    var valida = await fetch(`${process.env.HOST_BACKEND}/usuario/signin/${name}/${password}`)
     valida = await valida.json()
-
-    console.log(valida)
 
     if (valida.OSUCCESS === 1) {
         return done(null, valida.DATA)

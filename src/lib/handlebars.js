@@ -63,6 +63,10 @@ helpers.clasifBox = (tipoterid) => {
     }
 }
 
+helpers.esAdmin = (rol) => {
+    return rol === 'ADMIN' ? true : false
+}
+
 
 
 

@@ -12,6 +12,8 @@ const passport = require('passport');
 //Inicializacion de Express
 const app = express();
 const swal = require('sweetalert');
+require('./controller/auth/loginController')
+require('dotenv/config')
 
 //Configuracion del Servidor
 
@@ -43,9 +45,6 @@ app.use(express.json()); //<-- Modulo de gestion de JSON de Express
 app.use(passport.initialize()); //<-- Inicializacion de Passport
 app.use(passport.session()); //<-- Inicializacion de Passport
 
-
-// inicializa
-require('./lib/passport');
 //Variables Globales
 app.use(async (req, res, next) => {
     res.locals.success = req.flash('success');

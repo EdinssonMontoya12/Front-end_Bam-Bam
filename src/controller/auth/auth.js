@@ -1,4 +1,10 @@
-const isLogged = (req, res, next) => {
+const auth = {}
+
+auth.cargar = (req, res) => {
+    res.render('auth/login')
+}
+
+auth.isLogged = (req, res, next) => {
     if (req.isAuthenticated()) {
         console.log('pase')
         return next()
@@ -6,4 +12,4 @@ const isLogged = (req, res, next) => {
     res.redirect('/')
 }
 
-module.exports = { isLogged }
+module.exports = auth

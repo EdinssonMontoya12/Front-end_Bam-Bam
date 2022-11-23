@@ -1,35 +1,10 @@
-//Rutas de la zona de REPORTES
-const fetch = require('node-fetch');
-//Llamando a Express JS
 const express = require('express');
-
-//Llamando al modulo de Routers de Express
+const reporte = require('../controller/reporte/index')
 
 const router= express.Router();
 
-//Ruta de la pagina vista de reportes en general
-router.get('/reporteFacturas', (req,res) => {
-    res.render('reportes/reporteFacturas.hbs');
-});
+//Estar rutas las crea usted, esas dependen del tipo de reporte que vaya a generar
 
-//Ruta de la pagina de agregar cliente tercero
-router.get('/agregarcliente', (req,res) => {
-    res.render('terceros/agregarcliente');
-});
-
-//Ruta de la pagina de agregar proveedor tercero
-router.get('/agregarprovedor', (req,res) => {
-    res.render('terceros/agregarprovedor');
-});
-
-//Ruta de la pagina de agregar auxdeventa tercero
-router.get('/agregarauxdeventas', (req,res) => {
-    res.render('terceros/agregarauxdeventas');
-});
-
-
-router.get('/modificartercero', (req,res) => {
-    res.render('terceros/modificartercero.hbs');
-});
+router.get('/', reporte.cargar)
 
 module.exports= router;
