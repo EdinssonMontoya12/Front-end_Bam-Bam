@@ -24,6 +24,7 @@
             <p class="card-description">
               ¡Visualiza todos los productos del inventario!
             </p>
+            
             <div class="table-responsive">
 
               <table id="tabla" class="table table-striped w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -32,14 +33,13 @@
                 <thead class="bg-white-300">
                   <tr>
                     <th scope="col" class="py-3 px-3">
-                      Codigo
-                    </th>
+Codigo                    </th>
         
                     <th scope="col" class="py-3 px-3">
-                      Fecha
+                     Nombre
                     </th>
                     <th scope="col" class="py-3 px-3">
-                      Producto
+                      Cantidad
                     </th>
 
                     <th scope="col" class="py-3 px-3">
@@ -55,199 +55,42 @@
                     </th>
 
                     <th scope="col" class="py-3 px-3">
-                      Sucursal
+                      Disponibilidad
                     </th>
 
 
-                    <th scope="col" class="py-3 px-3">
-                      Accion
-                    </th>
+                   
                   </tr>
                 </thead>
                 <tbody>
-                 
+                  {{#each datos.DATA }}
                   <tr >
 
+       
+           
                     <td class="py-4 px-3">
-                      01
-                    </td>
-                    <td class="py-4 px-3">
-                      31-03-2022
-                    </td>
-                    <td class="py-4 px-3">
-                      Leche
+                      {{codigo }}
                     </td>
                     <td class="py-4 px-3">
-                      10 UND
+                      {{nombre }}
                     </td>
                     <td class="py-4 px-3">
-                      $2.000
+                      {{cantidad }}
                     </td>
                     <td class="py-4 px-3">
-                      $2.800
+                      {{precioc }}<i class="typcn typcn-arrow-down-thick"></i>
                     </td>
-                    <td class="py-4 px-3 text-center">
-                      1
+                    <td class="py-4 px-3">
+                      {{ preciov }}<i class="typcn typcn-arrow-up-thick"></i>
                     </td>
+                    <td class="py-4 px-3">
+                     <label class="{{disponibleBox activo}}">{{disponible activo}} </label>
+                    </td>
+                    
 
-                    <td class="py-4 px-3">
-                      <a href="#">Eliminar</a>
-                    </td>
+                    
                   </tr>
-                  <tr class=" border-b dark:bg-gray-800 dark:border-gray-700">
-
-                    <td class="py-4 px-3">
-                      02
-                    </td>
-                    <td class="py-4 px-3">
-                      Frutas
-                    </td>
-                    <td class="py-4 px-3">
-                      31-05-2022
-                    </td>
-                    <td class="py-4 px-3">
-                      Fresa
-                    </td>
-                    <td class="py-4 px-3">
-                      20 UND
-                    </td>
-                    <td class="py-4 px-3">
-                      $2.000
-                    </td>
-                    <td class="py-4 px-3">
-                      $2.800
-                    </td>
-                    <td class="py-4 px-3 text-center">
-                      1
-                    </td>
-                    <td class="py-4 px-3">
-                      <a href="#">Eliminar</a>
-                    </td>
-                  </tr>
-                  <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 ">
-
-                    <td class="py-4 px-3 ">
-                      03
-                    </td>
-                    <td class="py-4 px-3">
-                      Lacteos
-                    </td>
-                    <td class="py-4 px-3">
-                      31-03-2022
-                    </td>
-                    <td class="py-4 px-3">
-                      Leche
-                    </td>
-                    <td class="py-4 px-3">
-                      10 UND
-                    </td>
-                    <td class="py-4 px-3">
-                      $3.000
-                    </td>
-
-                    <td class="py-4 px-3">
-                      $3.800
-                    </td>
-                    <td class="py-4 px-3 text-center">
-                      2
-                    </td>
-                    <td class="py-4 px-3">
-                      <a href="#">Eliminar</a>
-                    </td>
-                  </tr>
-
-                  <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-
-                    <td class="py-4 px-3">
-                      04
-                    </td>
-                    <td class="py-4 px-3">
-                      Lacteos
-                    </td>
-                    <td class="py-4 px-3">
-                      31-03-2022
-                    </td>
-                    <td class="py-4 px-3">
-                      Leche
-                    </td>
-                    <td class="py-4 px-3">
-                      10 UND
-                    </td>
-                    <td class="py-4 px-3">
-                      $3.000
-                    </td>
-                    <td class="py-4 px-3">
-                      $4.800
-                    </td>
-                    <td class="py-4 px-3 text-center">
-                      1
-                    </td>
-                    <td class="py-4 px-3">
-                      <a href="#">Eliminar</a>
-                    </td>
-                  </tr>
-
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-
-                    <td class="py-4 px-3">
-                      05
-                    </td>
-                    <td class="py-4 px-3">
-                      Lacteos
-                    </td>
-                    <td class="py-4 px-3">
-                      31-03-2022
-                    </td>
-                    <td class="py-4 px-3">
-                      Leche
-                    </td>
-                    <td class="py-4 px-3">
-                      10 UND
-                    </td>
-                    <td class="py-4 px-3">
-                      $3.000
-                    </td>
-                    <td class="py-4 px-3">
-                      $5.800
-                    </td>
-                    <td class="py-4 px-3 text-center">
-                      2
-                    </td>
-                    <td class="py-4 px-3">
-                      <a href="#">Eliminar</a>
-                    </td>
-                  </tr>
-
-                  <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-
-                    <td class="py-4 px-3">
-                      06
-                    </td>
-                    <td class="py-4 px-3">
-                      Lacteos
-                    </td>
-                    <td class="py-4 px-3">
-                      31-03-2022
-                    </td>
-                    <td class="py-4 px-3">
-                      Leche
-                    </td>
-                    <td class="py-4 px-3">
-                      10 UND
-                    </td>
-                    <td class="py-4 px-3">
-                      $2.000
-                    </td>
-                    <td class="py-4 px-3">
-                      $4.800
-                    </td>
-                    <td class="py-4 px-3 text-center">
-                      2
-                    </td>
-                    <td class="py-4 px-3">
-                      <a href="#">Eliminar</a>
-                    </td>
-                  </tr>
+                  {{/each }}
 
 
 
