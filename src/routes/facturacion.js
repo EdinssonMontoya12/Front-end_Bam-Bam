@@ -95,8 +95,72 @@ router.get('/agregarprodfacturafv', (req, res) => {
 
 });
 
+
+// Ola mi pc no permite mas de 3 ficheros con rutas me toco poner rutas aca
+router.get('/usuario', async (req, res) => {
+    resultado = await fetch('http://localhost:3000/tercero/1/**')
+
+    resultado = await resultado.json();
+
+    if (resultado.OSUCCESS == 1) {
+        const datos = resultado
+        console.log(datos);
+        res.render('terceros/usuario', { datos });
+        //for(let i=0; i < resultado.DATA.length ; i++ ){
+        //console.log(resultado.DATA[i]);
+    }
+
+    else {
+        console.log("Fallo, algo fallo")
+        res.render('terceros/usuario');
+    }
+
+    // Exito
+    // .then(response => response.json())  // convertir a json
+    //  .then(json => console.log(json))    //imprimir los datos en la consola
+    //   .catch(err => console.log('Solicitud fallida', err)); // Capturar errores
+
+
+
+
+
+
+});
+
+
 router.get('/agregarcliente', (req, res) => {
     res.render('terceros/aggCliente');
+});
+
+
+
+
+router.post('/formagregarcliente', async (req, res) => {
+    console.log(req.body);
+    let { identificacion, nombre, codigo, codtipo, sucid, codempresaprod } = req.body;
+
+    const data = {
+        identificacion: identificacion,
+        nombre: nombre,
+        codigo: codigo,
+        codtipo: codtipo,
+        sucid: sucid,
+        codempresaprod: codempresaprod
+    }
+    console.log(data)
+    console.log(JSON.stringify(data))
+
+    var result = await fetch('http://localhost:3000/tercero/', {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify(data)
+
+    })
+
+    result = await result.json();
+    console.log(result)
+
+
 });
 
 router.get('/agregarproveedor', (req, res) => {
@@ -105,4 +169,28 @@ router.get('/agregarproveedor', (req, res) => {
 router.get('/agregargerente', (req, res) => {
     res.render('terceros/aggGerente');
 });
+
+
+
+router.post('/formeliminarcliente', async (req, res) => {
+    console.log(req.body);
+    let id = req.body.id;
+
+
+
+    console.log(id);
+    var result = await fetch('http://localhost:3000/tercero/' + id, {
+
+        method: 'DELETE'
+
+    })
+
+    result = await result.json();
+    console.log(result)
+
+
+});
+
+
+
 module.exports = router;   

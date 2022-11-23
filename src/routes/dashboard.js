@@ -10,8 +10,8 @@ const router = express.Router();
 //Ruta del dashboard
 router.get('/dashboard', isLogged, async (req, res) => {
 
-    var resultado = await fetch('http://localhost:3000/articulo/1/**')
-    var resultado2 = await fetch('http://localhost:3000/tercero/1/**')
+    var resultado = await fetch('`${process.env.HOST_BACKEND/articulo/1/**')
+    var resultado2 = await fetch('`${process.env.HOST_BACKEND/tercero/1/**')
     resultado = await resultado.json();
     resultado2 = await resultado2.json();
     if (resultado.OSUCCESS == 1) {
