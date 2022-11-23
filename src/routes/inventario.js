@@ -10,10 +10,9 @@ const router= express.Router();
 
 //Agregar un producto al inventario
 router.get('/agregarproducto', (req,res) => {
-    res.render('inventario/Agregarproducto.hbs', {style: '/css/style.css'});
+    res.render('inventario/Agregarproducto');
    
 });
-
 
 
 //Visualiza el inventario

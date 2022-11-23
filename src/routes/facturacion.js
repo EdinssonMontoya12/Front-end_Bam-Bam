@@ -90,11 +90,7 @@ router.get('/agregarprodfacturadevfv', (req,res) => {
    
 });
 
-//Ruta de Agregar productos a una factura especifica
-router.get('/agregarprodfacturafv', (req,res) => {
-    res.render('facturacion/agregarprodfacturafv');
-   
-});
+
 
 
 // Ola mi pc no permite mas de 3 ficheros con rutas me toco poner rutas aca

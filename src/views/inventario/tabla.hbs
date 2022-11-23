@@ -1,5 +1,374 @@
-{{> navbar-sidebar }}
+{{> sidebar-navbar }}
 
+
+<head>
+  
+   
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
+</head>
+
+
+
+<div class="main-content">
+  <section class="section">
+
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+
+
+            </form>
+
+
+            <h3 class="card-title">INVENTARIO</h3>
+            <p class="card-description">
+              ¡Visualiza todos los productos del inventario!
+            </p>
+            <div class="table-responsive">
+
+              <table id="tabla" class="table table-striped w-full text-sm text-left text-gray-500 dark:text-gray-400">
+
+
+                <thead class="bg-white-300">
+                  <tr>
+                    <th scope="col" class="py-3 px-3">
+                      Codigo
+                    </th>
+                    <th scope="col" class="py-3 px-3">
+                      Grupo
+                    </th>
+                    <th scope="col" class="py-3 px-3">
+                      Fecha
+                    </th>
+                    <th scope="col" class="py-3 px-3">
+                      Producto
+                    </th>
+
+                    <th scope="col" class="py-3 px-3">
+                      Cantidad
+                    </th>
+
+                    <th scope="col" class="py-3 px-3">
+                      Prec. Comp
+                    </th>
+
+                    <th scope="col" class="py-3 px-3">
+                      Prec. Vent
+                    </th>
+
+                    <th scope="col" class="py-3 px-3">
+                      Sucursal
+                    </th>
+
+
+                    <th scope="col" class="py-3 px-3">
+                      Accion
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
+                    <td class="py-4 px-3">
+                      01
+                    </td>
+                    <td class="py-4 px-3">
+                      Lacteos
+                    </td>
+                    <td class="py-4 px-3">
+                      31-03-2022
+                    </td>
+                    <td class="py-4 px-3">
+                      Leche
+                    </td>
+                    <td class="py-4 px-3">
+                      10 UND
+                    </td>
+                    <td class="py-4 px-3">
+                      $2.000
+                    </td>
+                    <td class="py-4 px-3">
+                      $2.800
+                    </td>
+                    <td class="py-4 px-3 text-center">
+                      1
+                    </td>
+
+                    <td class="py-4 px-3">
+                      <a href="#">Eliminar</a>
+                    </td>
+                  </tr>
+                  <tr class=" border-b dark:bg-gray-800 dark:border-gray-700">
+
+                    <td class="py-4 px-3">
+                      02
+                    </td>
+                    <td class="py-4 px-3">
+                      Frutas
+                    </td>
+                    <td class="py-4 px-3">
+                      31-05-2022
+                    </td>
+                    <td class="py-4 px-3">
+                      Fresa
+                    </td>
+                    <td class="py-4 px-3">
+                      20 UND
+                    </td>
+                    <td class="py-4 px-3">
+                      $2.000
+                    </td>
+                    <td class="py-4 px-3">
+                      $2.800
+                    </td>
+                    <td class="py-4 px-3 text-center">
+                      1
+                    </td>
+                    <td class="py-4 px-3">
+                      <a href="#">Eliminar</a>
+                    </td>
+                  </tr>
+                  <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 ">
+
+                    <td class="py-4 px-3 ">
+                      03
+                    </td>
+                    <td class="py-4 px-3">
+                      Lacteos
+                    </td>
+                    <td class="py-4 px-3">
+                      31-03-2022
+                    </td>
+                    <td class="py-4 px-3">
+                      Leche
+                    </td>
+                    <td class="py-4 px-3">
+                      10 UND
+                    </td>
+                    <td class="py-4 px-3">
+                      $3.000
+                    </td>
+
+                    <td class="py-4 px-3">
+                      $3.800
+                    </td>
+                    <td class="py-4 px-3 text-center">
+                      2
+                    </td>
+                    <td class="py-4 px-3">
+                      <a href="#">Eliminar</a>
+                    </td>
+                  </tr>
+
+                  <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+
+                    <td class="py-4 px-3">
+                      04
+                    </td>
+                    <td class="py-4 px-3">
+                      Lacteos
+                    </td>
+                    <td class="py-4 px-3">
+                      31-03-2022
+                    </td>
+                    <td class="py-4 px-3">
+                      Leche
+                    </td>
+                    <td class="py-4 px-3">
+                      10 UND
+                    </td>
+                    <td class="py-4 px-3">
+                      $3.000
+                    </td>
+                    <td class="py-4 px-3">
+                      $4.800
+                    </td>
+                    <td class="py-4 px-3 text-center">
+                      1
+                    </td>
+                    <td class="py-4 px-3">
+                      <a href="#">Eliminar</a>
+                    </td>
+                  </tr>
+
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
+                    <td class="py-4 px-3">
+                      05
+                    </td>
+                    <td class="py-4 px-3">
+                      Lacteos
+                    </td>
+                    <td class="py-4 px-3">
+                      31-03-2022
+                    </td>
+                    <td class="py-4 px-3">
+                      Leche
+                    </td>
+                    <td class="py-4 px-3">
+                      10 UND
+                    </td>
+                    <td class="py-4 px-3">
+                      $3.000
+                    </td>
+                    <td class="py-4 px-3">
+                      $5.800
+                    </td>
+                    <td class="py-4 px-3 text-center">
+                      2
+                    </td>
+                    <td class="py-4 px-3">
+                      <a href="#">Eliminar</a>
+                    </td>
+                  </tr>
+
+                  <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+
+                    <td class="py-4 px-3">
+                      06
+                    </td>
+                    <td class="py-4 px-3">
+                      Lacteos
+                    </td>
+                    <td class="py-4 px-3">
+                      31-03-2022
+                    </td>
+                    <td class="py-4 px-3">
+                      Leche
+                    </td>
+                    <td class="py-4 px-3">
+                      10 UND
+                    </td>
+                    <td class="py-4 px-3">
+                      $2.000
+                    </td>
+                    <td class="py-4 px-3">
+                      $4.800
+                    </td>
+                    <td class="py-4 px-3 text-center">
+                      2
+                    </td>
+                    <td class="py-4 px-3">
+                      <a href="#">Eliminar</a>
+                    </td>
+                  </tr>
+
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div> 
+   
+
+    </div>
+</div>
+</section>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>     
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+$('#tabla').DataTable({   
+            scrollx: false,
+            processing: true,
+            destroy: true,
+            columnDefs:  [{ targets: 0, visible: false}],
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
+            },
+            
+            "dom": '<"top"B>iftl<"bottom"p><"clear">',
+            "buttons": [
+                'pageLength', {
+                    extend: 'colvis',
+            }],
+            "pageLength": 5,
+            "lengthMenu": [ [5, 10, 15, 20, -1], [5, 10, 15, 20, "Todos"] ],
+            "responsive": true,
+            initComplete: function () {
+                //Si se necesita ejecutar algo una vez se crea la tabla
+                {{!-- Swal.fire({
+                  icon: 'success',
+                  title: 'Yes!',
+                  text: 'Tabla Cargada'
+                }) --}}
+            }
+        });
+
+</script>
+
+
+
+<script>
+
+  $(document).on('click','td', function(){
+    var column = $(this).parent().children().index(this);
+    var currentRow = $(this).closest("tr");
+    col_act = column;
+    row_act = $('#tabla').DataTable().row( this ).index();
+    
+
+    if(column=="7"){
+      Swal.fire({
+        title: '<strong>Eliminar</u></strong>',
+        icon: 'info',
+        html:
+          'Desea eliminar el id '+$('#tabla').DataTable().row(currentRow).data()[0]+' ? '+$('#tabla').DataTable().row(currentRow).data()[1],
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText:
+          '<i class="fa fa-thumbs-down"></i>',
+        cancelButtonAriaLabel: 'Thumbs down'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+          Swal.fire('Eliminado!', '', 'success')
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info')
+        }
+      })
+
+
+    }
+  })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
@@ -135,11 +504,6 @@ $(document).ready(function(){
 
             </div>
 
-        
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-       
+  
 
-    
-       {{> footer }}   
-        <!-- partial -->
+{{> footer }}
