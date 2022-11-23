@@ -23,14 +23,14 @@ router.get('/tabla',async  (req,res) => {
 
   
        const datos = resultado
-       console.log(datos );
+       
        res.render('inventario/tabla', {datos});
        //for(let i=0; i < resultado.DATA.length ; i++ ){
    //console.log(resultado.DATA[i]);
 
 
 
-   console.log("Fallo, algo fallo")
+   
    res.render('inventario/tabla');
 
 
