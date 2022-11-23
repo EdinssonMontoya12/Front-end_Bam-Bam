@@ -20,9 +20,6 @@
           <div class="card-body">
 
 
-            </form>
-
-
             <h3 class="card-title">INVENTARIO</h3>
             <p class="card-description">
               ¡Visualiza todos los productos del inventario!
@@ -37,9 +34,7 @@
                     <th scope="col" class="py-3 px-3">
                       Codigo
                     </th>
-                    <th scope="col" class="py-3 px-3">
-                      Grupo
-                    </th>
+        
                     <th scope="col" class="py-3 px-3">
                       Fecha
                     </th>
@@ -76,9 +71,6 @@
                       01
                     </td>
                     <td class="py-4 px-3">
-                      Lacteos
-                    </td>
-                    <td class="py-4 px-3">
                       31-03-2022
                     </td>
                     <td class="py-4 px-3">
@@ -106,9 +98,7 @@
                     <td class="py-4 px-3">
                       02
                     </td>
-                    <td class="py-4 px-3">
-                      Frutas
-                    </td>
+                
                     <td class="py-4 px-3">
                       31-05-2022
                     </td>
@@ -136,9 +126,7 @@
                     <td class="py-4 px-3 ">
                       03
                     </td>
-                    <td class="py-4 px-3">
-                      Lacteos
-                    </td>
+                
                     <td class="py-4 px-3">
                       31-03-2022
                     </td>
@@ -168,9 +156,7 @@
                     <td class="py-4 px-3">
                       04
                     </td>
-                    <td class="py-4 px-3">
-                      Lacteos
-                    </td>
+                
                     <td class="py-4 px-3">
                       31-03-2022
                     </td>
@@ -199,9 +185,7 @@
                     <td class="py-4 px-3">
                       05
                     </td>
-                    <td class="py-4 px-3">
-                      Lacteos
-                    </td>
+                 
                     <td class="py-4 px-3">
                       31-03-2022
                     </td>
@@ -230,9 +214,7 @@
                     <td class="py-4 px-3">
                       06
                     </td>
-                    <td class="py-4 px-3">
-                      Lacteos
-                    </td>
+                 
                     <td class="py-4 px-3">
                       31-03-2022
                     </td>
@@ -350,160 +332,5 @@ $('#tabla').DataTable({
   })
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-</head>
-<style>
- .filterable {
-    margin-top: 15px;
-}
-.filterable .panel-heading .pull-right {
-    margin-top: -20px;
-}
-.filterable .filters input[disabled] {
-    background-color: transparent;
-    border: none;
-    cursor: auto;
-    box-shadow: none;
-    padding: 0;
-    height: auto;
-}
-.filterable .filters input[disabled]::-webkit-input-placeholder {
-    color: #333;
-}
-.filterable .filters input[disabled]::-moz-placeholder {
-    color: #333;
-}
-.filterable .filters input[disabled]:-ms-input-placeholder {
-    color: #333;
-}
-
-</style>
-
-
-<script>
-  /*
-Please consider that the JS part isn't production ready at all, I just code it to show the concept of merging filters and titles together !
-*/
-$(document).ready(function(){
-    $('.filterable .btn-filter').click(function(){
-        var $panel = $(this).parents('.filterable'),
-        $filters = $panel.find('.filters input'),
-        $tbody = $panel.find('.table tbody');
-        if ($filters.prop('disabled') == true) {
-            $filters.prop('disabled', false);
-            $filters.first().focus();
-        } else {
-            $filters.val('').prop('disabled', true);
-            $tbody.find('.no-result').remove();
-            $tbody.find('tr').show();
-        }
-    });
-
-    $('.filterable .filters input').keyup(function(e){
-        /* Ignore tab key */
-        var code = e.keyCode || e.which;
-        if (code == '9') return;
-        /* Useful DOM data and selectors */
-        var $input = $(this),
-        inputContent = $input.val().toLowerCase(),
-        $panel = $input.parents('.filterable'),
-        column = $panel.find('.filters th').index($input.parents('th')),
-        $table = $panel.find('.table'),
-        $rows = $table.find('tbody tr');
-        /* Dirtiest filter function ever ;) */
-        var $filteredRows = $rows.filter(function(){
-            var value = $(this).find('td').eq(column).text().toLowerCase();
-            return value.indexOf(inputContent) === -1;
-        });
-        /* Clean previous no-result if exist */
-        $table.find('tbody .no-result').remove();
-        /* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
-        $rows.show();
-        $filteredRows.hide();
-        /* Prepend no-result row if all rows are filtered */
-        if ($filteredRows.length === $rows.length) {
-            $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">No result found</td></tr>'));
-        }
-    });
-});
-</script>
-<div class="main-panel">
-   <div class="col grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body filterable">
-                  
-            
-              
-                  <h2 class="card-title center" style="display: flex; justify-content: center; align-items: center"> LISTA DE PRODUCTOS DEL INVENTARIO</h2>
-                  <p class="card-description">
-                    Hola sea bienvenido, aqui podras consultar la lista de productos, el conjunto de productos se ve a continuacion:</p>
-                  
-
-                   
-
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                        <span>¿Buscas algo en especifico? Filtra aqui: </span><button class="btn-success btn-default  btn-filter btn-border"><span ><i class="bi bi-search"></i></span> Filtrar Productos</button>
-                      <thead>
-                          <tr class="filters">
-                        <th><input type="text" class="form-control" placeholder="#" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Cantidad" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Precio de Compra" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Precio de Venta" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Activo" disabled></th>
-                    
-                    </tr>
-                        
-                      </thead>
-                      <tbody>
-                        {{#each datos.DATA }}
-                        <tr>
-                         
-                          <td><b>{{articuloid }}</b></td>
-                          <td>{{nombre }}</td>
-                         <td>{{cantidad }}</td>
-                         <td class="text-success">{{precioc }}<i class="typcn typcn-arrow-down-thick"></i></td>
-                          <td class="text-danger">{{ preciov }}<i class="typcn typcn-arrow-up-thick"></i></td>
-                          <td ><label class="{{disponibleBox activo}}">{{disponible activo}} </label></td>
-                          
-                         
-                          
-                        </tr>
-                         {{/each }}
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-</div>
-</br>
-
-
-            </div>
-
-  
 
 {{> footer }}

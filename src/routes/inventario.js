@@ -17,7 +17,7 @@ router.get('/agregarproducto', (req,res) => {
 
 //Visualiza el inventario
 router.get('/tabla',async  (req,res) => {
-  var  resultado = await fetch('http://tiendasbambam.com:3000/articulo/1/**')
+  var  resultado = await fetch("http://tiendasbambam.com:3000/articulo/1/**");
 
   resultado = await resultado.json();
 

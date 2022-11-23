@@ -14,7 +14,7 @@ helpers.format=(fecha) => {
     const mes = fecha;
    
      const newmes = mes.slice(0, 10);
-     console.log(newmes)
+
     return newmes;
     
 
