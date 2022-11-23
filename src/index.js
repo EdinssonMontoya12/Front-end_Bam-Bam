@@ -4,7 +4,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const { engine } = require('express-handlebars');
-const path = require('path'); 
+const path = require('path');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
@@ -12,6 +12,8 @@ const passport = require('passport');
 //Inicializacion de Express
 const app = express();
 const swal = require('sweetalert');
+require('./controller/auth/loginController')
+require('dotenv/config')
 
 //Configuracion del Servidor
 
@@ -43,15 +45,11 @@ app.use(express.json()); //<-- Modulo de gestion de JSON de Express
 app.use(passport.initialize()); //<-- Inicializacion de Passport
 app.use(passport.session()); //<-- Inicializacion de Passport
 
-
-// inicializa
-require('./lib/passport');
 //Variables Globales
 app.use(async (req, res, next) => {
-    app.locals.success = req.flash('success');
-    app.locals.message = req.flash('message');
-    app.locals.user = req.user;
-    const host_back = req.protocol + 'http://localhost:3000/' + req.get('host');
+    res.locals.success = req.flash('success');
+    res.locals.message = req.flash('message');
+    res.locals.user = req.user || null;
     next();
 });
 
