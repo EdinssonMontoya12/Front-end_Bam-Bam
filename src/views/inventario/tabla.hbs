@@ -1,6 +1,15 @@
 {{> sidebar-navbar }}
 
 
+<head>
+  
+   
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
+</head>
+
+
+
 <div class="main-content">
   <section class="section">
 
@@ -20,7 +29,7 @@
             </p>
             <div class="table-responsive">
 
-              <table class="table table-striped w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <table id="tabla" class="table table-striped w-full text-sm text-left text-gray-500 dark:text-gray-400">
 
 
                 <thead class="bg-white-300">
@@ -89,7 +98,7 @@
                     </td>
 
                     <td class="py-4 px-3">
-                      <a href="http://">Eliminar</a>
+                      <a href="#">Eliminar</a>
                     </td>
                   </tr>
                   <tr class=" border-b dark:bg-gray-800 dark:border-gray-700">
@@ -119,7 +128,7 @@
                       1
                     </td>
                     <td class="py-4 px-3">
-                      <a href="http://">Eliminar</a>
+                      <a href="#">Eliminar</a>
                     </td>
                   </tr>
                   <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 ">
@@ -150,7 +159,7 @@
                       2
                     </td>
                     <td class="py-4 px-3">
-                      <a href="http://">Eliminar</a>
+                      <a href="#">Eliminar</a>
                     </td>
                   </tr>
 
@@ -181,7 +190,7 @@
                       1
                     </td>
                     <td class="py-4 px-3">
-                      <a href="http://">Eliminar</a>
+                      <a href="#">Eliminar</a>
                     </td>
                   </tr>
 
@@ -212,7 +221,7 @@
                       2
                     </td>
                     <td class="py-4 px-3">
-                      <a href="http://">Eliminar</a>
+                      <a href="#">Eliminar</a>
                     </td>
                   </tr>
 
@@ -243,30 +252,13 @@
                       2
                     </td>
                     <td class="py-4 px-3">
-                      <a href="http://">Eliminar</a>
+                      <a href="#">Eliminar</a>
                     </td>
                   </tr>
 
 
                 </tbody>
               </table>
-<div>
-      <nav aria-label="....">
-        <ul class="pagination justify-content-md-end">
-          <li class="page-item disabled ">
-            <a class="page-link">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
             </div>
           </div>
         </div>
@@ -278,11 +270,85 @@
 </section>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>     
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+$('#tabla').DataTable({   
+            scrollx: false,
+            processing: true,
+            destroy: true,
+            columnDefs:  [{ targets: 0, visible: false}],
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
+            },
+            
+            "dom": '<"top"B>iftl<"bottom"p><"clear">',
+            "buttons": [
+                'pageLength', {
+                    extend: 'colvis',
+            }],
+            "pageLength": 5,
+            "lengthMenu": [ [5, 10, 15, 20, -1], [5, 10, 15, 20, "Todos"] ],
+            "responsive": true,
+            initComplete: function () {
+                //Si se necesita ejecutar algo una vez se crea la tabla
+                {{!-- Swal.fire({
+                  icon: 'success',
+                  title: 'Yes!',
+                  text: 'Tabla Cargada'
+                }) --}}
+            }
+        });
+
+</script>
 
 
 
+<script>
+
+  $(document).on('click','td', function(){
+    var column = $(this).parent().children().index(this);
+    var currentRow = $(this).closest("tr");
+    col_act = column;
+    row_act = $('#tabla').DataTable().row( this ).index();
+    
+
+    if(column=="7"){
+      Swal.fire({
+        title: '<strong>Eliminar</u></strong>',
+        icon: 'info',
+        html:
+          'Desea eliminar el id '+$('#tabla').DataTable().row(currentRow).data()[0]+' ? '+$('#tabla').DataTable().row(currentRow).data()[1],
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText:
+          '<i class="fa fa-thumbs-down"></i>',
+        cancelButtonAriaLabel: 'Thumbs down'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+          Swal.fire('Eliminado!', '', 'success')
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info')
+        }
+      })
 
 
+    }
+  })
+</script>
 
 
 
@@ -438,11 +504,6 @@ $(document).ready(function(){
 
             </div>
 
-        
-        <!-- content-wrapper ends -->
-<!-- partial:../../partials/_footer.html -->
-
--->
+  
 
 {{> footer }}
-<!-- partial -->
