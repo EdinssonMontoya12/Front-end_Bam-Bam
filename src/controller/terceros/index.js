@@ -3,7 +3,11 @@ const helpers = require('../../lib/helpers');
 
 const tercero = {}
 
-tercero.consultar = (req, res) => {
+tercero.consultar = async (req, res) => {
+    var tercero = await fetch(`${process.env.HOST_BACKEND}/tercero/${res.locals.user.sucid}/**`)
+    console.log(tercero)
+    tercero = await tercero.json()
+    console.log(tercero)
     res.render('tercero/verTerceros', helpers.getDataUsuario(res.locals.user))
 }
 
