@@ -23,8 +23,9 @@ router.get('/tabla',async  (req,res) => {
 
   
        const datos = resultado
-       
+       if(resultado.OSUCCESS==1){
        res.render('inventario/tabla', {datos});
+       }
        //for(let i=0; i < resultado.DATA.length ; i++ ){
    //console.log(resultado.DATA[i]);
 
