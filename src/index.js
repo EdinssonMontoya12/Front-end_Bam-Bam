@@ -11,7 +11,6 @@ const passport = require('passport');
 
 //Inicializacion de Express
 const app = express();
-const swal = require('sweetalert');
 require('./controller/auth/loginController')
 require('dotenv/config')
 
