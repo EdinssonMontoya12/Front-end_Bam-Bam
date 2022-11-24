@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Otika - Admin Dashboard Template</title>
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="/assets/css/app.min.css">
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
-  <!-- Custom style CSS -->
-  <link rel="stylesheet" href="/assets/css/custom.css">
-  <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
-  <script async src="http://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-</head>
-
-<body>
-  <div class="navbar-bg"></div>
+  <div id="app">
+    <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar sticky">
         <div class="form-inline me-auto">
           <ul class="navbar-nav mr-3">
@@ -183,15 +166,14 @@
             </li>
             <li class="menu-header">Inventario</li>
             <li class="dropdown">
-              <a class="menu-toggle nav-link has-dropdown"><i
-                  data-feather="shopping-bag"></i><span>Productos</span></a>
+              <a class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i><span>Productos</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="/inventario">Ver productos</a></li>
-                {{#if rol}}   
+                {{#if rol}}
                 <li><a class="nav-link" href="/inventario/insertar">Crear producto</a></li>
                 {{/if}}
                 <li><a class="nav-link" href="/404">Ver grupo producto</a></li>
-                {{#if rol}}   
+                {{#if rol}}
                 <li><a class="nav-link" href="/404">Crear grupo producto</a></li>
                 {{/if}}
                 <li><a class="nav-link" href="/404">Ver lotes</a></li>
@@ -202,50 +184,55 @@
               <a class="menu-toggle nav-link has-dropdown"><i data-feather="users"></i><span>Terceros</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="/tercero">Ver terceros</a></li>
-                {{#if rol}}   
+                {{#if rol}}
                 <li><a class="nav-link" href="/tercero/insertar">Crear tercero</a></li>
                 {{/if}}
                 <li><a class="nav-link" href="/empresaProve">Ver empresa proveedora</a></li>
-                {{#if rol}}   
+                {{#if rol}}
                 <li><a class="nav-link" href="/empresaProve/insertar">Crear empresa proveedora</a></li>
                 {{/if}}
               </ul>
             </li>
             <li class="menu-header">Facturación</li>
             <li class="dropdown">
-              <a class="menu-toggle nav-link has-dropdown"><i data-feather="file-text"></i><span>Factura de venta</span></a>
+              <a class="menu-toggle nav-link has-dropdown"><i data-feather="file-text"></i><span>Factura de
+                  venta</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="/404">Crear factura</a></li>
                 <li><a class="nav-link" href="/404">Ver facturas</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="file-text"></i><span>Factura de compra</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="file-text"></i><span>Factura de
+                  compra</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="/404">Crear factura</a></li>
                 <li><a class="nav-link" href="/404">Ver facturas</a></li>
               </ul>
-            </li>  
+            </li>
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="rotate-ccw"></i><span>Devoluciones</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="rotate-ccw"></i><span>Devoluciones</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="/404">Crear devolucion venta</a></li>
                 <li><a class="nav-link" href="/404">Ver devoluciones venta</a></li>
                 <li><a class="nav-link" href="/404">Crear devolucion compra</a></li>
                 <li><a class="nav-link" href="/404">Ver devoluciones compra</a></li>
               </ul>
-            </li> 
-            {{#if rol}}    
+            </li>
+            {{#if rol}}
             <li class="menu-header">Administrador</li>
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="image"></i><span>Usuarios</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="image"></i><span>Usuarios</span></a>
               <ul class="dropdown-menu">
                 <li><a href="/usuario">Ver usuario</a></li>
                 <li><a class="nav-link" href="/usuario/insertar">Crear usuario</a></li>
               </ul>
-            </li>  
-            {{/if}}          
+            </li>
+            {{/if}}
           </ul>
         </aside>
       </div>
-</body>
+
+      <script src="/assets/js/app.min.js"></script>
