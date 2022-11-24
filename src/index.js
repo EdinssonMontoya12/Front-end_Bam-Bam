@@ -23,10 +23,10 @@ app.set('views', path.join(__dirname, 'views'));
 //Motor de vistas Handlebars
 app.engine('.hbs', engine({
     defaultLayout: 'main',
-    layoutsDir: path.join(app.get('views'), 'layouts'), //<-- Indica la ubicacion de la carpeta Vistas
-    partialsDir: path.join(app.get('views'), 'partials'), //<-- Indica la ubicacion de partials 
+    layoutsDir: path.join(__dirname, 'views', 'layouts'), //<-- Indica la ubicacion de la carpeta Vistas
+    partialsDir: path.join(__dirname, 'views', 'partials'), //<-- Indica la ubicacion de partials 
     extname: '.hbs', //<-- Indica la extension de la vista (Handlebars.hbs)
-    helpers: require('./lib/handlebars')  //<-- Indica la extension de la vista (Handlebars.hbs)
+    helpers: require('./lib/handlebars') //<-- Indica la extension de la vista (Handlebars.hbs)
 }));
 
 app.set('view engine', 'hbs'); //Asignacion del motor de vista de Handlebars
@@ -57,9 +57,9 @@ app.use(async (req, res, next) => {
 
 app.use(require('./routes/index'));  //<-- rutas del dashboard
 
-//Carpeta Public (Carpeta donde se almacena hoja de estilos, javascript y contenido multimedia del proyecto)
-app.use(express.static(path.join(__dirname, 'public')));
+//Carpeta Public (Carpeta donde se almacena hoja de estilos, javascript y contenido multimedia del proyecto
 
+app.use(express.static(__dirname + '/public'));
 
 //Encender el servidor -- Inicia el servidor y muestra un mensaje en consola
 app.listen(app.get('port'), () => {
