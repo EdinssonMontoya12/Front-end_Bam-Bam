@@ -1,14 +1,15 @@
 const fetch = require('node-fetch');
 const helpers = require('../../lib/helpers');
+const Swal = require('sweetalert2')
 
 const tercero = {}
 
 tercero.consultar = async (req, res) => {
     var tercero = await fetch(`${process.env.HOST_BACKEND}/tercero/${res.locals.user.sucid}/**`)
-    console.log(tercero)
+    
     tercero = await tercero.json()
-    console.log(tercero)
-    res.render('tercero/verTerceros', helpers.getDataUsuario(res.locals.user))
+    
+    res.render('tercero/verTerceros', helpers.getDataUsuario(res.locals.user, tercero.DATA))
 }
 
 tercero.insertar = (req, res) => {
@@ -19,8 +20,11 @@ tercero.actualizar = (req, res) => {
     res.render('tercero/actualizarTercero', helpers.getDataUsuario(res.locals.user))
 }
 
-tercero.eliminar = (req, res) => {
-    res.render('tercero/eliminarTercero', helpers.getDataUsuario(res.locals.user))
+tercero.eliminar = async (req, res) => {
+
+    console.log(`se elimino el usuario: ${req.params.id}`)
+
+    res.redirect('/tercero')
 }
 
 module.exports = tercero

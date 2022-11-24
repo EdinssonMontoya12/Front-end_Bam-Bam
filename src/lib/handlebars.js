@@ -34,33 +34,27 @@ helpers.disponibleBox = (activo) => {
 
 
 //El Tipo de Tercero
-helpers.clasif = (tipoterid) => {
-    if (tipoterid == 1) {
-        return tipoterid == 1 ? 'Cliente' : '1'
-    }
-    else {
-        if (tipoterid == 2) {
-            return tipoterid == 2 ? 'Proveedor' : '2'
-        }
-        else {
-            return tipoterid == 3 ? 'Gerente' : '3'
-        }
-    }
+helpers.clasif = (codRol) => {
+    if (codRol === 'CLI') 
+        return 'Cliente'
+
+    if (codRol === 'PROV') 
+        return 'Proveedor'
+
+    if (codRol === 'GENE') 
+        return 'General'
 }
 
 
-helpers.clasifBox = (tipoterid) => {
-    if (tipoterid == 1) {
-        return tipoterid == 1 ? 'badge badge-success' : '1'
-    }
-    else {
-        if (tipoterid == 2) {
-            return tipoterid == 2 ? 'badge badge-secondary' : '2'
-        }
-        else {
-            return tipoterid == 3 ? 'badge badge-primary' : '3'
-        }
-    }
+helpers.clasifBox = (codRol) => {
+    if (codRol === 'CLI') 
+        return 'badge badge-success'
+
+    if (codRol === 'PROV') 
+        return 'badge badge-secondary'
+
+    if (codRol === 'GENE') 
+        return 'badge badge-primary'
 }
 
 helpers.esAdmin = (rol) => {
