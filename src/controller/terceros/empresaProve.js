@@ -8,15 +8,15 @@ empresaProve.consultar = (req, res) => {
 }
 
 empresaProve.insertar = (req, res) => {
-    res.render('tercero/insertartercero', helpers.getDataUsuario(res.locals.user))
+    res.render('tercero/insertarEmpresaProve', helpers.getDataUsuario(res.locals.user))
 }
 
 empresaProve.actualizar = (req, res) => {
-    res.render('tercero/actualizartercero', helpers.getDataUsuario(res.locals.user))
+    res.render('tercero/actualizarEmresaProve', helpers.getDataUsuario(res.locals.user))
 }
 
 empresaProve.eliminar = (req, res) => {
-    res.render('tercero/eliminartercero', helpers.getDataUsuario(res.locals.user))
+    res.render('/empresaProve')
 }
 
 module.exports = empresaProve
