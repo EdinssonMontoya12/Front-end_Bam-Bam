@@ -1,30 +1,12 @@
-//Rutas de la zona de REPORTES
-
-//Llamando a Express JS
 const express = require('express');
+const tercero = require('../controller/terceros/index');
+const helperTercero = require('../controller/terceros/helpers.tercero')
 
-//Llamando al modulo de Routers de Express
+const router = express.Router();
 
-const router= express.Router();
+router.get('/insertar', tercero.insertar)
+router.get('/actualizar/:id', tercero.actualizar)
+router.get('/', tercero.consultar)
+router.get('/eliminar/:id', tercero.eliminar)
 
-//Ruta de la pagina de agregar cliente tercero
-router.get('/agregarcliente', (req,res) => {
-    res.render('terceros/agregarcliente');
-});
-
-//Ruta de la pagina de agregar proveedor tercero
-router.get('/agregarprovedor', (req,res) => {
-    res.render('terceros/agregarprovedor');
-});
-
-//Ruta de la pagina de agregar auxdeventa tercero
-router.get('/agregarauxdeventas', (req,res) => {
-    res.render('terceros/agregarauxdeventas');
-});
-
-
-router.get('/modificartercero', (req,res) => {
-    res.render('terceros/modificartercero.hbs');
-});
-
-module.exports= router;
+module.exports = router;

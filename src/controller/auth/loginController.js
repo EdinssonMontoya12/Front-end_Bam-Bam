@@ -1,16 +1,26 @@
 const fetch = require('node-fetch')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 
-const validaUsuario = async (req, res) => {
+passport.use(new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+}, async (name, password, done) => {
 
-    var valida = await fetch(`http://localhost:3000/usuario/signin/${req.body.user}/${req.body.password}`)
+    var valida = await fetch(`${process.env.HOST_BACKEND}/usuario/signin/${name}/${password}`)
     valida = await valida.json()
 
     if (valida.OSUCCESS === 1) {
-        return res.redirect('/dashboard')
+        return done(null, valida.DATA)
     } else {
-        req.flash('message', valida.OMENSAJE)
-        return res.redirect('/')
+        return done(null, false, { message: valida.OMENSAJE })
     }
-}
+}))
 
-module.exports = { validaUsuario }
+passport.serializeUser((user, done) => {
+    done(null, user)
+})
+
+passport.deserializeUser((user, done) => {
+    done(null, user)
+})

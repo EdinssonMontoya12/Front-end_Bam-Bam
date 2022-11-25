@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Otika - Admin Dashboard Template</title>
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="/assets/css/app.min.css">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <!-- Custom style CSS -->
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
+</head>
+
+<body>
+
+
+  <body>
+
+    <body>
+      <div class="loader"></div>
+      {{> sidebar-navbar }}
+      <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <!-- Main Content -->
+        <div class="main-content">
+          <section class="section">
+            <div class="section-body">
+              <!-- add content here -->
+              <div class="card">
+                <div class="card-header">
+                  <h4>Ingresar Producto</h4>
+                </div>
+                <div class="form">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="container">
+                        <div class="row row-cols-3">
+                          <div class="col form-group ">
+                            <label>Codigo</label>
+                            <input required type="text" class="form-control">
+                          </div>
+
+                          <div class="col form-group ">
+                            <label>Fecha </label>
+                            <input required type="date" class="form-control" disabled>
+                          </div>
+
+                          <div class="col form-group ">
+                            <label>Producto </label>
+                            <input required type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="row row-cols-3">
+                          <div class="col form-group ">
+                            <label>Cantidad </label>
+                            <input required type="number" class="form-control">
+                          </div>
+
+                          <div class="col form-group ">
+                            <label> Precio De Compra </label>
+                            <input required type="number" class="form-control">
+                          </div>
+                          <div class="col form-group ">
+                            <label> Precio De Venta </label>
+                            <input required type="number" class="form-control">
+                          </div>
+                        </div>
+
+
+                    <div class="col form-group ">
+                      <label> Compra De Paquete </label>
+                        <div class="form-check form-check-inline">
+                          <input class="col-sm" type="radio" id="si" name="subject" value="si"
+                            onclick="EnableDisableTB()">
+                          <label class="form-check-label" for="inlineRadio2"> Si </label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <input class="col-sm" type="radio" id="no" name="subject" value="no" checked
+                            onclick="EnableDisableTB()">
+                          <label class="form-check-label" for="inlineRadio1"> No</label>
+                        </div>
+                           </div>
+                            
+
+
+                       
+
+                  <div class="row row-cols-3">
+                    <div class="col form-group ">
+                      <label>Cant Por Paquetes </label>
+                       <input type="number" class="form-control" id="otherlan" name="cantidadpack"
+                              disabled="disabled" placeholder="0">
+                    </div>
+
+                    <div class="col form-group ">
+                      <label> Cant Min En Stock </label>
+                      <input type="number" class="form-control" id="otherlan1" name="cantmin" disabled="disabled"
+                              placeholder="0">
+                    </div>
+                    <div class="col form-group ">
+                      <label> Cantidad Max En Stock </label>
+                      <input type="number" class="form-control" id="otherlan2" name="cantmin" disabled="disabled"
+                            placeholder="0">
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <div class=" form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+                        <label class="form-check-label" for="flexSwitchCheckChecked"> Producto Activado
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col clearfix">
+                  <button type="submit" class="btn btn-primary col-sm-3 float-right">Crear</button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      </section>
+      </div>
+
+
+
+
+      <script type="text/javascript">
+
+        function EnableDisableTB() {
+          var si = document.getElementById("si");
+          var otherlan = document.getElementById("otherlan");
+          var otherlan1 = document.getElementById("otherlan1");
+          var otherlan2 = document.getElementById("otherlan2");
+
+
+          otherlan.disabled = si.checked ? false : true;
+          otherlan1.disabled = si.checked ? false : true;
+          otherlan2.disabled = si.checked ? false : true;
+
+
+          otherlan1.value = "";
+          if (!otherlan1.disabled) {
+            otherlan1.focus();
+          }
+
+          otherlan2.value = "";
+          if (!otherlan2.disabled) {
+            otherlan2.focus();
+          }
+
+          otherlan.value = "";
+          if (!otherlan.disabled) {
+            otherlan.focus();
+          }
+
+        }
+      </script>
+      </div>
+      </section>
+      {{>footer}}
+      <!-- General JS Scripts -->
+      <script src="/assets/js/app.min.js"></script>
+      <!-- JS Libraies -->
+      <!-- Page Specific JS File -->
+      <!-- Template JS File -->
+      <script src="/assets/js/scripts.js"></script>
+      <!-- Custom JS File -->
+      <script src="/assets/js/custom.js"></script>
+    </body>
+
+</html>

@@ -1,15 +1,10 @@
-//Rutas de la zona de D A S H B O A R D
-
-//Llamando a Express JS
 const express = require('express');
-
-//Llamando al modulo de Routers de Express
+const { isLogged } = require('../controller/auth/auth.js')
+const dashboard = require('../controller/dashboard')
 
 const router = express.Router();
 
 //Ruta del dashboard
-router.get('/dashboard', (req, res) => {
-    res.render('dashboard/dashboard.hbs');
-});
+router.get('/', dashboard.cargar);
 
 module.exports = router;
