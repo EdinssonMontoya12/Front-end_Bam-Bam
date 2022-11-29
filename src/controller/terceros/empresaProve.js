@@ -8,7 +8,8 @@ empresaProve.consultar = (req, res) => {
 }
 
 empresaProve.insertar = (req, res) => {
-    res.render('tercero/insertarEmpresaProve', helpers.getDataUsuario(res.locals.user))
+    return 'Hola'
+    //res.render('tercero/insertarEmpresaProve', helpers.getDataUsuario(res.locals.user))
 }
 
 empresaProve.actualizar = (req, res) => {

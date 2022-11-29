@@ -7,6 +7,10 @@
   <title>Otika - Admin Dashboard Template</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" href="assets/css/app.min.css">
+  <link rel="stylesheet" href="assets/bundles/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="assets/bundles/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="assets/bundles/codemirror/theme/duotone-dark.css">
+  <link rel="stylesheet" href="assets/bundles/jquery-selectric/selectric.css">
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -252,8 +256,8 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="basic-form.html">Basic Form</a></li>
                 <li><a class="nav-link" href="forms-advanced-form.html">Advanced Form</a></li>
-                <li><a class="nav-link" href="forms-editor.html">Editor</a></li>
-                <li class="active"><a class="nav-link" href="forms-validation.html">Validation</a></li>
+                <li class="active"><a class="nav-link" href="forms-editor.html">Editor</a></li>
+                <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
                 <li><a class="nav-link" href="form-wizard.html">Form Wizard</a></li>
               </ul>
             </li>
@@ -385,161 +389,127 @@
         <section class="section">
           <div class="section-body">
             <div class="row">
-              <div class="col-12 col-md-6 col-lg-6">
+              <div class="col-12">
                 <div class="card">
-                  <form>
-                    <div class="card-header">
-                      <h4>Default Validation</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" class="form-control" required="">
-                      </div>
-                      <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required="">
-                      </div>
-                      <div class="form-group">
-                        <label>Subject</label>
-                        <input type="email" class="form-control">
-                      </div>
-                      <div class="form-group mb-0">
-                        <label>Message</label>
-                        <textarea class="form-control" required=""></textarea>
-                      </div>
-                    </div>
-                    <div class="card-footer text-end">
-                      <button class="btn btn-primary">Submit</button>
-                    </div>
-                  </form>
-                </div>
-                <div class="card">
-                  <form class="needs-validation" novalidate="">
-                    <div class="card-header">
-                      <h4>JavaScript Validation</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" class="form-control" required="">
-                        <div class="invalid-feedback">
-                          What's your name?
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control" required="">
-                        <div class="invalid-feedback">
-                          Oh no! Email is invalid.
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>Subject</label>
-                        <input type="email" class="form-control">
-                        <div class="valid-feedback">
-                          Good job!
-                        </div>
-                      </div>
-                      <div class="form-group mb-0">
-                        <label>Message</label>
-                        <textarea class="form-control" required=""></textarea>
-                        <div class="invalid-feedback">
-                          What do you wanna say?
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer text-end">
-                      <button class="btn btn-primary">Submit</button>
-                    </div>
-                  </form>
+                  <div class="card-header">
+                    <h4>CKEditor</h4>
+                  </div>
+                  <div class="card-body">
+                    <textarea id="ckeditor"></textarea>
+                  </div>
                 </div>
               </div>
-              <div class="col-12 col-md-6 col-lg-6">
+            </div>
+            <div class="row">
+              <div class="col-12">
                 <div class="card">
-                  <form>
-                    <div class="card-header">
-                      <h4>Server-side Validation</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" class="form-control is-valid" value="Rizal Fakhri" required="">
-                        <div class="valid-feedback">
-                          Good job!
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control is-invalid" required="" value="rizal@fakhri">
-                        <div class="invalid-feedback">
-                          Oh no! Email is invalid.
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>Subject</label>
-                        <input type="email" class="form-control">
-                      </div>
-                      <div class="form-group mb-0">
-                        <label>Message</label>
-                        <textarea class="form-control is-invalid" required="">Hello, i'm handsome!</textarea>
-                        <div class="invalid-feedback">
-                          Oh no! You entered an inappropriate word.
-                        </div>
+                  <div class="card-header">
+                    <h4>Simple Summernote</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
+                      <div class="col-sm-12 col-md-7">
+                        <input type="text" class="form-control">
                       </div>
                     </div>
-                    <div class="card-footer text-end">
-                      <button class="btn btn-primary">Submit</button>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                      <div class="col-sm-12 col-md-7">
+                        <select class="form-control selectric">
+                          <option>Tech</option>
+                          <option>News</option>
+                          <option>Political</option>
+                        </select>
+                      </div>
                     </div>
-                  </form>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
+                      <div class="col-sm-12 col-md-7">
+                        <textarea class="summernote-simple"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-7">
+                        <button class="btn btn-primary">Publish</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
                 <div class="card">
-                  <form class="needs-validation" novalidate="">
-                    <div class="card-header">
-                      <h4>JavaScript Validation (Horizontal Form)</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Your Name</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" required="">
-                          <div class="invalid-feedback">
-                            What's your name?
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Email</label>
-                        <div class="col-sm-9">
-                          <input type="email" class="form-control" required="">
-                          <div class="invalid-feedback">
-                            Oh no! Email is invalid.
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Subject</label>
-                        <div class="col-sm-9">
-                          <input type="email" class="form-control">
-                          <div class="valid-feedback">
-                            Good job!
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group mb-0 row">
-                        <label class="col-sm-3 col-form-label">Message</label>
-                        <div class="col-sm-9">
-                          <textarea class="form-control" required=""></textarea>
-                          <div class="invalid-feedback">
-                            What do you wanna say?
-                          </div>
-                        </div>
+                  <div class="card-header">
+                    <h4>Full Summernote</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
+                      <div class="col-sm-12 col-md-7">
+                        <input type="text" class="form-control">
                       </div>
                     </div>
-                    <div class="card-footer text-end">
-                      <button class="btn btn-primary">Submit</button>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                      <div class="col-sm-12 col-md-7">
+                        <select class="form-control selectric">
+                          <option>Tech</option>
+                          <option>News</option>
+                          <option>Political</option>
+                        </select>
+                      </div>
                     </div>
-                  </form>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
+                      <div class="col-sm-12 col-md-7">
+                        <textarea class="summernote"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-7">
+                        <button class="btn btn-primary">Publish</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Code Editor</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Files</label>
+                      <div class="col-sm-12 col-md-7">
+                        <select class="form-control selectric">
+                          <option>life.js</option>
+                          <option>afterlife.js</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Code</label>
+                      <div class="col-sm-12 col-md-7">
+                        <textarea class="codeeditor">var yourTimeout = undefined;
+setTimeout(function() {
+  Person.die(you);
+}, yourTimeout);</textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                      <div class="col-sm-12 col-md-7">
+                        <button class="btn btn-primary">Save Changes</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -649,7 +619,13 @@
   <!-- General JS Scripts -->
   <script src="assets/js/app.min.js"></script>
   <!-- JS Libraies -->
+  <script src="assets/bundles/summernote/summernote-bs4.js"></script>
+  <script src="assets/bundles/codemirror/lib/codemirror.js"></script>
+  <script src="assets/bundles/codemirror/mode/javascript/javascript.js"></script>
+  <script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+  <script src="assets/bundles/ckeditor/ckeditor.js"></script>
   <!-- Page Specific JS File -->
+  <script src="assets/js/page/ckeditor.js"></script>
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <!-- Custom JS File -->
