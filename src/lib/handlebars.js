@@ -61,7 +61,4 @@ helpers.esAdmin = (rol) => {
     return rol === 'ADMIN' ? true : false
 }
 
-
-
-
 module.exports = helpers

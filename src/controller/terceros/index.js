@@ -1,6 +1,5 @@
 const fetch = require('node-fetch');
 const helpers = require('../../lib/helpers');
-const Swal = require('sweetalert2')
 
 const tercero = {}
 
