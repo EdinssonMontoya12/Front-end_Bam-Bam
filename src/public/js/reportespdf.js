@@ -1,16 +1,22 @@
-/* const cargarinfo = async () => {
-    const respuesta = await fetch('http://localhost:3000/sucursal/3');
+const fs = require('fs');
+const carbone = require('carbone');
 
-    console.log(respuesta);
-}
-    cargarinfo(); */
+// Data to inject
+var data = {
+  firstname : 'John',
+  lastname : 'Doe'
+};
 
- fetch('http://localhost:3000/articulo/1/**')
-    .then(respuesta => respuesta.json())
-    .then(respuesta => {
-        
-        console.log(respuesta.codigo);
-    })
+// Generate a report using the sample template provided by carbone module
+// This LibreOffice template contains "Hello {d.firstname} {d.lastname} !"
+// Of course, you can create your own templates!
+carbone.render('./node_modules/carbone/examples/simple.odt', data, function(err, result){
+  if (err) {
+    return console.log(err);
+  }
+  // write the result
+  fs.writeFileSync('result.odt', result);
+});
 
 
 

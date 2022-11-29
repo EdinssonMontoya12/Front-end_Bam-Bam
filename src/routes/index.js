@@ -15,7 +15,7 @@ const router = express.Router();
 router.use('/dashboard', dashboard);
 router.use('/facturacion', facturacion);
 router.use('/inventario', inventario);
-router.use('/reporte', reportes);
+router.use('/reportes', reportes);
 router.use('/tercero', terceros);
 router.use('/auth', auth);
 router.use('/empresaProve', empresaProve);
