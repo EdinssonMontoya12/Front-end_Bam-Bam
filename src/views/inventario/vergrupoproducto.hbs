@@ -32,27 +32,33 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Empresas Proveedoras</h4>
+                    <h4>Grupo De Productos</h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-striped" id="table-1">
                         <thead>
                           <tr>
-                            <th class="text-center">Codigo</th>
-                            <th class="text-center">NIT</th>
-                            <th class="text-center">Nombre</th>
-                            <th class="text-center">Acciones</th>
+                            <th class="text-center">Producto</th>
+                            <th class="text-center">Fecha De Vencimiento</th>
+                            <th class="text-center">Lote </th>
+                            <th class="text-center">Cantidad Lote</th>
+                            <th class="text-center">Grupot</th>
+                             <th class="text-center">Empresa Proveedora</th>
+                              <th class="text-center">Accion</th>
                           </tr>
                         </thead>
                         <tbody>
                           {{#each data}}
                           <tr>
                             <td class="text-center">{{codigo}}</td>
-                            <td class="text-center">{{identificacion}}</td>
+                            <td class="text-center">{{producto}}</td>
                             <td class="text-center">{{nombre}}</td>
+                            <td class="text-center">
+                              <div class="{{clasifBox codRol}} badge-shadow">{{clasif codRol}}</div>
+                            </td>
                             <td class="text-center"><a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                            <a onclick="eliminarEmpresaProv({{terceroid}}, '{{nombre}}')" class="btn btn-danger"><i >X</i></a></td>
+                            <a onclick="eliminarTercero({{terceroid}}, '{{nombre}}')" class="btn btn-danger"><i >X</i></a></td>
                           </tr>
                           {{/each}}
                         </tbody>
@@ -65,6 +71,7 @@
         </div>
       </section>
     </div>
+  
     <footer class="main-footer">
       <div class="footer-left">
         Copyright &copy; 2019 <div class="bullet"></div> Design By <a href="#">Redstar</a>
@@ -81,7 +88,7 @@
   <script src="/assets/bundles/jquery-ui/jquery-ui.min.js"></script>
   <!-- Page Specific JS File -->
   <script src="/assets/js/page/datatables.js"></script>
-  <script type="text/javascript" src="/assets/jsaux/empresaProv.js"></script>
+  <script type="text/javascript" src="/assets/jsaux/terceros.js"></script>
   <!-- Template JS File -->
   <script src="/assets/js/scripts.js"></script>
   <!-- Custom JS File -->
