@@ -2,6 +2,10 @@ var countTable = 0
 const send = {
     data: []
 }
+const formatter = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+});
 
 function insertarProducto() {
     const producto = document.getElementById('seleccionProducto').value
@@ -52,14 +56,14 @@ function insertarProducto() {
 
 function eliminarProducto(id) {
     const tr = document.getElementById(`${id}`)
-    console.log(tr)
     const tbody = document.getElementById('tablaProductos')
 
     var contadorAux = id
 
-    const totalRestar = document.getElementById(`totalProducto${contadorAux}`).lastElementChild
+    console.log(`totalProducto${contadorAux}`)
+
+    const totalRestar = document.getElementById(`totalProducto${contadorAux}`).textContent
     const totalFactura = document.getElementById('valorTotalFactura').value
-    console.log(totalFactura, totalRestar)
     document.getElementById('valorTotalFactura').value = (parseInt(totalFactura) - parseInt(totalRestar))
 
     while(contadorAux < countTable) {

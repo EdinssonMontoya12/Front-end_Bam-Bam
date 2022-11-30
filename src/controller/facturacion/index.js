@@ -8,6 +8,13 @@ facturacion.consultar = async (req, res) => {
 }
 
 facturacion.insertar = async (req, res) => {
+
+    /*var dataProducto = await fetch(`${process.env.HOST_BACKEND}/articulo/${res.locals.user.userid}/**`)
+    dataProducto = await data.json()
+
+    var dataLotes = await fetch(`${process.env.HOST_BACKEND}/lotes/${res.locals.user.userid}/**`)
+    dataLotes = await data.json()*/
+
     res.render('facturacion/insertarfacturaVenta', helpers.getDataUsuario(res.locals.user))
 }
 
