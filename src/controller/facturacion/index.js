@@ -4,7 +4,11 @@ const helpers = require('../../lib/helpers');
 const facturacion = {}
 
 facturacion.consultar = async (req, res) => {
-    res.render('facturacion/verfacturas', helpers.getDataUsuario(res.locals.user))
+    res.render('facturacion/verfacturaVenta', helpers.getDataUsuario(res.locals.user))
+}
+
+facturacion.consultarCompra = async (req, res) => {
+    res.render('facturacion/verfacturaCompra', helpers.getDataUsuario(res.locals.user))
 }
 
 facturacion.insertar = async (req, res) => {
@@ -16,6 +20,10 @@ facturacion.insertar = async (req, res) => {
     dataLotes = await data.json()*/
 
     res.render('facturacion/insertarfacturaVenta', helpers.getDataUsuario(res.locals.user))
+}
+
+facturacion.insertarCompra = async (req, res) => {
+    res.render('facturacion/insertarfacturaCompra', helpers.getDataUsuario(res.locals.user))
 }
 
 facturacion.actualizar = async (req, res) => {
