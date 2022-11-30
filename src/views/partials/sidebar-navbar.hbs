@@ -165,21 +165,22 @@
           <li class="menu-header">Inventario</li>
           <li class="dropdown">
             <a class="menu-toggle nav-link has-dropdown"><i data-feather="shopping-bag"></i><span>Productos</span></a>
-            <ul class="dropdown-menu">
-              <li><a class="nav-link" href="/inventario">Ver productos</a></li>
-              {{#if rol}}
-              <li><a class="nav-link" href="/inventario/insertar">Crear producto</a></li>
-              {{/if}}
+             <ul class="dropdown-menu">
+                <li><a class="nav-link" href="/inventario">Ver productos</a></li>
+                {{#if rol}}
+                <li><a class="nav-link" href="/inventario/insertar">Crear producto</a></li>
+                {{/if}}
 
-              <li><a class="nav-link" href="/inventario/vergruppro">Ver grupo producto</a></li>
-              {{#if rol}}
-              <li><a class="nav-link" href="/inventario/creargruppro">Crear grupo producto</a></li>
-              {{/if}}
-              <li><a class="nav-link" href="/inventario/verlote">Ver lotes</a></li>
-              <li><a class="nav-link" href="/inventario/crearlote">Crear lotes</a></li>
+                  <li><a class="nav-link" href="/inventario/actualizar">cargar productos</a></li>
 
+                <li><a class="nav-link" href="/grupoproducto/vergruppro">Ver grupo producto</a></li>
+                {{#if rol}}
+                <li><a class="nav-link" href="/grupoproducto/insertargruppro">Crear grupo producto</a></li>
+                {{/if}}
+                <li><a class="nav-link" href="/lote/verlote">Ver lotes</a></li>
 
-            </ul>
+                <li><a class="nav-link" href="/lote/insertarlote">Crear lotes</a></li>
+              </ul>
           </li>
           <li class="dropdown">
             <a class="menu-toggle nav-link has-dropdown"><i data-feather="users"></i><span>Terceros</span></a>
