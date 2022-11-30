@@ -7,6 +7,7 @@ const reportes = require('./reportes')
 const terceros = require('./terceros')
 const empresaProve = require('./empresaProve')
 const usuario = require('./usuarios')
+const sucursales = require('./sucursales')
 
 const log = require('../controller/auth/auth.js')
 
@@ -20,6 +21,7 @@ router.use('/tercero', terceros);
 router.use('/auth', auth);
 router.use('/empresaProve', empresaProve);
 router.use('/usuario', usuario);
+router.use('/sucursales', sucursales);
 
 router.get('/', (req, res) => {
     res.redirect('/auth/')
