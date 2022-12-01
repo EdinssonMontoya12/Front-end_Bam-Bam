@@ -12,7 +12,9 @@ usuario.consultar = async (req, res) => {
     res.render('usuario/verUsuarios', helpers.getDataUsuario(res.locals.user, usuario.DATA))
 }
 
-usuario.insertar = (req, res) => {
+usuario.insertar = async(req, res) => {
+    
+
     res.render('usuario/insertarUsuario', helpers.getDataUsuario(res.locals.user))
 }
 
