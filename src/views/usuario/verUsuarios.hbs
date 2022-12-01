@@ -41,18 +41,21 @@
                           <tr>
                             <th class="text-center">Usuario</th>
                             <th class="text-center">Nombre</th>
-                            <th class="text-center">Telefono</th>
-                            <th class="text-center">Sucursal</th>
+                            <th class="text-center">Sucursal</th>                            
                             <th class="text-center">Rol</th>
+                            <th class="text-center">Telefono</th>
+                            <th class="text-center">Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
                           {{#each data}}
                           <tr>
-                            <td class="text-center">{{codigo}}</td>
-                            <td class="text-center">{{identificacion}}</td>
-                            <td class="text-center">{{identificacion}}</td>
+                            <td class="text-center">{{username}}</td>
                             <td class="text-center">{{nombre}}</td>
+                            <td class="text-center">{{sucid}}</td>
+                            <td class="text-center">{{ROL}}</td>
+                            
+
                             <td class="text-center">
                               <div class="{{clasifBox codRol}} badge-shadow">{{clasif codRol}}</div>
                             </td>

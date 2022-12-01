@@ -29,43 +29,46 @@
         <div class="section-body">
           <!-- add content here -->
           <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Terceros</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-striped" id="table-1">
-                        <thead>
-                          <tr>
-                            <th class="text-center">Codigo</th>
-                            <th class="text-center">Cedula</th>
-                            <th class="text-center">Nombre</th>
-                            <th class="text-center">Tipo</th>
-                            <th class="text-center">Acciones</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {{#each data}}
-                          <tr>
-                            <td class="text-center">{{codigo}}</td>
-                            <td class="text-center">{{identificacion}}</td>
-                            <td class="text-center">{{nombre}}</td>
-                            <td class="text-center">
-                              <div class="{{clasifBox codRol}} badge-shadow">{{clasif codRol}}</div>
-                            </td>
-                            <td class="text-center"><a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                            <a onclick="eliminarTercero({{terceroid}}, '{{nombre}}')" class="btn btn-danger"><i >X</i></a></td>
-                          </tr>
-                          {{/each}}
-                        </tbody>
-                      </table>
-                    </div>
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Terceros</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped" id="table-1">
+                      <thead>
+                        <tr>
+                          <th class="text-center">Codigo</th>
+                          <th class="text-center">Cedula</th>
+                          <th class="text-center">Nombre</th>
+                          <th class="text-center">Tipo</th>
+                          <th class="text-center">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each data}}
+                        <tr>
+                          <td class="text-center">{{codigo}}</td>
+                          <td class="text-center">{{identificacion}}</td>
+                          <td class="text-center">{{nombre}}</td>
+                          <td class="text-center">
+                            <div class="{{clasifBox codRol}} badge-shadow">{{clasif codRol}}</div>
+                          </td>
+                          <td class="text-center"><a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i
+                                class="fas fa-edit"></i></a>
+                            <a onclick="elc:\Users\saidf\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.htmliminarTercero({{terceroid}}, '{{nombre}}')"
+                              class="btn btn-danger"><i>X</i></a>
+                          </td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         </div>
       </section>
     </div>
