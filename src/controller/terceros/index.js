@@ -7,8 +7,11 @@ tercero.consultar = async (req, res) => {
     var tercero = await fetch(`${process.env.HOST_BACKEND}/tercero/${res.locals.user.sucid}/**`)
     
     tercero = await tercero.json()
+    console.log(tercero)
     
     res.render('tercero/verTerceros', helpers.getDataUsuario(res.locals.user, tercero.DATA))
+
+    
 }
 
 tercero.insertar = (req, res) => {

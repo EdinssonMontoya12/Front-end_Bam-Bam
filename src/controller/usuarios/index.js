@@ -3,8 +3,13 @@ const helpers = require('../../lib/helpers');
 
 const usuario = {}
 
-usuario.consultar = (req, res) => {
-    res.render('usuario/verUsuarios', helpers.getDataUsuario(res.locals.user))
+usuario.consultar = async (req, res) => {
+    var usuario = await fetch(`${process.env.HOST_BACKEND}/usuario/${res.locals.user.sucid}/**`)
+
+    usuario = await usuario.json()
+    console.log(usuario)
+
+    res.render('usuario/verUsuarios', helpers.getDataUsuario(res.locals.user, usuario.DATA))
 }
 
 usuario.insertar = (req, res) => {
