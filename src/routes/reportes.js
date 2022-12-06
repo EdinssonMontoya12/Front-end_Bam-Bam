@@ -11,5 +11,4 @@ router.get('/facturas', reportes.facturas)
 router.get('/tercero', reportes.tercero)
 router.get('/producto', reportes.producto)
 
-
 module.exports= router;

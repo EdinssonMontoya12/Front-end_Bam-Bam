@@ -5,7 +5,7 @@ const helpers = require('../../lib/helpers');
 const tercero = {}
 
 tercero.consultar = async (req, res) => {
-    var tercero = await fetch(`${process.env.HOST_BACKEND}/tercero/${res.locals.user.sucid}/**`)
+    var tercero = await fetch(`${process.env.HOST_BACKEND}/tercero/${res.locals.user.sucid}/**/**`)
 
     tercero = await tercero.json()
 
@@ -21,19 +21,44 @@ tercero.insertar = async (req, res) => {
     res.render('tercero/insertarTercero', helpers.getDataUsuario(res.locals.user, data.DATA))
 }
 
-tercero.actualizar = (req, res) => {
-    res.render('tercero/actualizarTercero', helpers.getDataUsuario(res.locals.user))
+tercero.actualizar = async (req, res) => {
+
+    var tercero = await fetch(`${process.env.HOST_BACKEND}/tercero/${req.params.id}`)
+        .then( data => data.json())
+
+    if(tercero.OSUCCESS === 0){
+        req.flash('error', tercero.OMENSAJE)
+    }
+
+    var empresasProve = await fetch(`${process.env.HOST_BACKEND}/empresaProv/${res.locals.user.sucid}/**`)
+        .then(data => data.json())
+
+    const data = {
+        tercero: tercero.DATA[0],
+        empresaProve: empresasProve.DATA
+    }
+
+    res.render('tercero/actualizarTercero', helpers.getDataUsuario(res.locals.user, data))
+
 }
 
 tercero.eliminar = async (req, res) => {
 
-    const data = await fetch(`${process.env.HOST_BACKEND}/tercero/${req.params.id}`, {
+    var data = await fetch(`${process.env.HOST_BACKEND}/tercero/${req.params.id}`, {
         method: 'DELETE'
     })
 
-    console.log(await data.json())
+    data = await data.json()
 
-    res.redirect('/tercero')
+    console.log(data)
+
+    if(data.OSUCCESS === 1){
+        req.flash('success', data.OMENSAJE)
+        res.redirect('/tercero')
+    }else{
+        req.flash('error', data.OMENSAJE)
+        res.redirect('/tercero')
+    }
 }
 
 tercero.insertarDao = async (req, res) => {
@@ -47,12 +72,10 @@ tercero.insertarDao = async (req, res) => {
         codigo: req.body.codigo,
         codtipo: req.body.radio1,
         sucid: res.locals.user.sucid,
-        codempresaprod: req.body.selectEmpresa
+        codempresaprod: req.body.selectEmpresa.split('/')[0]
     }
 
-    console.log(tercero)
-
-    await fetch(`${process.env.HOST_BACKEND}/tercero`, {
+    var response = await fetch(`${process.env.HOST_BACKEND}/tercero`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -60,7 +83,46 @@ tercero.insertarDao = async (req, res) => {
         body: JSON.stringify(tercero)
     })
 
-    res.redirect('/tercero')
+    response = await response.json()
+
+    if(response.OSUCCESS === 1){
+        req.flash('success', response.OMENSAJE)
+        res.redirect('/tercero')
+    }else{
+        req.flash('error', response.OMENSAJE)
+        res.redirect('/tercero/insertar')
+    }
+}
+
+tercero.actualizarDao = async (req, res) => {
+
+    const tercero = {
+        identificacion: req.body.cedula,
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        correo: req.body.email,
+        telefono: req.body.telefono,
+        codigo: req.body.codigo,
+        codtipo: req.body.radio1,
+        sucid: res.locals.user.sucid,
+        codempresaprod: req.body.selectEmpresa.split('/')[0]
+    }   
+
+    var response = await fetch(`${process.env.HOST_BACKEND}/tercero/${req.params.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(tercero)
+    }).then( data => data.json())
+
+    if(response.OSUCCESS === 1){
+        req.flash('success', response.OMENSAJE)
+        res.redirect('/tercero/')
+    }else {
+        req.flash('error', response.OMENSAJE)
+        res.redirect(`/tercero/actualizar/${req.params.id}`)
+    }
 }
 
 module.exports = tercero

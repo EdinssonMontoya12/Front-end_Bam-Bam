@@ -15,8 +15,14 @@ reportes.tercero = (req, res) => {
     res.render('reportes/tercero', helpers.getDataUsuario(res.locals.user))
 }
 
-reportes.producto = (req, res) => {
-    res.render('reportes/producto', helpers.getDataUsuario(res.locals.user))
+reportes.producto = async (req, res) => {
+
+    const data = await fetch(`${process.env.HOST_BACKEND_FACTURA}/reporte/kardexxarticulo/${res.locals.user.sucid}`)
+        .then(data => data.json())
+
+    console.log(data)
+
+    res.render('reportes/producto', helpers.getDataUsuario(res.locals.user, data.DATA))
 }
 
 module.exports = reportes

@@ -41,37 +41,38 @@
                   <div class="row">
                     <div class="form-group col-sm-4">
                       <label>Codigo factura</label>
-                      <input type="text" disabled class="form-control">
+                      <input id="codigofact" type="text" disabled value="FV{{formatConsecutivo data.consecutivo.numero}}" class="form-control">
                     </div>
                     <div class="form-group col-sm-4">
                       <label>Fecha</label>
-                      <input required type="text" disabled class="form-control">
+                      <input required id="fechafac" type="text" disabled value="{{getFecha}}" class="form-control">
                     </div>
                     <div class="form-group col-sm-4">
                       <label>Fecha asentada</label>
-                      <input required type="text" disabled class="form-control">
+                      <input required id="fechasent" type="text" disabled class="form-control">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-8">
                       <div class="form-group">
                         <label>Tercero</label>
-                        <select class="form-control select2">
-                          <option>Option 1</option>
-                          <option>Option 2</option>
-                          <option>Option 3</option>
+                        <select id="selectTercero" class="form-control select2">
+                          {{#each data.terceros}}
+                            <option>{{codigo}} / {{nombre}} {{apellido}}</option>
+                          {{/each}}
                         </select>
                       </div>
                     </div>
                     <div class="form-group col-sm-4">
                       <label>Generada por:</label>
-                      <input required disabled type="text" class="form-control">
+                      <input required disabled id="userPro" value="{{user.username}}" type="text" class="form-control">
+                      <input hidden id="userSucid" value="{{user.sucid}}" type="text" class="form-control">
                     </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-sm-12">
                       <label class="form-label">Observacion</label>
-                      <textarea class="form-control form-control-ls"></textarea>
+                      <textarea id="observacion" class="form-control form-control-ls"></textarea>
                     </div>
                   </div>
                   <div class="row"></div>
@@ -79,7 +80,7 @@
                 <div class="card-footer mt-0">
                   <div class="row">
                     <div class="col clearfix">
-                      <button type="submit" class="btn btn-primary col-sm-3 float-right">Crear</button>
+                      <button onclick="insertarFactura()" class="btn btn-primary col-sm-3 float-right">Crear</button>
                     </div>
                   </div>
                 </div>
@@ -95,10 +96,10 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label>Producto</label>
-                        <select id="seleccionProducto" class="form-control select2">
-                          <option>Option 1</option>
-                          <option>Option 2</option>
-                          <option>Option 3</option>
+                        <select id="seleccionProducto" onchange="cambiarLotes()" class="form-control select2">
+                          {{#each data.productos}}
+                            <option>{{codigo}} / {{nombre}}</option>
+                          {{/each}}
                         </select>
                       </div>
                     </div>
@@ -106,13 +107,13 @@
                   <div class="row">
                     <div class="form-group col-sm-12">
                       <label>Cantidad</label>
-                      <input required id="numeroUnidades" type="text" class="form-control">
+                      <input required id="numeroUnidades" onchange="cambiarLotes()" value="0" type="number" class="form-control">
                     </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-sm-12">
                       <label>Valor venta</label>
-                      <input required id="valorVenta" type="text" class="form-control">
+                      <input required id="valorVenta" value="0" type="number" class="form-control">
                     </div>
                   </div>
                   <div class="row">
@@ -120,9 +121,6 @@
                       <div class="form-group">
                         <label>Lote</label>
                         <select id="seleccionLote" class="form-control select2">
-                          <option>Option 1</option>
-                          <option>Option 2</option>
-                          <option>Option 3</option>
                         </select>
                       </div>
                     </div>
@@ -159,6 +157,7 @@
                         <thead>
                           <tr>
                             <th class="text-center">Codigo</th>
+                            <th class="text-center">Lote</th>
                             <th class="text-center">Nombre</th>
                             <th class="text-center">Unidades</th>
                             <th class="text-center">Valor unit.</th>
@@ -167,15 +166,12 @@
                           </tr>
                         </thead>
                         <tbody id="tablaProductos">
-                          
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
-                <div class="card-footer">
-
-                </div>
+                <div id="dataUse" hidden>{{jsonString data}}</div>
               </div>
             </div>
           </div>
@@ -198,7 +194,7 @@
   <script src="/assets/bundles/select2/dist/js/select2.full.min.js"></script>
   <script src="/assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
   <!-- Page Specific JS File -->
-  <script src="/assets/jsaux/facturacion.js"></script>
+  <script src="/assets/jsaux/facturacion/insertarFactura.js"></script>
   <!-- Template JS File -->
   <script src="/assets/js/scripts.js"></script>
   <!-- Custom JS File -->

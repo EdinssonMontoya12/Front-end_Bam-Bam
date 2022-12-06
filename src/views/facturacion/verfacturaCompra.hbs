@@ -21,8 +21,6 @@
 <body>
   <div class="loader"></div>
   {{> sidebar-navbar }}
-  <div class="main-wrapper main-wrapper-1">
-    <div class="navbar-bg"></div>
     <!-- Main Content -->
     <div class="main-content">
       <section class="section">
@@ -32,29 +30,64 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Facturas de Compras</h4>
+                    <h4>Facturas de Ventas </h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-striped" id="table-1">
                         <thead>
                           <tr>
-                            <th class="text-center">Casdasdaodigo Factura</th>
+                            <th class="text-center">Codigo factura</th>
                             <th class="text-center">Expedida por</th>
-                            <th class="text-center">Monto Total</th>
-                            <th class="text-center">Fecha Expedida</th>
+                            <th class="text-center">Tercero</th>
+                            <th class="text-center">Monto total</th>
+                            <th class="text-center">Fecha expedida</th>
+                            <th class="text-center">Fecha asentada</th>
+                            <th class="text-center">Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {{#each data}}
-                          <tr>
-                            <td class="text-center">{{codigo}}</td>
-                            <td class="text-center">{{identificacion}}</td>
-                            <td class="text-center">{{nombre}}</td>
-                            <td class="text-center"><a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                            <a onclick="eliminarEmpresaProv({{terceroid}}, '{{nombre}}')" class="btn btn-danger"><i >X</i></a></td>
-                          </tr>
-                          {{/each}}
+                          {{#if rol}}
+                            {{#each data}}
+                            <tr>
+                              <td class="text-center">{{codigo}}</td>
+                              <td class="text-center">{{username}}</td>
+                              <td class="text-center">{{nombreter}}</td>
+                              <td class="text-center">{{decimalToCop total}}</td>
+                              <td class="text-center">{{fechaFormats fecha}}</td>
+                              <td class="text-center">{{fechaFormats fechasent}}</td>
+                              <td> 
+                                  {{#if fechasent}}
+                                    <a href="" class="btn btn-warning"><i class="fas fa-file-excel"></i></a>                   
+                                    <a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                  {{else}}
+                                    <a href="/facturacompra/asentar/{{facturaid}}" class="btn btn-success"><i class="fas fa-file-download"></i></a>
+                                    <a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a onclick="eliminarEmpresaProv({{codigo}}, '{{username}}')" class="btn btn-danger"><i >X</i></a>
+                                  {{/if}}
+                              </td>
+                            </tr>
+                            {{/each}}
+                          {{else}}
+                            {{#each data}}
+                            <tr>
+                              <td class="text-center">{{codigo}}</td>
+                              <td class="text-center">{{username}}</td>
+                              <td class="text-center">{{nombreter}}</td>
+                              <td class="text-center">{{decimalToCop total}}</td>
+                              <td class="text-center">{{fechaFormats fecha}}</td>
+                              <td class="text-center">{{fechaFormats fechasent}}</td>
+                              <td>
+                                {{#if fechasent}}
+                                    <a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>                                    
+                                  {{else}}
+                                    <a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a onclick="eliminarEmpresaProv({{codigo}}, '{{username}}')" class="btn btn-danger"><i >X</i></a>
+                                  {{/if}}
+                              </td>
+                            </tr>
+                            {{/each}}
+                          {{/if}}
                         </tbody>
                       </table>
                     </div>
@@ -81,7 +114,6 @@
   <script src="/assets/bundles/jquery-ui/jquery-ui.min.js"></script>
   <!-- Page Specific JS File -->
   <script src="/assets/js/page/datatables.js"></script>
-  <script type="text/javascript" src="/assets/jsaux/empresaProv.js"></script>
   <!-- Template JS File -->
   <script src="/assets/js/scripts.js"></script>
   <!-- Custom JS File -->

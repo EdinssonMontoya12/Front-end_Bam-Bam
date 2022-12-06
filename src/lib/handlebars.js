@@ -1,3 +1,15 @@
+const helper = require("./helpers");
+
+const formatCOP = {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0
+}
+
+const copString = new Intl.NumberFormat('es-CO', formatCOP)
+
+const fechaFormat = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+
 const helpers = {}
 
 //El producto esta disponible o No
@@ -20,8 +32,6 @@ helpers.format = (fecha) => {
 
 }
 
-
-
 helpers.disponibleBox = (activo) => {
     if (activo > 0) {
         return activo > 0 ? 'badge badge-success' : '1'
@@ -31,34 +41,83 @@ helpers.disponibleBox = (activo) => {
     }
 }
 
-
-
-//El Tipo de Tercero
 helpers.clasif = (codRol) => {
-    if (codRol === 'CLI') 
+    if (codRol === 'CLI')
         return 'Cliente'
 
-    if (codRol === 'PROV') 
+    if (codRol === 'PROV')
         return 'Proveedor'
 
-    if (codRol === 'GENE') 
+    if (codRol === 'GENE')
         return 'General'
 }
 
 
 helpers.clasifBox = (codRol) => {
-    if (codRol === 'CLI') 
+    if (codRol === 'CLI')
         return 'badge badge-success'
 
-    if (codRol === 'PROV') 
+    if (codRol === 'PROV')
         return 'badge badge-secondary'
 
-    if (codRol === 'GENE') 
+    if (codRol === 'GENE')
         return 'badge badge-primary'
 }
 
-helpers.esAdmin = (rol) => {
-    return rol === 'ADMIN' ? true : false
+helpers.esAux = (rol) => {
+    console.log(rol)
+    return !rol
+}
+
+helpers.tipoTerCLI = (codTipoTer) => {
+    console.log(codTipoTer)
+    return codTipoTer === 'CLI' ? 'checked' : ''
+}
+
+helpers.tipoTerPROV = (codTipoTer) => {
+    return codTipoTer === 'PROV' ? 'checked' : ''
+}
+
+helpers.decimalToCop = (decimal) => {
+    return copString.format(decimal)
+}
+
+helpers.fechaFormats = (fecha) => {
+
+    if (fecha) {
+        const date = new Date(fecha)
+        return date.toLocaleDateString('es-CO', fechaFormat)
+    } else {
+        return ''
+    }
+}
+
+helpers.getFecha = () => {
+    return new Date().toLocaleDateString('es-CO')
+}
+
+helpers.jsonString = (json) => {
+    return JSON.stringify(json)
+}
+
+helpers.formatConsecutivo = (numero) => {
+    numero = numero.toString()
+    while (numero.length < 4) {
+        numero = '0' + numero
+    }
+    return numero
+}
+
+helpers.showButtons = (fechasent) => {
+    if (fechasent == '') {
+        return ''
+    } else {
+        return ''
+    }
+}
+
+helpers.totalInv = (compra, venta) => {
+    return compra - venta
 }
 
 module.exports = helpers

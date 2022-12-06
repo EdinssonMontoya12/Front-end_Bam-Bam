@@ -41,21 +41,22 @@
                   <div class="row">
                     <div class="form-group col-sm-3">
                       <label>Codigo cliente</label>
-                      <input type="text" id="codigo" class="form-control">
+                      <input required type="text" name="codigo" class="form-control">
                     </div>
                     <div class="form-group col-sm-3">
                       <label>Cedula</label>
-                      <input required id="cedula" type="text" class="form-control">
+                      <input required name="cedula" type="text" class="form-control">
                     </div>
                     <div class="form-group col-sm-6">
                       <label class="form-label mb-0">Tipo de tercero</label>
                       <div class="selectgroup w-100 h-70">
                         <label class="selectgroup-item mb-0">
-                          <input type="radio" id="radio1" name="radio1" value="CLI" class="selectgroup-input-radio" checked>
+                          <input type="radio" name="radio1" name="radio1" value="CLI" class="selectgroup-input-radio"
+                            checked>
                           <span class="selectgroup-button h-100 mb-0">Cliente</span>
                         </label>
                         <label class="selectgroup-item mb-0">
-                          <input type="radio" id="radio1" name="radio1" value="PROV" class="selectgroup-input-radio">
+                          <input type="radio" name="radio1" name="radio1" value="PROV" class="selectgroup-input-radio">
                           <span class="selectgroup-button h-100">Proveedor</span>
                         </label>
                       </div>
@@ -64,11 +65,11 @@
                   <div class="row">
                     <div class="form-group col-sm-6">
                       <label>Nombres</label>
-                      <input id="nombre" type="text" class="form-control">
+                      <input name="nombre" type="text" class="form-control">
                     </div>
                     <div class="form-group col-sm-6">
                       <label>Apellidos</label>
-                      <input id="apellido" type="text" class="form-control">
+                      <input name="apellido" type="text" class="form-control">
                     </div>
                   </div>
                   <div class="row">
@@ -78,7 +79,7 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text">@</div>
                         </div>
-                        <input id="email" type="text" class="form-control phone-number">
+                        <input name="email" type="text" class="form-control">
                       </div>
                     </div>
                     <div class="form-group col-sm-6">
@@ -89,7 +90,7 @@
                             <i class="fas fa-phone"></i>
                           </div>
                         </div>
-                        <input id="telefono" type="text" class="form-control phone-number">
+                        <input name="telefono" type="text" class="form-control phone-number">
                       </div>
                     </div>
                   </div>
@@ -97,9 +98,9 @@
                     <div class="form-group">
                       <div class="col-sm-12">
                         <label>Empresa proveedora</label>
-                        <select id="selectEmpresa" class="form-control select2">
+                        <select name="selectEmpresa" class="form-control select2">
                           {{#each data}}
-                          <option>{{nombre}}</option>
+                          <option>{{codigo}}/{{nombre}}</option>
                           {{/each}}
                         </select>
                       </div>
@@ -117,16 +118,18 @@
               </div>
             </form>
           </div>
+          </form>
         </div>
-      </section>
     </div>
-    <footer class="main-footer">
-      <div class="footer-left">
-        Copyright &copy; 2019 <div class="bullet"></div> Design By <a href="#">Redstar</a>
-      </div>
-      <div class="footer-right">
-      </div>
-    </footer>
+    </section>
+  </div>
+  <footer class="main-footer">
+    <div class="footer-left">
+      Copyright &copy; 2019 <div class="bullet"></div> Design By <a href="#">Redstar</a>
+    </div>
+    <div class="footer-right">
+    </div>
+  </footer>
   </div>
   <!-- General JS Scripts -->
   <script src="/assets/js/app.min.js"></script>

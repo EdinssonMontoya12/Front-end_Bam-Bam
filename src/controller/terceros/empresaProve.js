@@ -3,15 +3,12 @@ const helpers = require('../../lib/helpers');
 
 const empresaProve = {}
 
-empresaProve.consultar = async (req, res) => {
-
-    var data = await fetch(`${process.env.HOST_BACKEND}/empresaProv/${res.locals.user.sucid}/**`)
-
-    var data = await data.json()
-
-    console.log(data)
-
-    res.render('tercero/verEmpresasProve', helpers.getDataUsuario(res.locals.user, data.DATA))
+empresaProve.consultar = async(req, res) => {
+    var empresa = await fetch(`${process.env.HOST_BACKEND}/empresaProv/${res.locals.user.sucid}/**`)
+    
+    empresa = await empresa.json()
+    
+    res.render('tercero/verEmpresasProve', helpers.getDataUsuario(res.locals.user, empresa.DATA))
 }
 
 empresaProve.insertar = (req, res) => {

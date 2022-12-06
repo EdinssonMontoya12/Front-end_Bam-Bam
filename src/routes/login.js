@@ -11,7 +11,6 @@ router.get('/', auth.cargar);
 router.post('/signin', passport.authenticate('local', {
     failureRedirect: '/',
     successRedirect: '/dashboard',
-    failureFlash: true
 }));
 
 module.exports = router;

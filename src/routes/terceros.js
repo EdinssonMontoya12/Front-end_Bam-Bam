@@ -9,5 +9,6 @@ router.get('/actualizar/:id', tercero.actualizar)
 router.get('/', tercero.consultar)
 router.get('/eliminar/:id', tercero.eliminar)
 router.post('/insertardao/', tercero.insertarDao)
+router.post('/actualizardao/:id', tercero.actualizarDao)
 
 module.exports = router;

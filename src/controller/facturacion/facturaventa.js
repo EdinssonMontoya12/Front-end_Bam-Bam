@@ -10,19 +10,20 @@ const facturacion = {}
 
 facturacion.consultar = async (req, res) => {
 
-    const facturas = await facturaDao.consultar(res.locals.user.sucid, 'FC', '**')
-    
-    console.log(facturas)
+    console.log(`${process.env.HOST_BACKEND_FACTURA}/factura/${res.locals.user.sucid}/**/FV`)
 
-    res.render('facturacion/verfacturaCompra', helpers.getDataUsuario(res.locals.user, facturas.DATA))
+    const facturas = await fetch(`${process.env.HOST_BACKEND_FACTURA}/factura/${res.locals.user.sucid}/**/FV`)
+        .then(data => data.json())
+        
+    res.render('facturacion/verfacturaVenta', helpers.getDataUsuario(res.locals.user, facturas.DATA))
 }
 
 facturacion.insertar = async (req, res) => {
 
     var dataProducto = await producto.consultar(res.locals.user.sucid, '**')
     var dataLotes = await lote.consultar(res.locals.user.sucid, '**')
-    var dataTerceros = await tercero.consultar(res.locals.user.sucid, '**', 'PROV')
-    var dataConsecutivo = await consecutivo.consultar(res.locals.user.sucid, 'FC')
+    var dataTerceros = await tercero.consultar(res.locals.user.sucid, '**', 'CLI')
+    var dataConsecutivo = await consecutivo.consultar(res.locals.user.sucid, 'FV')
 
     const data = {
         productos: dataProducto.DATA,
@@ -31,7 +32,7 @@ facturacion.insertar = async (req, res) => {
         consecutivo: dataConsecutivo.DATA
     }
 
-    res.render('facturacion/insertarfacturaCompra', helpers.getDataUsuario(res.locals.user, data))
+    res.render('facturacion/insertarfacturaVenta', helpers.getDataUsuario(res.locals.user, data))
 }
 
 facturacion.actualizar = async (req, res) => {
@@ -42,12 +43,17 @@ facturacion.eliminar = async (req, res) => {
     res.render('facturacion/eliminarfactura', helpers.getDataUsuario(res.locals.user))
 }
 
+facturacion.insertarventaDao = async (req, res) => {
+    facturaDao.insertar(req.params.factura)
+    
+    res.redirect('/factura')
+}
+
 facturacion.asentar = async (req, res) => {
 
-    const factura = await facturaDao.asentarCompra(req.params.id)
+    const factura = await facturaDao.asentar(req.params.id)
 
-    res.redirect('/facturacompra')
-
+    res.redirect('/factura')
 }
 
 module.exports = facturacion

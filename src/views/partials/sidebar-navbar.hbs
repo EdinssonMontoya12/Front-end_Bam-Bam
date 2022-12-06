@@ -169,25 +169,21 @@
               <li><a class="nav-link" href="/inventario">Ver productos</a></li>
               {{#if rol}}
               <li><a class="nav-link" href="/inventario/insertar">Crear producto</a></li>
+              <li><a class="nav-link" href="/inventario/actualizar">Cargar productos</a></li>
               {{/if}}
-
-              <li><a class="nav-link" href="/inventario/vergruppro">Ver grupo producto</a></li>
+              <li><a class="nav-link" href="/grupoproducto/vergruppro">Ver grupo producto</a></li>
               {{#if rol}}
-              <li><a class="nav-link" href="/inventario/creargruppro">Crear grupo producto</a></li>
+              <li><a class="nav-link" href="/grupoproducto/insertargruppro">Crear grupo producto</a></li>
               {{/if}}
-              <li><a class="nav-link" href="/inventario/verlote">Ver lotes</a></li>
-              <li><a class="nav-link" href="/inventario/crearlote">Crear lotes</a></li>
-
-
+              <li><a class="nav-link" href="/lote/verlote">Ver lotes</a></li>
+              <li><a class="nav-link" href="/lote/insertarlote">Crear lotes</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a class="menu-toggle nav-link has-dropdown"><i data-feather="users"></i><span>Terceros</span></a>
             <ul class="dropdown-menu">
               <li><a class="nav-link" href="/tercero">Ver terceros</a></li>
-              {{#if rol}}
               <li><a class="nav-link" href="/tercero/insertar">Crear tercero</a></li>
-              {{/if}}
               <li><a class="nav-link" href="/empresaProve">Ver empresa proveedora</a></li>
               {{#if rol}}
               <li><a class="nav-link" href="/empresaProve/insertar">Crear empresa proveedora</a></li>
@@ -199,26 +195,26 @@
             <a class="menu-toggle nav-link has-dropdown"><i data-feather="file-text"></i><span>Factura de
                 venta</span></a>
             <ul class="dropdown-menu">
-              <li><a class="nav-link" href="/facturacion/insertar">Crear factura</a></li>
-              <li><a class="nav-link" href="/facturacion/consultar">Ver facturas</a></li>
+              <li><a class="nav-link" href="/factura">Ver facturas</a></li>
+              <li><a class="nav-link" href="/factura/insertar">Crear factura</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="file-text"></i><span>Factura de
                 compra</span></a>
             <ul class="dropdown-menu">
-              <li><a class="nav-link" href="/facturacion/insertarCompra">Crear factura</a></li>
-              <li><a class="nav-link" href="/facturacion/consultarCompra">Ver facturas</a></li>
+              <li><a class="nav-link" href="/facturacompra">Ver facturas</a></li>
+              <li><a class="nav-link" href="/facturacompra/insertar">Crear factura</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                 data-feather="rotate-ccw"></i><span>Devoluciones</span></a>
             <ul class="dropdown-menu">
-              <li><a class="nav-link" href="/404">Crear devolucion venta</a></li>
               <li><a class="nav-link" href="/404">Ver devoluciones venta</a></li>
-              <li><a class="nav-link" href="/404">Crear devolucion compra</a></li>
+              <li><a class="nav-link" href="/404">Crear devolucion venta</a></li>
               <li><a class="nav-link" href="/404">Ver devoluciones compra</a></li>
+              <li><a class="nav-link" href="/404">Crear devolucion compra</a></li>
             </ul>
           </li>
           <li class="menu-header">Reportes</li>
@@ -232,8 +228,8 @@
               <li class="menu-header">Administrador</li>
             </ul>
           </li>
-          
-            {{#if rol}}
+
+          {{#if rol}}
           <li class="menu-header">Administrador</li>
           <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="image"></i><span>Usuarios</span></a>
@@ -241,7 +237,8 @@
               <li><a href="/usuario">Ver usuario</a></li>
               <li><a class="nav-link" href="/usuario/insertar">Crear usuario</a></li>
             </ul>
-            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="image"></i><span>Sucursales</span></a>
+            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                data-feather="image"></i><span>Sucursales</span></a>
             <ul class="dropdown-menu">
               <li><a href="/sucursales/consultarSucursales">Ver Sucursales</a></li>
               <li><a class="nav-link" href="/sucursales/insertarSucursales">Crear Sucursales</a></li>
@@ -250,5 +247,4 @@
         </ul>
       </aside>
     </div>
-
-    <script src="/assets/js/app.min.js"></script>
+  </div>

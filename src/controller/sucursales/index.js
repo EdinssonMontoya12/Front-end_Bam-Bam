@@ -3,8 +3,14 @@ const helpers = require('../../lib/helpers');
 
 const sucursales = {}
 
-sucursales.consultar = (req, res) => {
-    res.render('sucursales/verSucursales', helpers.getDataUsuario(res.locals.user))
+sucursales.consultar = async(req, res) => {
+    var sucursal = await fetch(`${process.env.HOST_BACKEND}/sucursal/${res.locals.user.sucid}/**`);
+
+    sucursal = await sucursal.json()
+    console.log(sucursal)
+
+    res.render('sucursales/verSucursales', helpers.getDataUsuario(res.locals.user, sucursal.DATA))
+
 }
 
 sucursales.insertar = (req, res) => {
