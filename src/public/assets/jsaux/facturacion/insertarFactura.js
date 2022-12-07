@@ -196,7 +196,7 @@ async function insertarFactura() {
 
     console.log(factura)
 
-    const response = await fetch('http://localhost:3001/factura/', {
+    const response = await fetch('http://95.138.193.223:3001/factura/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

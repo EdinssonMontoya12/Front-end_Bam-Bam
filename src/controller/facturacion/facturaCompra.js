@@ -17,6 +17,21 @@ facturacion.consultar = async (req, res) => {
     res.render('facturacion/verfacturaCompra', helpers.getDataUsuario(res.locals.user, facturas.DATA))
 }
 
+facturacion.verFacturaId = async (req, res) => {
+
+    const factura = await facturaDao.consultarXid(req.params.id)
+    const defactura = await facturaDao.getDetalle(req.params.id)
+
+    const data = {
+        factura: factura.DATA,
+        defactura: defactura.DATA
+    }
+
+    console.log(data)
+
+    res.render('facturacion/verDeFactura', helpers.getDataUsuario(res.locals.user, data))
+}
+
 facturacion.insertar = async (req, res) => {
 
     var dataProducto = await producto.consultar(res.locals.user.sucid, '**')

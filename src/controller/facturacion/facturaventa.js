@@ -9,13 +9,28 @@ const consecutivo = require('../../Dao/consecutivoDao')
 const facturacion = {}
 
 facturacion.consultar = async (req, res) => {
-
+    
     console.log(`${process.env.HOST_BACKEND_FACTURA}/factura/${res.locals.user.sucid}/**/FV`)
-
+    
     const facturas = await fetch(`${process.env.HOST_BACKEND_FACTURA}/factura/${res.locals.user.sucid}/**/FV`)
-        .then(data => data.json())
-        
+    .then(data => data.json())
+    
     res.render('facturacion/verfacturaVenta', helpers.getDataUsuario(res.locals.user, facturas.DATA))
+}
+
+facturacion.verFacturaId = async (req, res) => {
+
+    const factura = await facturaDao.consultarXid(req.params.id)
+    const defactura = await facturaDao.getDetalle(req.params.id)
+
+    const data = {
+        factura: factura.DATA,
+        defactura: defactura.DATA
+    }
+
+    console.log(data)
+
+    res.render('facturacion/verDeFactura', helpers.getDataUsuario(res.locals.user, data))
 }
 
 facturacion.insertar = async (req, res) => {
@@ -40,12 +55,23 @@ facturacion.actualizar = async (req, res) => {
 }
 
 facturacion.eliminar = async (req, res) => {
-    res.render('facturacion/eliminarfactura', helpers.getDataUsuario(res.locals.user))
+
+    const result = await fetch(`${process.env.HOST_BACKEND_FACTURA}/factura/${req.params.id}`,{
+        method: 'DELETE',
+    }).then(data => data.json())
+
+    if(result.OSUCCESS  === 1){
+        req.flash('success', result.OMENSAJE)
+        res.redirect('/factura')
+    }else{
+        req.flash('error', result.OMENSAJE)
+        res.redirect('/factura')
+    }
 }
 
 facturacion.insertarventaDao = async (req, res) => {
     facturaDao.insertar(req.params.factura)
-    
+
     res.redirect('/factura')
 }
 
@@ -53,7 +79,27 @@ facturacion.asentar = async (req, res) => {
 
     const factura = await facturaDao.asentar(req.params.id)
 
-    res.redirect('/factura')
+    if(factura.OSUCCESS === 1){
+        req.flash('success', factura.OMENSAJE)
+        res.redirect('/factura')
+    }else{
+        req.flash('error', factura.OMENSAJE)
+        res.redirect('/factura')
+    }
 }
+
+facturacion.reversar = async (req, res) => {
+    
+    const factura = await facturaDao.reversar(req.params.id)
+
+    if(factura.OSUCCESS === 1){
+        req.flash('success', factura.OMENSAJE)
+        res.redirect('/factura') 
+    }else{
+        req.flash('error', factura.OMENSAJE)
+        res.redirect('/factura')
+    }
+}
+
 
 module.exports = facturacion

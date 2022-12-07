@@ -8,6 +8,8 @@ helper.getDataUsuario = (usuario, data) => {
         data: data
     }
     
+    console.log(newUser)
+
     return newUser
 }
 

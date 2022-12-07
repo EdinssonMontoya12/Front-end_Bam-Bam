@@ -9,7 +9,7 @@ passport.use( 'local.login', new LocalStrategy({
 
     const { nombre } = req.body;
 
-    let url = 'http://localhost:3000/usuario/' + nombre;
+    let url = 'http://95.138.193.223/usuario/' + nombre;
     if (rows.length > 0) {
         const user = rows[0];
         done(null, user, req.flash('success', 'Welcome ' + user.user));

@@ -9,5 +9,6 @@ router.get('/insertar', facturacion.insertar)
 router.get('/', facturacion.consultar)
 //router.get('/eliminar', facturacion.eliminar)
 router.get('/asentar/:id', facturacion.asentar)
+router.get('/ver/:id', facturacion.verFacturaId)
 
 module.exports = router;   

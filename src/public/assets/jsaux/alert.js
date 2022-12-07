@@ -1,8 +1,9 @@
 const mostrarAlertSuccess = (mensaje) => {
     Swal.fire({
-        title: `${mensaje}`,
-        confirmButtonText: 'Aceptar',
-    })
+        icon: 'success',
+        title: 'Bien hecho!',
+        text: `${mensaje}`
+      })
 }
 
 const mostrarAlertError = (mensaje) => {
@@ -14,4 +15,3 @@ const mostrarAlertError = (mensaje) => {
 }
 
 document.getElementById('llamado').click()
-
