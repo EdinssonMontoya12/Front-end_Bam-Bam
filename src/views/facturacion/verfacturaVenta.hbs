@@ -50,20 +50,20 @@
                           {{#if rol}}
                             {{#each data}}
                             <tr>
-                              <td class="text-center">{{codigo}}</td>
+                              <th scope="row" class="text-center">{{codigo}}</th>
                               <td class="text-center">{{username}}</td>
                               <td class="text-center">{{nombreter}}</td>
-                              <td class="text-center">{{decimalToCop total}}</td>
+                              <td>{{decimalToCop total}}</td>
                               <td class="text-center">{{fechaFormats fecha}}</td>
                               <td class="text-center">{{fechaFormats fechasent}}</td>
-                              <td> 
+                              <td style="text-align: center" > 
                                   {{#if fechasent}}
                                     <a href="/factura/reversar/{{facturaid}}" class="btn btn-warning"><i class="fas fa-file-excel"></i></a>
-                                    <a href="/factura/ver/{{facturaid}}" class="btn btn-info"><i class="fas fa-eye"></i></a>                   
+                                    <a href="/factura/ver/{{facturaid}}/FV" class="btn btn-info"><i class="fas fa-eye"></i></a>                   
                                   {{else}}
                                     <a href="/factura/asentar/{{facturaid}}" class="btn btn-success"><i class="fas fa-file-download"></i></a>
-                                    <a href="/factura/ver/{{facturaid}}" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                    <a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="/factura/ver/{{facturaid}}/FV" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="/factura/actualizar/{{facturaid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                     <a onclick="eliminarFactura({{facturaid}}, '{{codigo}}')" class="btn btn-danger"><i >X</i></a>
                                   {{/if}}
                               </td>
@@ -75,10 +75,10 @@
                               <td class="text-center">{{codigo}}</td>
                               <td class="text-center">{{username}}</td>
                               <td class="text-center">{{nombreter}}</td>
-                              <td class="text-center">{{decimalToCop total}}</td>
+                              <td>{{decimalToCop total}}</td>
                               <td class="text-center">{{fechaFormats fecha}}</td>
                               <td class="text-center">{{fechaFormats fechasent}}</td>
-                              <td class="text-center">
+                              <td style="text-align: center">
                                 {{#if fechasent}}
                                     <a href="" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                   {{else}}

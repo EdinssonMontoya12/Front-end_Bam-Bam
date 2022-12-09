@@ -53,16 +53,16 @@
                               <td class="text-center">{{codigo}}</td>
                               <td class="text-center">{{username}}</td>
                               <td class="text-center">{{nombreter}}</td>
-                              <td class="text-center">{{decimalToCop total}}</td>
+                              <td>{{decimalToCop total}}</td>
                               <td class="text-center">{{fechaFormats fecha}}</td>
                               <td class="text-center">{{fechaFormats fechasent}}</td>
-                              <td> 
+                              <td style="text-align: center"> 
                                   {{#if fechasent}}
                                     <a href="" class="btn btn-warning"><i class="fas fa-file-excel"></i></a>                   
-                                    <a href="/facturacompra/ver/{{facturaid}}" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="/factura/ver/{{facturaid}}/FC" class="btn btn-info"><i class="fas fa-eye"></i></a>
                                   {{else}}
                                     <a href="/facturacompra/asentar/{{facturaid}}" class="btn btn-success"><i class="fas fa-file-download"></i></a>
-                                    <a href="/facturacompra/ver/{{facturaid}}" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="/factura/ver/{{facturaid}}/FC" class="btn btn-info"><i class="fas fa-eye"></i></a>
                                     <a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                     <a onclick="eliminarFactura({{facturaid}}, '{{codigo}}')" class="btn btn-danger"><i >X</i></a>
                                   {{/if}}
@@ -75,10 +75,10 @@
                               <td class="text-center">{{codigo}}</td>
                               <td class="text-center">{{username}}</td>
                               <td class="text-center">{{nombreter}}</td>
-                              <td class="text-center">{{decimalToCop total}}</td>
+                              <td>{{decimalToCop total}}</td>
                               <td class="text-center">{{fechaFormats fecha}}</td>
                               <td class="text-center">{{fechaFormats fechasent}}</td>
-                              <td>
+                              <td style="text-align: center">
                                 {{#if fechasent}}
                                     <a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>                                    
                                   {{else}}

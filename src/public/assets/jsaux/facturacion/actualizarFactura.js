@@ -11,8 +11,10 @@ function currencyToDecimal(valor) {
 const fechaFormat = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
 
 var send = []
+var eliminar = []
 
-var countTable = 0
+var countTable = parseInt(document.getElementById('cantData').textContent)
+console.log(countTable)
 var recive = document.getElementById('dataUse').textContent
 recive = JSON.parse(recive)
 
@@ -30,7 +32,7 @@ function cambiarLotes() {
     const producto = document.getElementById('seleccionProducto').value
     const unidades = document.getElementById('numeroUnidades').value
     const productos = recive.productos.filter(x => x.codigo === producto.split('/')[0].trim())[0]
-    const lotes = recive.lotes.filter(l => l.articuloid === productos.articuloid)
+    const lotes = recive.lotes.filter(l => l.articuloid === productos.articuloid && l.cantidad >= parseInt(unidades))
     const seleccionLote = document.getElementById('seleccionLote')
     seleccionLote.innerHTML = ''
     lotes.forEach(l => {
@@ -59,6 +61,7 @@ function insertarProducto() {
         const trProducto = document.createElement('tr')
         trProducto.id = countTable
 
+        const tdDeId = document.createElement('td')
         const tdCodigo = document.createElement('td')
         const tdLote = document.createElement('td')
         const tdProducto = document.createElement('td')
@@ -66,11 +69,12 @@ function insertarProducto() {
         const tdValorunit = document.createElement('td')
         const tdValorTotal = document.createElement('td')
         const tdAcciones = document.createElement('td')
-
+        tdDeId.hidden = true
         //#endregion
 
         //#region insertando componentes
 
+        tdDeId.id = `detallefac${countTable}`
         tdCodigo.append(producto.split('/')[0].trim())
         tdLote.append(lote.split('/')[0].trim())
         tdLote.id = `loteProducto${countTable}`
@@ -81,6 +85,7 @@ function insertarProducto() {
         tdValorTotal.append(formatter.format(unidades * valorUnit))
         tdValorTotal.id = `totalProducto${countTable}`
         tdAcciones.innerHTML = `<a onclick="eliminarProducto(${countTable})" class="btn btn-danger"><i >X</i></a>`
+        tdAcciones.id = `accion${countTable}`
 
         tdCodigo.classList = "text-center"
         tdLote.classList = "text-center"
@@ -90,6 +95,7 @@ function insertarProducto() {
         tdValorTotal.classList = "text-center"
         tdAcciones.classList = "text-center"
 
+        trProducto.append(tdDeId)
         trProducto.append(tdCodigo)
         trProducto.append(tdLote)
         trProducto.append(tdProducto)
@@ -120,6 +126,12 @@ function insertarProducto() {
             }
         })
 
+        console.log(send)
+
+        var posi = recive.lotes.indexOf(loteSend)
+        recive.lotes[posi].cantidad = parseInt(parseInt(recive.lotes[posi].cantidad, 10) - parseInt(unidades, 10))
+        cambiarLotes()
+
         countTable++
     }
 }
@@ -136,12 +148,24 @@ function eliminarProducto(id) {
     totalFactura = currencyToDecimal(totalFactura)
     document.getElementById('valorTotalFactura').value = formatter.format((parseInt(totalFactura) - parseInt(totalRestar)))
 
+    const unidadesArt = document.getElementById(`cantUnidad${contadorAux}`).textContent
+    var lote = document.getElementById(`loteProducto${contadorAux}`).textContent
+    lote = recive.lotes.filter(x => x.codigo === lote)
+    var posi = recive.lotes.indexOf(lote[0])
+    recive.lotes[posi].cantidad = parseInt(recive.lotes[posi].cantidad, 10) + parseInt(unidadesArt, 10)
+
+    cambiarLotes()
+
+    const defacturaId = document.getElementById(`detallefac${contadorAux}`).textContent
+    if(defacturaId !== '') eliminar.push(defacturaId)
     send.splice(id, 1)
 
     while (contadorAux < countTable) {
         const trAux = document.getElementById(`${contadorAux + 1}`)
         if (trAux !== null) {
-            trAux.lastChild.innerHTML = `<a onclick="eliminarProducto(${contadorAux})" class="btn btn-danger"><i >X</i></a>`
+            document.getElementById(`detallefac${contadorAux + 1}`).id = `detallefac${contadorAux}`
+            document.getElementById(`accion${contadorAux +1}`).innerHTML = `<a onclick="eliminarProducto(${contadorAux})" class="btn btn-danger"><i >X</i></a>`
+            document.getElementById(`accion${contadorAux +1}`).id = `accion${contadorAux}`
             document.getElementById(`totalProducto${contadorAux + 1}`).id = `totalProducto${contadorAux}`
             document.getElementById(`cantUnidad${contadorAux + 1}`).id = `cantUnidad${contadorAux}`
             document.getElementById(`loteProducto${contadorAux + 1}`).id = `loteProducto${contadorAux}`
@@ -151,7 +175,7 @@ function eliminarProducto(id) {
             break
         }
     }
-
+    console.log(eliminar)
     countTable--
 
     tbody.removeChild(tr)
@@ -159,38 +183,30 @@ function eliminarProducto(id) {
 
 async function insertarFactura() {
 
-    const codigo = document.getElementById('codigofact').value
-    const fecha = document.getElementById('fechafac').value
-    const fechasent = document.getElementById('fechasent').value
     const tercero = document.getElementById('selectTercero').value
-    const user = document.getElementById('userPro').value
     const observacion = document.getElementById('observacion').value
-    const sucid = document.getElementById('userSucid').value
     const total = document.getElementById('valorTotalFactura').value
+    const facturaid = parseInt(document.getElementById('facturaid').textContent)
 
     const factura = {
-        codigofact: codigo.slice(0,2),
-        numero: codigo.slice(2,codigo.length),
-        fecha: fecha.replace('/', '-').replace('/', '-'),
-        fechasent,
         tercero: tercero.split('/')[1].trim(),
         codtercero: tercero.split('/')[0].trim(),
-        user,
         observacion,
-        sucid,
+        sucid: parseInt(document.getElementById('sucid').textContent),
         total: currencyToDecimal(total),
-        detalle: send
+        detalle: send,
+        detalleDelete: eliminar
     }
 
     console.log(factura)
 
-    const response = await fetch('http://localhost:3001/factura/', {
-        method: 'POST',
+    const response = await fetch(`http://localhost:3001/factura/${facturaid}`, {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(factura)
     }).then( data => data.json())
 
-    window.location = '/facturacompra'
+    window.location = '/factura'
 }

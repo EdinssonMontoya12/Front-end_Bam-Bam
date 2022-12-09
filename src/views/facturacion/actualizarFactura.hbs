@@ -32,43 +32,53 @@
         <div class="section-body">
           <!-- add content here -->
           <div class="row">
-            <div class="col">
+            <div class="col-sm-7">
               <div class="card">
                 <div class="card-header">
-                  <h4>Información factura Venta</h4>
+                  <h4>Actualizar factura Venta</h4>
                 </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="form-group col-sm-4">
                       <label>Codigo factura</label>
-                      <input id="codigofact" type="text" disabled
-                        value="{{data.factura.codigo}}" class="form-control">
+                      <input id="codigofact" type="text" disabled value="{{data.factura.codigo}}"
+                        class="form-control">
+                      <div id="facturaid">{{data.factura.facturaid}}</div>
                     </div>
                     <div class="form-group col-sm-4">
                       <label>Fecha</label>
-                      <input id="fechafac" type="text" disabled value="{{fechaFormats data.factura.fecha}}" class="form-control">
+                      <input required id="fechafac" type="text" disabled value="{{fechaFormats data.factura.fecha}}"
+                        class="form-control">
                     </div>
                     <div class="form-group col-sm-4">
                       <label>Fecha asentada</label>
-                      <input id="fechasent" type="text" value="{{fechaFormats data.factura.fechasent}}" disabled class="form-control">
+                      <input required id="fechasent" type="text" disabled
+                        value="{{fechaFormats data.factura.fechasent}}" class="form-control">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-8">
                       <div class="form-group">
                         <label>Cliente</label>
-                        <input id="fechasent" type="text" value="{{data.factura.nombreter}}" disabled class="form-control">
+                        <select id="selectTercero" class="form-control select2">
+                          {{#each data.terceros}}
+                            <option>{{codigo}} / {{nombre}} {{apellido}}</option>
+                          {{/each}}
+                        </select>
                       </div>
                     </div>
                     <div class="form-group col-sm-4">
                       <label>Generada por:</label>
-                      <input disabled id="userPro" value="{{data.factura.username}}" type="text" class="form-control">
+                      <input required disabled id="userPro" value="{{data.factura.username}}" type="text"
+                        class="form-control">
+                      <div id="sucid">{{user.sucid}}</div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-sm-12">
                       <label class="form-label">Observacion</label>
-                      <textarea id="observacion" disabled value="{{data.factura.observaci}}" class="form-control form-control-ls"></textarea>
+                      <textarea id="observacion"
+                        class="form-control form-control-ls" >{{data.factura.observaci}}</textarea>
                     </div>
                   </div>
                   <div class="row"></div>
@@ -76,7 +86,59 @@
                 <div class="card-footer mt-0">
                   <div class="row">
                     <div class="col clearfix">
-                      <a href="/factura" class="btn btn-primary col-sm-3 float-right">Volver</a>
+                      <button onclick="insertarFactura()"
+                        class="btn btn-primary col-sm-3 float-right">Modificar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Insertar productos</h4>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Producto</label>
+                        <select id="seleccionProducto" onchange="cambiarLotes()" class="form-control select2">
+                          {{#each data.productos}}
+                          <option>{{codigo}} / {{nombre}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-sm-12">
+                      <label>Cantidad</label>
+                      <input required id="numeroUnidades" onchange="cambiarLotes()" value="0" type="number"
+                        class="form-control">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-sm-12">
+                      <label>Valor venta</label>
+                      <input required id="valorVenta" value="0" type="number" class="form-control">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Lote</label>
+                        <select id="seleccionLote" class="form-control select2">
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col clearfix">
+                      <button onclick="insertarProducto()"
+                        class="btn btn-primary col-sm-3 float-right">Insertar</button>
                     </div>
                   </div>
                 </div>
@@ -94,7 +156,7 @@
                     <div class="form-group col-sm-12 clearfix">
                       <div class="float-right">
                         <label>Total factura</label>
-                        <input id="valorTotalFactura" value="{{decimalToCop data.factura.total}}" disabled type="text" class="form-control">
+                        <input id="valorTotalFactura" value="{{decimalToCop data.factura.total}}" required disabled type="text" class="form-control">
                       </div>
                     </div>
                   </div>
@@ -103,30 +165,36 @@
                       <table class="table table-striped" id="table-1">
                         <thead>
                           <tr>
+                            <th hidden class="text-center">Id</th>
                             <th class="text-center">Codigo</th>
                             <th class="text-center">Lote</th>
                             <th class="text-center">Nombre</th>
                             <th class="text-center">Unidades</th>
                             <th class="text-center">Valor unit.</th>
                             <th class="text-center">Valor total</th>
+                            <th class="text-center">Acciones</th>
                           </tr>
                         </thead>
                         <tbody id="tablaProductos">
-                          {{#each data.defactura}}
-                            <tr>
-                              <td class="text-center">{{articulocod}}</td>
-                              <td class="text-center">{{lotecod}}</td>
-                              <td class="text-center">{{productonombre}}</td>
-                              <td class="text-center">{{cantidad}}</td>
-                              <td class="text-center">{{decimalToCop valorunit}}</td>
-                              <td class="text-center">{{decimalToCop total}}</td>
-                            </tr>
+                          {{#each data.detalleFac}}
+                          <tr id="{{@index}}" >
+                            <td hidden id="detallefac{{@index}}">{{defacturaid}}</td>
+                            <td class="text-center">{{articulocod}}</td>
+                            <td class="text-center" id="loteProducto{{@index}}">{{lotecod}}</td>
+                            <td class="text-center">{{productonombre}}</td>
+                            <td class="text-center" id="cantUnidad{{@index}}">{{cantidad}}</td>
+                            <td class="text-center">{{decimalToCop valorunit}}</td>
+                            <td class="text-center" id="totalProducto{{@index}}">{{decimalToCop total}}</td>
+                            <td style="text-align: center" id="accion{{@index}}"><a onclick="eliminarProducto({{@index}})" class="btn btn-danger"><i>X</i></a></td>
+                          </tr>
                           {{/each}}
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
+                <div id="dataUse" hidden>{{jsonString data}}</div>
+                <div id="cantData" hidden>{{countObj data.detalleFac}}</div>
               </div>
             </div>
           </div>
@@ -149,7 +217,7 @@
   <script src="/assets/bundles/select2/dist/js/select2.full.min.js"></script>
   <script src="/assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
   <!-- Page Specific JS File -->
-  <script src="/assets/jsaux/facturacion/insertarFactura.js"></script>
+  <script src="/assets/jsaux/facturacion/actualizarFactura.js"></script>
   <!-- Template JS File -->
   <script src="/assets/js/scripts.js"></script>
   <!-- Custom JS File -->

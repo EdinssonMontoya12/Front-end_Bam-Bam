@@ -8,7 +8,7 @@ const formatCOP = {
 
 const copString = new Intl.NumberFormat('es-CO', formatCOP)
 
-const fechaFormat = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+const fechaFormat = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric'};
 
 const helpers = {}
 
@@ -79,11 +79,11 @@ helpers.tipoTerPROV = (codTipoTer) => {
 }
 
 helpers.decimalToCop = (decimal) => {
+    console.log(decimal)
     return copString.format(decimal)
 }
 
 helpers.fechaFormats = (fecha) => {
-
     if (fecha) {
         const date = new Date(fecha)
         return date.toLocaleDateString('es-CO', fechaFormat)
@@ -118,6 +118,10 @@ helpers.showButtons = (fechasent) => {
 
 helpers.totalInv = (compra, venta) => {
     return compra - venta
+}
+
+helpers.countObj = (obj) => {
+    return obj.length
 }
 
 module.exports = helpers

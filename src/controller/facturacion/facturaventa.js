@@ -28,9 +28,11 @@ facturacion.verFacturaId = async (req, res) => {
         defactura: defactura.DATA
     }
 
-    console.log(data)
-
-    res.render('facturacion/verDeFactura', helpers.getDataUsuario(res.locals.user, data))
+    if(req.params.tipo === 'FV')
+        res.render('facturacion/verDeFactura', helpers.getDataUsuario(res.locals.user, data))
+    else
+        res.render('facturacion/verDeFacturaCompra', helpers.getDataUsuario(res.locals.user, data))
+    
 }
 
 facturacion.insertar = async (req, res) => {
@@ -51,7 +53,24 @@ facturacion.insertar = async (req, res) => {
 }
 
 facturacion.actualizar = async (req, res) => {
-    res.render('facturacion/actualizarfactura', helpers.getDataUsuario(res.locals.user))
+
+    var dataProducto = await producto.consultar(res.locals.user.sucid, '**')
+    var dataLotes = await lote.consultar(res.locals.user.sucid, '**')
+    var dataTerceros = await tercero.consultar(res.locals.user.sucid, '**', 'CLI')
+    var dataConsecutivo = await consecutivo.consultar(res.locals.user.sucid, 'FV')
+    var dataFactura = await facturaDao.consultarXid(req.params.id);
+    var dataDeFactura = await facturaDao.getDetalle(req.params.id);
+    console.log(dataFactura)
+    const data = {
+        productos: dataProducto.DATA,
+        lotes: dataLotes.DATA,
+        terceros: dataTerceros.DATA,
+        consecutivo: dataConsecutivo.DATA,
+        factura: dataFactura.DATA,
+        detalleFac: dataDeFactura.DATA
+    }
+
+    res.render('facturacion/actualizarFactura', helpers.getDataUsuario(res.locals.user, data))
 }
 
 facturacion.eliminar = async (req, res) => {
