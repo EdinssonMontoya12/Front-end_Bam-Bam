@@ -45,18 +45,18 @@
                     </div>
                     <div class="form-group col-sm-3">
                       <label>Cedula</label>
-                      <input required name="cedula" type="text" class="form-control">
+                      <input required name="cedula" type="number" class="form-control">
                     </div>
                     <div class="form-group col-sm-6">
                       <label class="form-label mb-0">Tipo de tercero</label>
                       <div class="selectgroup w-100 h-70">
                         <label class="selectgroup-item mb-0">
-                          <input type="radio" name="radio1" name="radio1" value="CLI" class="selectgroup-input-radio"
-                            checked>
+                          <input type="radio" id="escliente" name="radio1" name="radio1" value="CLI" class="selectgroup-input-radio"
+                            checked onchange="cambiarCliaProv()">
                           <span class="selectgroup-button h-100 mb-0">Cliente</span>
                         </label>
                         <label class="selectgroup-item mb-0">
-                          <input type="radio" name="radio1" name="radio1" value="PROV" class="selectgroup-input-radio">
+                          <input type="radio" id="esproveedor" name="radio1" name="radio1" value="PROV" class="selectgroup-input-radio" onchange="cambiarCliaProv()">
                           <span class="selectgroup-button h-100">Proveedor</span>
                         </label>
                       </div>
@@ -98,7 +98,8 @@
                     <div class="form-group">
                       <div class="col-sm-12">
                         <label>Empresa proveedora</label>
-                        <select name="selectEmpresa" class="form-control select2">
+                        <select disabled name="selectEmpresa" id="selectEmpresa" class="form-control select2">
+                          <option selected disabled id="noempresaprov" ></option>
                           {{#each data}}
                           <option>{{codigo}}/{{nombre}}</option>
                           {{/each}}
@@ -145,6 +146,7 @@
   <script src="/assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
   <!-- Page Specific JS File -->
   <script src="/assets/js/page/forms-advanced-forms.js"></script>
+  <script src="/assets/jsaux/tercero/insertartercero.js"></script>
   <!-- Template JS File -->
   <script src="/assets/js/scripts.js"></script>
   <!-- Custom JS File -->

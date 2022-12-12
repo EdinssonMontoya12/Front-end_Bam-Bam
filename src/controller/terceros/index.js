@@ -26,10 +26,6 @@ tercero.actualizar = async (req, res) => {
     var tercero = await fetch(`${process.env.HOST_BACKEND}/tercero/${req.params.id}`)
         .then( data => data.json())
 
-    if(tercero.OSUCCESS === 0){
-        req.flash('error', tercero.OMENSAJE)
-    }
-
     var empresasProve = await fetch(`${process.env.HOST_BACKEND}/empresaProv/${res.locals.user.sucid}/**`)
         .then(data => data.json())
 
@@ -63,6 +59,12 @@ tercero.eliminar = async (req, res) => {
 
 tercero.insertarDao = async (req, res) => {
 
+    var codempresaprod = ''
+
+    if(req.body.radio1 === 'PROV'){
+        codempresaprod = req.body.selectEmpresa.split('/')[0]
+    }
+
     const tercero = {
         identificacion: req.body.cedula,
         nombre: req.body.nombre,
@@ -72,7 +74,7 @@ tercero.insertarDao = async (req, res) => {
         codigo: req.body.codigo,
         codtipo: req.body.radio1,
         sucid: res.locals.user.sucid,
-        codempresaprod: req.body.selectEmpresa.split('/')[0]
+        codempresaprod
     }
 
     var response = await fetch(`${process.env.HOST_BACKEND}/tercero`, {
@@ -96,6 +98,12 @@ tercero.insertarDao = async (req, res) => {
 
 tercero.actualizarDao = async (req, res) => {
 
+    var codempresaprod = ''
+
+    if(req.body.radio1 === 'PROV'){
+        codempresaprod = req.body.selectEmpresa.split('/')[0]
+    }
+
     const tercero = {
         identificacion: req.body.cedula,
         nombre: req.body.nombre,
@@ -105,9 +113,8 @@ tercero.actualizarDao = async (req, res) => {
         codigo: req.body.codigo,
         codtipo: req.body.radio1,
         sucid: res.locals.user.sucid,
-        codempresaprod: req.body.selectEmpresa.split('/')[0]
+        codempresaprod
     }   
-
     var response = await fetch(`${process.env.HOST_BACKEND}/tercero/${req.params.id}`, {
         method: 'PUT',
         headers: {
@@ -117,7 +124,6 @@ tercero.actualizarDao = async (req, res) => {
     }).then( data => data.json())
 
     if(response.OSUCCESS === 1){
-        req.flash('success', response.OMENSAJE)
         res.redirect('/tercero/')
     }else {
         req.flash('error', response.OMENSAJE)

@@ -171,12 +171,12 @@
               <li><a class="nav-link" href="/inventario/insertar">Crear producto</a></li>
               <li><a class="nav-link" href="/inventario/actualizar">Cargar productos</a></li>
               {{/if}}
-              <li><a class="nav-link" href="/grupoproducto/vergruppro">Ver grupo producto</a></li>
+              <li><a class="nav-link" href="/grupoproducto">Ver grupo producto</a></li>
               {{#if rol}}
-              <li><a class="nav-link" href="/grupoproducto/insertargruppro">Crear grupo producto</a></li>
+              <li><a class="nav-link" href="/grupoproducto/insertar">Crear grupo producto</a></li>
               {{/if}}
-              <li><a class="nav-link" href="/lote/verlote">Ver lotes</a></li>
-              <li><a class="nav-link" href="/lote/insertarlote">Crear lotes</a></li>
+              <li><a class="nav-link" href="/lote">Ver lotes</a></li>
+              <li><a class="nav-link" href="/lote/insertar">Crear lotes</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -207,7 +207,7 @@
               <li><a class="nav-link" href="/facturacompra/insertar">Crear factura</a></li>
             </ul>
           </li>
-          <li class="dropdown">
+          <!-- <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                 data-feather="rotate-ccw"></i><span>Devoluciones</span></a>
             <ul class="dropdown-menu">
@@ -216,32 +216,32 @@
               <li><a class="nav-link" href="/404">Ver devoluciones compra</a></li>
               <li><a class="nav-link" href="/404">Crear devolucion compra</a></li>
             </ul>
-          </li>
+          </li> -->
           <li class="menu-header">Reportes</li>
           <li class="dropdown">
-            <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                data-feather="rotate-ccw"></i><span>Reportes</span></a>
+            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="book-open"></i><span>Reportes</span></a>
             <ul class="dropdown-menu">
               <li><a class="nav-link" href="/reportes/facturas">Reporte de facturas</a></li>
               <li><a class="nav-link" href="/reportes/tercero">Reporte de Terceros</a></li>
               <li><a class="nav-link" href="/reportes/producto">Reporte de Productos</a></li>
-              <li class="menu-header">Administrador</li>
             </ul>
           </li>
 
           {{#if rol}}
           <li class="menu-header">Administrador</li>
           <li class="dropdown">
-            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="image"></i><span>Usuarios</span></a>
+            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user"></i><span>Usuarios</span></a>
             <ul class="dropdown-menu">
               <li><a href="/usuario">Ver usuario</a></li>
               <li><a class="nav-link" href="/usuario/insertar">Crear usuario</a></li>
-            </ul>
-            <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                data-feather="image"></i><span>Sucursales</span></a>
+            </ul>            
+          </li>
+          <li class="dropdown">
+            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="home"></i><span>Sucursales</span></a>
             <ul class="dropdown-menu">
-              <li><a href="/sucursales/consultarSucursales">Ver Sucursales</a></li>
-              <li><a class="nav-link" href="/sucursales/insertarSucursales">Crear Sucursales</a></li>
+              <li><a href="/sucursal/consultar">Ver Sucursales</a></li>
+              <li><a class="nav-link" href="/sucursal/insertar">Crear Sucursales</a></li>
+            </ul>
           </li>
           {{/if}}
         </ul>

@@ -52,10 +52,10 @@
                     <div class="form-group col-sm-3">
                       <label>Cedula</label>
                       {{#if rol}}
-                      <input required value="{{data.tercero.identificacion}}" name="cedula" type="text"
+                      <input required value="{{data.tercero.identificacion}}" name="cedula" type="number"
                         class="form-control">
                       {{else}}
-                      <input required disabled value="{{data.tercero.identificacion}}" name="cedula" type="text"
+                      <input required disabled value="{{data.tercero.identificacion}}" name="cedula" type="number"
                         class="form-control">
                       {{/if}}
                     </div>
@@ -64,12 +64,13 @@
                       <div class="selectgroup w-100 h-70">
                         {{#if rol}}
                         <label class="selectgroup-item mb-0">
-                          <input {{tipoTerCLI data.tercero.codTipoTer}} type="radio" id="radio1cli" name="radio1" value="CLI" class="selectgroup-input-radio">
+                          <input {{tipoTerCLI data.tercero.codTipoTer}} type="radio" id="escliente" name="radio1" value="CLI" class="selectgroup-input-radio"
+                          onchange="cambiarCliaProv()">
                           <span class="selectgroup-button h-100 mb-0">Cliente</span>
                         </label>
                         <label class="selectgroup-item mb-0">
-                          <input {{tipoTerPROV data.tercero.codTipoTer}} type="radio" id="radio1prov" name="radio1" value="PROV"
-                            class="selectgroup-input-radio">
+                          <input {{tipoTerPROV data.tercero.codTipoTer}} type="radio" id="esproveedor" name="radio1" value="PROV"
+                            class="selectgroup-input-radio" onchange="cambiarCliaProv()">
                           <span class="selectgroup-button h-100">Proveedor</span>
                         </label>
                         {{else}}
@@ -123,9 +124,9 @@
                     <div class="form-group">
                       <div class="col-sm-12">
                         <label>Empresa proveedora</label>
-                        <select name="selectEmpresa" class="form-control select2">
+                        <select name="selectEmpresa" {{disabledSelectEmpresaProv data.tercero.codTipoTer}} id="selectEmpresa" class="form-control select2">
                           {{#each data.empresaProve}}
-                          <option>{{codigo}}/{{nombre}}</option>
+                          <option {{selectedxval @../tercero.CODEMP codigo}} >{{codigo}}/{{nombre}}</option>
                           {{/each}}
                         </select>
                       </div>
@@ -165,6 +166,7 @@
   <!-- Page Specific JS File -->
   <script src="/assets/js/page/forms-advanced-forms.js"></script>
   <script type="text/javascript" src="/assets/jsaux/tercero/actualizarTercero.js"></script>
+  <script type="text/javascript" src="/assets/jsaux/tercero/insertartercero.js"></script>
   <!-- Template JS File -->
   <script src="/assets/js/scripts.js"></script>
   <!-- Custom JS File -->

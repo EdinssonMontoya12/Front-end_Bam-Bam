@@ -32,7 +32,7 @@ function cambiarLotes() {
     const producto = document.getElementById('seleccionProducto').value
     const unidades = document.getElementById('numeroUnidades').value
     const productos = recive.productos.filter(x => x.codigo === producto.split('/')[0].trim())[0]
-    const lotes = recive.lotes.filter(l => l.articuloid === productos.articuloid && l.cantidad >= parseInt(unidades))
+    const lotes = recive.lotes.filter(l => l.articuloid === productos.articuloid)
     const seleccionLote = document.getElementById('seleccionLote')
     seleccionLote.innerHTML = ''
     lotes.forEach(l => {
@@ -208,5 +208,5 @@ async function insertarFactura() {
         body: JSON.stringify(factura)
     }).then( data => data.json())
 
-    window.location = '/factura'
+    window.location = '/facturacompra'
 }

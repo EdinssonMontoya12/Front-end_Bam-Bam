@@ -4,8 +4,10 @@ const usuario = require('../controller/usuarios/index')
 const router = express.Router();
 
 router.get('/insertar', usuario.insertar)
-router.get('/actualizar', usuario.actualizar)
+router.post('/insertardao', usuario.insertardao)
+router.get('/actualizar/:id', usuario.actualizar)
+router.post('/actualizardao/:id', usuario.actualizardao)
 router.get('/', usuario.consultar)
-router.get('/eliminar/:id', usuario.eliminar)
+router.get('/desactivar/:id', usuario.eliminar)
 
 module.exports = router;

@@ -53,7 +53,7 @@ function insertarProducto() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: `Los datos estan imcompletos`
+            text: `Los datos estan incompletos`
         })
     } else {
         const trProducto = document.createElement('tr')

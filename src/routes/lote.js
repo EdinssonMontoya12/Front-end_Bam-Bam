@@ -5,7 +5,8 @@ const router= express.Router();
 
 //Estar rutas las crea usted
 
-router.get('/verlote', lote.verlote)
-router.get('/insertarlote', lote.insertarlote)
+router.get('/', lote.consultar)
+router.get('/insertar', lote.insertar)
+router.post('/', lote.insertardao)
 
 module.exports= router;

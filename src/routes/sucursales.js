@@ -3,9 +3,8 @@ const sucursales = require('../controller/sucursales/index')
 
 const router= express.Router();
 
-router.get('/insertarSucursales', sucursales.insertar)
-router.get('/consultarSucursales', sucursales.consultar)
-
-
+router.get('/consultar', sucursales.consultar)
+router.get('/insertar', sucursales.insertar)
+router.post('/', sucursales.insertardao)
 
 module.exports= router;

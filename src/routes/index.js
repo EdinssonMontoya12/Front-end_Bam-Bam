@@ -23,7 +23,7 @@ router.use('/tercero', login.isLoggedIn, terceros);
 router.use('/auth', auth);
 router.use('/empresaProve', login.isLoggedIn, empresaProve);
 router.use('/usuario', login.isLoggedIn, usuario);
-router.use('/sucursales', login.isLoggedIn, sucursales);
+router.use('/sucursal', login.isLoggedIn, sucursales);
 router.use('/lote', login.isLoggedIn, lote);
 router.use('/grupoproducto', login.isLoggedIn, grupoproducto);
 router.use('/facturacompra', login.isLoggedIn, facturaCompra);

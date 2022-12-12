@@ -17,21 +17,6 @@ facturacion.consultar = async (req, res) => {
     res.render('facturacion/verfacturaCompra', helpers.getDataUsuario(res.locals.user, facturas.DATA))
 }
 
-facturacion.verFacturaId = async (req, res) => {
-
-    const factura = await facturaDao.consultarXid(req.params.id)
-    const defactura = await facturaDao.getDetalle(req.params.id)
-
-    const data = {
-        factura: factura.DATA,
-        defactura: defactura.DATA
-    }
-
-    console.log(data)
-
-    res.render('facturacion/verDeFactura', helpers.getDataUsuario(res.locals.user, data))
-}
-
 facturacion.insertar = async (req, res) => {
 
     var dataProducto = await producto.consultar(res.locals.user.sucid, '**')
@@ -50,7 +35,21 @@ facturacion.insertar = async (req, res) => {
 }
 
 facturacion.actualizar = async (req, res) => {
-    res.render('facturacion/actualizarfactura', helpers.getDataUsuario(res.locals.user))
+    var dataProducto = await producto.consultar(res.locals.user.sucid, '**')
+    var dataLotes = await lote.consultar(res.locals.user.sucid, '**')
+    var dataTerceros = await tercero.consultar(res.locals.user.sucid, '**', 'PROV')
+    var dataFactura = await facturaDao.consultarXid(req.params.id);
+    var dataDeFactura = await facturaDao.getDetalle(req.params.id);
+    
+    const data = {
+        productos: dataProducto.DATA,
+        lotes: dataLotes.DATA,
+        terceros: dataTerceros.DATA,
+        factura: dataFactura.DATA,
+        detalleFac: dataDeFactura.DATA
+    }
+
+    res.render('facturacion/actualizarFacturaCompra', helpers.getDataUsuario(res.locals.user, data))
 }
 
 facturacion.eliminar = async (req, res) => {

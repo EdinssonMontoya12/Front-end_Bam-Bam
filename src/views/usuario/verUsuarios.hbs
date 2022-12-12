@@ -52,15 +52,13 @@
                           <tr>
                             <td class="text-center">{{username}}</td>
                             <td class="text-center">{{nombre}}</td>
-                            <td class="text-center">{{sucid}}</td>
+                            <td class="text-center">{{sucursal}}</td>
                             <td class="text-center">{{ROL}}</td>
-                            
-
+                            <td class="text-center">{{telefono}}</td>
                             <td class="text-center">
-                              <div class="{{clasifBox codRol}} badge-shadow">{{clasif codRol}}</div>
+                              <a href="/usuario/actualizar/{{usuarioid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                              <a href="/usuario/desactivar/{{usuarioid}}" class="btn btn-danger"><i >X</i></a>
                             </td>
-                            <td class="text-center"><a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                            <a onclick="eliminarTercero({{terceroid}}, '{{nombre}}')" class="btn btn-danger"><i >X</i></a></td>
                           </tr>
                           {{/each}}
                         </tbody>

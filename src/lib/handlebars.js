@@ -22,16 +22,6 @@ helpers.disponible = (activo) => {
     }
 }
 
-helpers.format = (fecha) => {
-    const mes = fecha;
-
-    const newmes = mes.slice(0, 10);
-    console.log(newmes)
-    return newmes;
-
-
-}
-
 helpers.disponibleBox = (activo) => {
     if (activo > 0) {
         return activo > 0 ? 'badge badge-success' : '1'
@@ -122,6 +112,23 @@ helpers.totalInv = (compra, venta) => {
 
 helpers.countObj = (obj) => {
     return obj.length
+}
+
+helpers.selectedxval = (valorComp, valorAc) => {
+    if(valorComp === valorAc) return 'selected'
+}
+
+helpers.checkedUserRol = (codRol, esperado) => {
+    if(codRol === esperado) return 'checked'
+}
+
+helpers.disabledSelectEmpresaProv = (codrol) => {
+    if(codrol === 'CLI') return 'disabled'
+}
+
+helpers.disableAux = (codrol) => {
+    if(codrol === 'AUX') return true
+    else return false
 }
 
 module.exports = helpers

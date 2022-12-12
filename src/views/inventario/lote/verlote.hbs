@@ -43,7 +43,6 @@
                             <th class="text-center">Fecha De Vencimiento</th>
                             <th class="text-center">Producto</th>
                             <th class="text-center">Cantidad</th>
-                            <th class="text-center">Editar / Eliminar</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -53,8 +52,6 @@
                             <td class="text-center">{{fechaFormats fechavenc}}</td>
                             <td class="text-center">{{nombre}}</td>
                             <td class="text-center">{{cantidad}}</td>
-                            <td class="text-center"><a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                            <a onclick="eliminarTercero({{terceroid}}, '{{nombre}}')" class="btn btn-danger"><i >X</i></a></td>
                           </tr>
                           {{/each}}
                         </tbody>

@@ -35,12 +35,12 @@
             <div class="card-header">
               <h4>Crear empresa proveedora</h4>
             </div>
-            <form class="needs-validation" novalidate="">
+            <form action="/empresaProve" method="post">
               <div class="card-body">
                 <div class="row">
                   <div class="form-group col-sm-4">
                     <label>Codigo</label>
-                    <input type="text" class="form-control" required="">
+                    <input type="text" class="form-control" required name="codigo">
                     <div class="invalid-feedback">
                       El codigo es necesario
                     </div>
@@ -50,7 +50,7 @@
                   </div>
                   <div class="form-group col-sm-4">
                     <label>Nit</label>
-                    <input required="" type="text" class="form-control">
+                    <input required name="nit" type="text" class="form-control">
                     <div class="invalid-feedback">
                       El nit es necesario
                     </div>
@@ -60,7 +60,7 @@
                   </div>
                   <div class="form-group col-sm-4">
                     <label>Nombre</label>
-                    <input required="" type="text" class="form-control">
+                    <input required name="nombre" type="text" class="form-control">
                     <div class="invalid-feedback">
                       El nombre es necesario
                     </div>

@@ -29,39 +29,57 @@
         <div class="section-body">
           <!-- add content here -->
           <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Empresas Proveedoras</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-striped" id="table-1">
-                        <thead>
-                          <tr>
-                            <th class="text-center">Codigo</th>
-                            <th class="text-center">NIT</th>
-                            <th class="text-center">Nombre</th>
-                            <th class="text-center">Acciones</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {{#each data}}
-                          <tr>
-                            <td class="text-center">{{codigo}}</td>
-                            <td class="text-center">{{nit}}</td>
-                            <td class="text-center">{{nombre}}</td>
-                            <td class="text-center"><a href="/tercero/actualizar/{{terceroid}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                            <a onclick="eliminarEmpresaProv({{terceroid}}, '{{nombre}}')" class="btn btn-danger"><i >X</i></a></td>
-                          </tr>
-                          {{/each}}
-                        </tbody>
-                      </table>
-                    </div>
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Empresas Proveedoras</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped" id="table-1">
+                      <thead>
+                        <tr>
+                          <th class="text-center">Codigo</th>
+                          <th class="text-center">NIT</th>
+                          <th class="text-center">Nombre</th>
+                          <th class="text-center">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#if (disableAux user.ROL)}}
+                        {{#each data}}
+                        <tr>
+                          <td class="text-center">{{codigo}}</td>
+                          <td class="text-center">{{nit}}</td>
+                          <td class="text-center">{{nombre}}</td>
+                          <td class="text-center"><a hidden href="/empresaProve/actualizar/{{empresaproid}}"
+                              class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                            <a hidden onclick="eliminarEmpresaProv({{empresaproid}}, '{{nombre}}')"
+                              class="btn btn-danger"><i>X</i></a>
+                          </td>
+                        </tr>
+                        {{/each}}
+                        {{else}}
+                        {{#each data}}
+                        <tr>
+                          <td class="text-center">{{codigo}}</td>
+                          <td class="text-center">{{nit}}</td>
+                          <td class="text-center">{{nombre}}</td>
+                          <td class="text-center"><a href="/empresaProve/actualizar/{{empresaproid}}" class="btn btn-primary"><i
+                                class="fas fa-edit"></i></a>
+                            <a onclick="eliminarEmpresaProv({{empresaproid}}, '{{nombre}}')"
+                              class="btn btn-danger"><i>X</i></a>
+                          </td>
+                        </tr>
+                        {{/each}}
+                        {{/if}}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         </div>
       </section>
     </div>

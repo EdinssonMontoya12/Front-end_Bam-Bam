@@ -57,7 +57,6 @@ facturacion.actualizar = async (req, res) => {
     var dataProducto = await producto.consultar(res.locals.user.sucid, '**')
     var dataLotes = await lote.consultar(res.locals.user.sucid, '**')
     var dataTerceros = await tercero.consultar(res.locals.user.sucid, '**', 'CLI')
-    var dataConsecutivo = await consecutivo.consultar(res.locals.user.sucid, 'FV')
     var dataFactura = await facturaDao.consultarXid(req.params.id);
     var dataDeFactura = await facturaDao.getDetalle(req.params.id);
     console.log(dataFactura)
@@ -65,7 +64,6 @@ facturacion.actualizar = async (req, res) => {
         productos: dataProducto.DATA,
         lotes: dataLotes.DATA,
         terceros: dataTerceros.DATA,
-        consecutivo: dataConsecutivo.DATA,
         factura: dataFactura.DATA,
         detalleFac: dataDeFactura.DATA
     }
@@ -86,12 +84,6 @@ facturacion.eliminar = async (req, res) => {
         req.flash('error', result.OMENSAJE)
         res.redirect('/factura')
     }
-}
-
-facturacion.insertarventaDao = async (req, res) => {
-    facturaDao.insertar(req.params.factura)
-
-    res.redirect('/factura')
 }
 
 facturacion.asentar = async (req, res) => {

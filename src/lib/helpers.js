@@ -7,7 +7,6 @@ helper.getDataUsuario = (usuario, data) => {
         rol: usuario.ROL === 'ADMIN' ? true : false,
         data: data
     }
-
     return newUser
 }
 

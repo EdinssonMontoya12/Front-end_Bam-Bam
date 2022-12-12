@@ -5,7 +5,9 @@ const empresaProve = require('../controller/terceros/empresaProve')
 const router = express.Router();
 
 router.get('/insertar', empresaProve.insertar)
-router.get('/actualizar',empresaProve.actualizar)
+router.post('/', empresaProve.insertardao)
+router.get('/actualizar/:id',empresaProve.actualizar)
+router.post('/:id',empresaProve.actualizardao)
 router.get('/', empresaProve.consultar)
 router.get('/eliminar/:id', empresaProve.eliminar)
 
