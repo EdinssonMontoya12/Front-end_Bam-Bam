@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const helpers = require('../../lib/helpers');
-const producto = require('../../Dao/productoDao');
+const producto = require('../../Dao/articuloDao');
 const tercero = require('../../Dao/terceroDao');
 const lote = require('../../Dao/loteDao');
 const facturaDao = require('../../Dao/facturacionDao');
@@ -61,7 +61,18 @@ facturacion.asentar = async (req, res) => {
     const factura = await facturaDao.asentarCompra(req.params.id)
 
     res.redirect('/facturacompra')
+}
 
+facturacion.reversar = async (req, res) => {
+
+    const response = await facturaDao.reversarCompra(req.params.id)
+
+    if(response.OSUCCESS === 1){
+        res.redirect('/facturacompra')
+    }else{
+        req.flash('error', response.OMENSAJE)
+        res.redirect('/facturacompra')
+    }
 }
 
 module.exports = facturacion

@@ -115,11 +115,11 @@ helpers.countObj = (obj) => {
 }
 
 helpers.selectedxval = (valorComp, valorAc) => {
-    if(valorComp === valorAc) return 'selected'
+    if(valorComp == valorAc) return 'selected'
 }
 
 helpers.checkedUserRol = (codRol, esperado) => {
-    if(codRol === esperado) return 'checked'
+    if(codRol == esperado) return 'checked'
 }
 
 helpers.disabledSelectEmpresaProv = (codrol) => {
@@ -129,6 +129,23 @@ helpers.disabledSelectEmpresaProv = (codrol) => {
 helpers.disableAux = (codrol) => {
     if(codrol === 'AUX') return true
     else return false
+}
+
+helpers.articuloActivo = (activo) => {
+    if(activo == 1) return 'far fa-eye-slash'
+    else return 'far fa-eye'
+}
+
+helpers.activoText = (activo) => {
+    if(activo == 1) return 'activo'
+    else return 'inactivo'
+}
+
+helpers.activoBox = (activo) => {
+    if (activo == 1)
+        return 'badge badge-success'
+    else
+        return 'badge badge-secondary'
 }
 
 module.exports = helpers

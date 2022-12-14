@@ -7,6 +7,6 @@ router.get('/insertar', facturacion.insertar)
 router.get('/actualizar/:id', facturacion.actualizar)
 router.get('/', facturacion.consultar)
 router.get('/asentar/:id', facturacion.asentar)
-//router.get('/reversar/:id', facturacion.reversar)
+router.get('/reversar/:id', facturacion.reversar)
 
 module.exports = router;   

@@ -3,11 +3,13 @@ const inventario = require('../controller/inventario/index')
 
 const router= express.Router();
 
-router.get('/insertar', inventario.insertar)
-router.get('/actualizar', inventario.actualizar)
 router.get('/', inventario.consultar)
-router.get('/eliminar', inventario.eliminar)
-
+router.get('/insertar', inventario.insertar)
+router.post('/insertardao', inventario.insertardao)
+router.get('/actualizar/:id', inventario.actualizar)
+router.post('/:id', inventario.actualizardao)
+router.get('/activar/:id', inventario.activar)
+router.get('/eliminar/:id', inventario.eliminar)
 
 
 module.exports= router;

@@ -122,7 +122,7 @@ factura.reversarCompra = async (facturaid) => {
         detalles: detalle.DATA
     }
 
-    const response = await fetch(`${process.env.HOST_BACKEND}/factura/reversar/venta/${facturaid}`, {
+    const sePuedereversar = await fetch(`${process.env.HOST_BACKEND}/factura/reversar/compra`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -130,21 +130,22 @@ factura.reversarCompra = async (facturaid) => {
         body: JSON.stringify(detalle)
     }).then(data => data.json())
 
-    if(response.OSUCCESS === 1){
-        const result = await fetch(`${process.env.HOST_BACKEND_FACTURA}/factura/revesar/${facturaid}`)
+    if (sePuedereversar.OSUCCESS === 1) {
+        const response = await fetch(`${process.env.HOST_BACKEND_FACTURA}/factura/reversar/${facturaid}`)
             .then(data => data.json())
 
-        return result
-    }else{
-        return {
-            OSUCCESS: 0,
-            OMENSAJE: 'No se ha logrado reversar la factura'
-        }
+        return response;
+    } else {
+        return sePuedereversar
     }
 }
 
-factura.sePuedeReversar = async (facturaid) => {
-    return true;
+factura.sePuedeEliminarProducto = async (productoId) => {
+
+    const response = await fetch(`${process.env.HOST_BACKEND_FACTURA}/defactura/eliminarproducto/${productoId}`)
+        .then(data => data.json())
+
+    return response
 }
 
 module.exports = factura

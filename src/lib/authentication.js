@@ -5,10 +5,11 @@ module.exports = {
     }
     return res.redirect("/auth");
   },
+  
   isNotLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) {
       return next();
     }
-    return res.render("/auth");
+    return res.redirect("/dashboard");
   },
 };
