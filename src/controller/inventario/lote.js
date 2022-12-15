@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const helpers = require('../../lib/helpers');
 const loteDao = require('../../Dao/loteDao')
-const productoDao = require('../../Dao/productoDao')
+const productoDao = require('../../Dao/articuloDao')
 
 const lote = {}
 

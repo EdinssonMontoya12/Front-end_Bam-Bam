@@ -79,7 +79,11 @@ inventario.eliminar = async (req, res) => {
     }
 }
 
+inventario.cargarinfo = async (req, res) => {
 
+    res.render('inventario/producto/cargarproducto')
+
+}
 
 
 module.exports = inventario

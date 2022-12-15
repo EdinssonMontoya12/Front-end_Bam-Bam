@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const consecutivoDao = require('../Dao/consecutivoDao')
 
 const sucursal = {};
 
@@ -17,6 +18,8 @@ sucursal.insertar = async (sucursal) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sucursal)
     }).then( data => data.json())
+
+    await consecutivoDao.insertar(response.ID)
 
     return response
 }

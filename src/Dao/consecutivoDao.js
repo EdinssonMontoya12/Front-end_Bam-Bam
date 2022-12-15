@@ -10,4 +10,12 @@ consecutivo.consultar = async (codfac, sucid) => {
     return consecutivo        
 }
 
+consecutivo.insertar = async (sucid) => {
+    
+    const consecutivo = await fetch(`${process.env.HOST_BACKEND_FACTURA}/consecutivo/${sucid}`)
+        .then(data => data.json())
+
+    return consecutivo        
+}
+
 module.exports = consecutivo

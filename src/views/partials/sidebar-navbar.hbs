@@ -51,7 +51,7 @@
               <li><a class="nav-link" href="/inventario">Ver productos</a></li>
               {{#if rol}}
               <li><a class="nav-link" href="/inventario/insertar">Crear producto</a></li>
-              <li><a class="nav-link" href="/inventario/actualizar">Cargar productos</a></li>
+              <li><a class="nav-link" href="/inventario/cargarinfo">Cargar productos</a></li>
               {{/if}}
               <li><a class="nav-link" href="/grupoproducto">Ver grupo producto</a></li>
               {{#if rol}}
@@ -99,6 +99,7 @@
               <li><a class="nav-link" href="/404">Crear devolucion compra</a></li>
             </ul>
           </li> -->
+          {{#if rol}}
           <li class="menu-header">Reportes</li>
           <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -109,7 +110,6 @@
               <li><a class="nav-link" href="/reportes/producto">Reporte de Productos</a></li>
             </ul>
           </li>
-          {{#if rol}}
           <li class="menu-header">Administrador</li>
           <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user"></i><span>Usuarios</span></a>

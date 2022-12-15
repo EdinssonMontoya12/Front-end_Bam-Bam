@@ -10,6 +10,7 @@ router.get('/actualizar/:id', inventario.actualizar)
 router.post('/:id', inventario.actualizardao)
 router.get('/activar/:id', inventario.activar)
 router.get('/eliminar/:id', inventario.eliminar)
+router.get('/cargarinfo', inventario.cargarinfo)
 
 
 module.exports= router;

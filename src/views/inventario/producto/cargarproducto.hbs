@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Otika - Admin Dashboard Template</title>
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="/assets/css/app.min.css">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <!-- Custom style CSS -->
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
+
+</head>
+
+<body>
+  <div class="loader"></div>
+  {{> sidebar-navbar }}
+  <div class="main-wrapper main-wrapper-1">
+    <div class="navbar-bg"></div>
+    <!-- Main Content -->
+    <div class="main-content">
+      <section class="section">
+        <div class="section-body">
+          <div class="card">
+            <div class="card-header">
+              <div hidden id="sucid">{{user.sucid}}</div>
+              <h4>Productos</h4>
+            </div>
+            <div class="card-body">
+              <div class="form-group col-sm-12">
+                <input type="file" name="" id="excel-input" class="form-control">
+              </div>
+              <div class="table-responsive">
+                <table class="table table-striped" id="excel-table">
+                  <thead>
+                    <tr>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  {{> footer}}
+  </div>
+  <!-- General JS Scripts -->
+  <script src="/assets/js/app.min.js"></script>
+  <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js"></script>
+
+  <!-- JS Libraies -->
+  <script src="/assets/bundles/datatables/datatables.min.js"></script>
+  <script src="/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <script src="/assets/bundles/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Page Specific JS File -->
+  <script src="/assets/js/page/datatables.js"></script>
+  <script type="text/javascript" src="/assets/jsaux/producto/cargarproducto.js"></script>
+  <!-- Template JS File -->
+  <script src="/assets/js/scripts.js"></script>
+  <!-- Custom JS File -->
+  <script src="/assets/js/custom.js"></script>
+</body>
+
+</html>

@@ -53,7 +53,20 @@ facturacion.actualizar = async (req, res) => {
 }
 
 facturacion.eliminar = async (req, res) => {
-    res.render('facturacion/eliminarfactura', helpers.getDataUsuario(res.locals.user))
+    facturacion.eliminar = async (req, res) => {
+
+        const result = await fetch(`${process.env.HOST_BACKEND_FACTURA}/factura/${req.params.id}`,{
+            method: 'DELETE',
+        }).then(data => data.json())
+    
+        if(result.OSUCCESS  === 1){
+            req.flash('success', result.OMENSAJE)
+            res.redirect('/factura')
+        }else{
+            req.flash('error', result.OMENSAJE)
+            res.redirect('/facturacompra')
+        }
+    }
 }
 
 facturacion.asentar = async (req, res) => {

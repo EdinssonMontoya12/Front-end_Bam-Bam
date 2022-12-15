@@ -21,7 +21,7 @@ sucursales.insertardao = async (req, res) => {
     const response = await sucursalDao.insertar(req.body)
 
     if(response.OSUCCESS === 1){
-        res.redirect('/sucursal')
+        res.redirect('/sucursal/consultar')
     }else{
         req.flash('err', response.OMENSAJE)
         res.redirect('/sucursal/insertar')
