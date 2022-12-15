@@ -184,7 +184,7 @@ async function insertarFactura() {
 
     console.log(factura)
 
-    const response = await fetch('http://localhost:3001/factura/', {
+    const response = await fetch('http://tiendasbambam.com:3001/factura/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
